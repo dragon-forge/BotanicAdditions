@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"axis=y": { "model": "botanicadds:elvenwood_log" },
+		"axis=z": { "model": "botanicadds:elvenwood_log", "x": 90 },
+		"axis=x": { "model": "botanicadds:elvenwood_log", "x": 90, "y": 90 },
+		"axis=none": { "model": "botanicadds:elvenwood_bark" }
+	}
+}

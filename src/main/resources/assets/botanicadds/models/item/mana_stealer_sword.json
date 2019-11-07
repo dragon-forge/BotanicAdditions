@@ -1,0 +1,4 @@
+{
+	"parent": "item/handheld",
+	"textures": { "layer0": "botanicadds:items/mana_stealer_sword" }
+}

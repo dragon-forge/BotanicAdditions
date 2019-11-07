@@ -1,0 +1,7 @@
+{
+	"parent": "block/cube_column",
+	"textures": {
+		"end": "botanicadds:blocks/log_elvenwood_top",
+		"side": "botanicadds:blocks/log_elvenwood"
+	}
+}

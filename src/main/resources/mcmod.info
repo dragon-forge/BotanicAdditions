@@ -1,0 +1,10 @@
+[
+	{
+	  "modid": "botanicadds",
+	  "name": "Botanic Additions",
+	  "description": "",
+	  "version": "${version}",
+	  "mcversion": "${mcversion}",
+	  "authorList": ["Zeitheron"]
+	}
+]
