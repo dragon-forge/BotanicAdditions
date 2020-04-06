@@ -13,6 +13,7 @@ tile.botanicadds:elvenwood_log.name=Эльфийская Древесина
 tile.botanicadds:elven_altar.name=Эльфийский Алтарь
 tile.botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
 tile.botanicadds:pool_dreaming.tooltip0=Два Бассейна маны в одном блоке
+tile.botania:botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
 tile.botanicadds:gaia_plate.name=Агломерационная Плита Гайи
 
 # Flowers
