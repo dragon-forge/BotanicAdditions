@@ -1,13 +1,6 @@
 package tk.zeitheron.botanicadds.init;
 
-import tk.zeitheron.botanicadds.blocks.BlockDreamingPool;
-import tk.zeitheron.botanicadds.blocks.BlockDummy;
-import tk.zeitheron.botanicadds.blocks.BlockElvenAltar;
-import tk.zeitheron.botanicadds.blocks.BlockElvenwoodLog;
-import tk.zeitheron.botanicadds.blocks.BlockGaiaPlate;
-import tk.zeitheron.botanicadds.blocks.BlockManaTesseract;
-import tk.zeitheron.botanicadds.blocks.BlockTerraCatalyst;
-
+import tk.zeitheron.botanicadds.blocks.*;
 import vazkii.botania.common.lexicon.LexiconData;
 
 public class BlocksBA
@@ -21,4 +14,5 @@ public class BlocksBA
 	public static final BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar();
 	public static final BlockDreamingPool DREAMING_POOL = new BlockDreamingPool();
 	public static final BlockGaiaPlate GAIA_PLATE = new BlockGaiaPlate();
+	public static final BlockDecorativeMetal GAIASTEEL_BLOCK = new BlockDecorativeMetal("gaiasteel_block");
 }

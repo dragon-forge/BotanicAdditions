@@ -15,6 +15,7 @@ tile.botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
 tile.botanicadds:pool_dreaming.tooltip0=Два Бассейна маны в одном блоке
 tile.botania:botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
 tile.botanicadds:gaia_plate.name=Агломерационная Плита Гайи
+tile.botanicadds:gaiasteel_block.name=Блок гайястали
 
 # Flowers
 tile.botania:flower.ba_wither_flower.name=Иссушающий Цветок
