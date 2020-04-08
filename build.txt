@@ -1,6 +1,6 @@
 #Project info
 author=Zeitheron
-start_git_commit=?
+start_git_commit=aa0c7cbf9ca9a917dd33f7f7571434a8a343ee21
 git_commit=https://gitlab.com/DragonForge/botanic-additions/commit/{{hash}}
 
 #Runtime info

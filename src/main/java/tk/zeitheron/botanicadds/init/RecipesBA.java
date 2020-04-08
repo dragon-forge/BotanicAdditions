@@ -28,8 +28,7 @@ public class RecipesBA
 	public static final ResourceLocation terra_protector = new ResourceLocation(InfoBA.MOD_ID, "terra_protector");
 	public static final ResourceLocation ring_aura_gaia = new ResourceLocation(InfoBA.MOD_ID, "ring_aura_gaia");
 	public static final ResourceLocation mana_stealer_sword = new ResourceLocation(InfoBA.MOD_ID, "mana_stealer_sword");
-	public static final ResourceLocation gaiasteel_block = new ResourceLocation(InfoBA.MOD_ID, "gaiasteel_block");
-	public static final ResourceLocation gaiasteel_ingot = new ResourceLocation(InfoBA.MOD_ID, "gaiasteel_ingot");
+	public static final ResourceLocation gaiasteel_block = new ResourceLocation(InfoBA.MOD_ID, "gaiasteel_block"), gaiasteel_ingot = new ResourceLocation(InfoBA.MOD_ID, "gaiasteel_ingot");
 
 	public static RecipePureDaisy dreamwood;
 
