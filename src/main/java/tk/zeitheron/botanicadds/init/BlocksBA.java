@@ -14,5 +14,5 @@ public class BlocksBA
 	public static final BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar();
 	public static final BlockDreamingPool DREAMING_POOL = new BlockDreamingPool();
 	public static final BlockGaiaPlate GAIA_PLATE = new BlockGaiaPlate();
-	public static final BlockDecorativeMetal GAIASTEEL_BLOCK = new BlockDecorativeMetal("gaiasteel_block");
+	public static final BlockDecorativeMetal GAIASTEEL_BLOCK = new BlockDecorativeMetal("gaiasteel_block", "blockGaiasteel");
 }
