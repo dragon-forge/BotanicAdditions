@@ -14,6 +14,6 @@ jei_version=4.15.0.293
 mod_id=botanicadds
 mod_id_fancy=BotanicAdditions
 mod_name=Botanic Additions
-mod_version=12.2.5
+mod_version=12.2.6
 cf_project=310637
 release_type=release

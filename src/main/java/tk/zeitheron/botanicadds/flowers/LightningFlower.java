@@ -51,7 +51,7 @@ public class LightningFlower extends SubTilePassiveGen
 			
 			if(Math.random() <= .0001)
 			{
-				Vec3d p = getWorld().getBlockState(getPos()).getBoundingBox(getWorld(), getPos()).getCenter().add(getPos().getX(), getPos().getY(), getPos().getZ());
+				Vec3d p = getCenter(getWorld().getBlockState(getPos()).getBoundingBox(getWorld(), getPos())).add(getPos().getX(), getPos().getY(), getPos().getZ());
 				getWorld().addWeatherEffect(new EntityLightningBolt(getWorld(), p.x, p.y, p.z, true));
 			}
 		}
