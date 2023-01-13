@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "": [{
+      "model": "block/cube_all",
+      "textures": {
+        "all": "botanicadds:block/elven_lapis_block"
+      }
+    }],
+    "inventory": [{
+      "model": "block/cube_all",
+      "textures": {
+        "all": "botanicadds:block/elven_lapis_block"
+      }
+    }]
+  }
+}

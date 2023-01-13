@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "botanicadds:blocks/log_elvenwood"
+    }
+}
