@@ -4,11 +4,20 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.zeith.botanicadds.BotanicAdditions;
+import org.zeith.botanicadds.api.FunctionalFlowerHUD;
+import org.zeith.botanicadds.api.GenerationalFlowerHUD;
 import org.zeith.botanicadds.init.ItemsBA;
+import vazkii.botania.api.BotaniaForgeClientCapabilities;
+import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
+import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
+import vazkii.botania.forge.CapabilityUtil;
 
 import java.awt.*;
 import java.util.*;
@@ -26,6 +35,21 @@ public class ClientProxyBA
 		
 		bus.addListener(this::registerItemColors);
 		bus.addListener(this::registerMaterials);
+		
+		MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, this::attachBeCapabilities);
+	}
+	
+	private void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e)
+	{
+		var be = e.getObject();
+		
+		if(be instanceof FunctionalFlowerBlockEntity ff && ff.getClass().isAnnotationPresent(FunctionalFlowerHUD.class))
+			e.addCapability(BotanicAdditions.id("wand_hud"),
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new FunctionalFlowerBlockEntity.FunctionalWandHud<>(ff)));
+		
+		if(be instanceof GeneratingFlowerBlockEntity gf && gf.getClass().isAnnotationPresent(GenerationalFlowerHUD.class))
+			e.addCapability(BotanicAdditions.id("wand_hud"),
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new GeneratingFlowerBlockEntity.GeneratingWandHud<>(gf)));
 	}
 	
 	public float getWorldElapsedTicks()

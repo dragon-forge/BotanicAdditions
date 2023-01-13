@@ -80,6 +80,7 @@ repositories {
         name = "Zeitheron Maven"
         url = "https://maven.zeith.org/"
     }
+    maven { url 'https://maven.blamejared.com' }
     flatDir { dirs "libraries/${config.mc_version}/all" }
     flatDir { dirs "libraries/${config.mc_version}/classpathOnly" }
     flatDir { dirs "libraries/${config.mc_version}/runtimeOnly" }
@@ -89,7 +90,9 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${config.mc_version}-${config.forge_version}"
 
-	implementation "org.zeith.hammerlib:HammerLib-${config.mc_version}:${config.hl_version}:deobf"
+    implementation "org.zeith.hammerlib:HammerLib-${config.mc_version}:${config.hl_version}:deobf"
+
+    implementation fg.deobf("vazkii.botania:Botania:1.19.2-436-FORGE")
 
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 
@@ -222,6 +225,7 @@ curseforge {
         }
         relations {
             requiredDependency 'Hammer-Lib'
+            requiredDependency 'Botania'
         }
     }
 }

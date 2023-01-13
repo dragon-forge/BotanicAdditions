@@ -18,17 +18,17 @@ block.botanicadds.gaia_plate=Агломерационная Плита Гайи
 block.botanicadds.gaiasteel_block=Блок гайястали
 
 # Flowers
-block.botanicadds.flower.ba_wither_flower=Иссушающий Цветок
-block.botanicadds.flower.ba_wither_flower.reference=[BA] Немного вялый опыт!
+block.botanicadds.wither_flower=Иссушающий Цветок
+block.botanicadds.wither_flower.reference=[BA] Немного вялый опыт!
 
-block.botanicadds.flower.ba_rain_flower=Дождецвет
-block.botanicadds.flower.ba_rain_flower.reference=[BA] Он мокрый!
+block.botanicadds.rain_flower=Дождецвет
+block.botanicadds.rain_flower.reference=[BA] Он мокрый!
 
-block.botanicadds.flower.ba_snow_flower=Снегоцвет
-block.botanicadds.flower.ba_snow_flower.reference=[BA] Немного холодный!
+block.botanicadds.snow_flower=Снегоцвет
+block.botanicadds.snow_flower.reference=[BA] Немного холодный!
 
-block.botanicadds.flower.ba_lightning_flower=Молнецвет
-block.botanicadds.flower.ba_lightning_flower.reference=[BA] Шокирующе сильный!
+block.botanicadds.lightning_flower=Молнецвет
+block.botanicadds.lightning_flower.reference=[BA] Шокирующе сильный!
 
 # Items
 item.botanicadds.rune_tp=Руна Телепортации

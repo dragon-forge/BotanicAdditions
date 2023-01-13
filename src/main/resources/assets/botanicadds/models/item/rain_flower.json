@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "botanicadds:block/flower_gen_rain_flower"
+  }
+}

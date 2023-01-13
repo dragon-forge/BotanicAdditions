@@ -1,18 +1,7 @@
 {
-  "forge_marker": 1,
   "variants": {
-    "": [{
-      "model": "botania:block/shapes/cross_tinted",
-      "textures": {
-        "cross": "botanicadds:block/flower_func_wither_flower"
-      }
-    }],
-    "inventory": [{
-      "model": "item/generated",
-      "transform": "forge:default-item",
-      "textures": {
-        "layer0": "botanicadds:block/flower_func_wither_flower"
-      }
-    }]
+    "": {
+      "model": "botanicadds:block/wither_flower"
+    }
   }
 }

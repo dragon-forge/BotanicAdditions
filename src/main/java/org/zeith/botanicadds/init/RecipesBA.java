@@ -4,8 +4,10 @@ import net.minecraft.commands.CommandFunction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
+import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.crafting.RecipeGaiaPlate;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
@@ -13,9 +15,11 @@ import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.event.recipe.RegisterRecipesEvent;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.crafting.*;
+import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.BotaniaItems;
 import vazkii.botania.common.lib.BotaniaTags;
 
+import java.util.Arrays;
 import java.util.Set;
 
 @ProvideRecipes
@@ -118,7 +122,60 @@ public class RecipesBA
 	
 	public void petalApothecary(RegisterRecipesEvent e)
 	{
-	
+		var seeds = Ingredient.of(BotaniaTags.Items.SEED_APOTHECARY_REAGENT);
+		
+		var petalsBlack = Ingredient.of(BotaniaTags.Items.PETALS_BLACK);
+		var petalsBlue = Ingredient.of(BotaniaTags.Items.PETALS_BLUE);
+		var petalsBrown = Ingredient.of(BotaniaTags.Items.PETALS_BROWN);
+		var petalsCyan = Ingredient.of(BotaniaTags.Items.PETALS_CYAN);
+		var petalsGray = Ingredient.of(BotaniaTags.Items.PETALS_GRAY);
+		var petalsGreen = Ingredient.of(BotaniaTags.Items.PETALS_GREEN);
+		var petalsLightBlue = Ingredient.of(BotaniaTags.Items.PETALS_LIGHT_BLUE);
+		var petalsLightGray = Ingredient.of(BotaniaTags.Items.PETALS_LIGHT_GRAY);
+		var petalsLime = Ingredient.of(BotaniaTags.Items.PETALS_LIME);
+		var petalsMagenta = Ingredient.of(BotaniaTags.Items.PETALS_MAGENTA);
+		var petalsOrange = Ingredient.of(BotaniaTags.Items.PETALS_ORANGE);
+		var petalsPink = Ingredient.of(BotaniaTags.Items.PETALS_PINK);
+		var petalsPurple = Ingredient.of(BotaniaTags.Items.PETALS_PURPLE);
+		var petalsRed = Ingredient.of(BotaniaTags.Items.PETALS_RED);
+		var petalsWhite = Ingredient.of(BotaniaTags.Items.PETALS_WHITE);
+		var petalsYellow = Ingredient.of(BotaniaTags.Items.PETALS_YELLOW);
+		
+		var zeithHead = new ItemStack(Items.PLAYER_HEAD);
+		ItemNBTHelper.setString(zeithHead, "SkullOwner", "Zeitheron");
+		Ingredient[] lightBluePetals = new Ingredient[16];
+		Arrays.fill(lightBluePetals, petalsLightBlue);
+		e.add(new PetalsRecipe(BotanicAdditions.id("zeitheron_head"),
+				zeithHead, seeds,
+				lightBluePetals
+		));
+		
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.WITHER_FLOWER.asItem()),
+				new ItemStack(FlowersBA.WITHER_FLOWER), seeds,
+				
+				petalsBlack, petalsBlack, petalsBlack, petalsBlack, petalsGray, petalsGray, petalsGray, petalsGray,
+				Ingredient.of(Items.WITHER_SKELETON_SKULL),
+				Ingredient.of(BotaniaItems.redstoneRoot),
+				Ingredient.of(BotaniaItems.runeGluttony),
+				Ingredient.of(BotaniaItems.runeWrath)
+		));
+		
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.RAIN_FLOWER.asItem()),
+				new ItemStack(FlowersBA.RAIN_FLOWER), seeds,
+				petalsBlue, petalsBlue, petalsBlue, petalsBlue, petalsLightBlue, petalsLightBlue, petalsYellow
+		));
+		
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.SNOW_FLOWER.asItem()),
+				new ItemStack(FlowersBA.SNOW_FLOWER), seeds,
+				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsWhite, petalsWhite, petalsWhite
+		));
+		
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.LIGHTNING_FLOWER.asItem()),
+				new ItemStack(FlowersBA.LIGHTNING_FLOWER), seeds,
+				
+				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsBlue,
+				Ingredient.of(ItemsBA.RUNE_ENERGY)
+		));
 	}
 	
 	public void altar(RegisterRecipesEvent e)

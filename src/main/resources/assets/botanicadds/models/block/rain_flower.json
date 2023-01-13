@@ -1,0 +1,7 @@
+{
+  "parent": "botania:block/shapes/cross",
+  "render_type": "cutout",
+  "textures": {
+    "cross": "botanicadds:block/flower_gen_rain_flower"
+  }
+}

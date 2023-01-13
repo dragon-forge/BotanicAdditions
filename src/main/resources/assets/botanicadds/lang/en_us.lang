@@ -18,17 +18,17 @@ block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
 
 # Flowers
-block.botanicadds.flower.ba_wither_flower=Wither Flower
-block.botanicadds.flower.ba_wither_flower.reference=[BA] Quite a withering experience!
+block.botanicadds.wither_flower=Wither Flower
+block.botanicadds.wither_flower.reference=[BA] Quite a withering experience!
 
-block.botanicadds.flower.ba_rain_flower=Rain Flower
-block.botanicadds.flower.ba_rain_flower.reference=[BA] It's wet!
+block.botanicadds.rain_flower=Rain Flower
+block.botanicadds.rain_flower.reference=[BA] It's wet!
 
-block.botanicadds.flower.ba_snow_flower=Snow Flower
-block.botanicadds.flower.ba_snow_flower.reference=[BA] Quite cold!
+block.botanicadds.snow_flower=Snow Flower
+block.botanicadds.snow_flower.reference=[BA] Quite cold!
 
-block.botanicadds.flower.ba_lightning_flower=Lightning Flower
-block.botanicadds.flower.ba_lightning_flower.reference=[BA] Shockingly powerful!
+block.botanicadds.lightning_flower=Lightning Flower
+block.botanicadds.lightning_flower.reference=[BA] Shockingly powerful!
 
 # Items
 item.botanicadds.rune_tp=Rune of Teleportation
