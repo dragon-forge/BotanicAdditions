@@ -1,7 +1,6 @@
 package org.zeith.botanicadds.blocks;
 
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -17,24 +16,28 @@ import java.util.List;
 
 import static org.zeith.botanicadds.BotanicAdditions.TAB;
 
-public class BlockDecorativeMetal
+public class BlockStorage
 		extends Block
 		implements ICustomBlockItem
 {
-	private final List<String> metals;
+	private final String metal;
 	
-	public BlockDecorativeMetal(String... metals)
+	public final TagKey<Block> blockTag;
+	public final TagKey<Item> itemTag;
+	
+	public BlockStorage(String metal)
 	{
-		this(Properties.of(Material.METAL), metals);
+		this(Properties.of(Material.METAL).sound(SoundType.METAL), metal);
 	}
 	
-	public BlockDecorativeMetal(Properties props, String... metals)
+	public BlockStorage(Properties props, String metal)
 	{
-		super(props.sound(SoundType.METAL).strength(2.5F));
-		this.metals = List.of(metals);
+		super(props.strength(2.5F));
+		this.metal = metal;
 		BlockHarvestAdapter.bindTool(BlockHarvestAdapter.MineableType.PICKAXE, Tiers.IRON, this);
-		for(var metal : metals)
-			TagAdapter.bind(BlockTags.create(MaterialType.STORAGE_BLOCK.createId(metal)), this);
+		
+		itemTag = ItemTags.create(MaterialType.STORAGE_BLOCK.createId(metal));
+		TagAdapter.bind(blockTag = BlockTags.create(MaterialType.STORAGE_BLOCK.createId(metal)), this);
 	}
 	
 	@Override
@@ -47,8 +50,7 @@ public class BlockDecorativeMetal
 	public BlockItem createBlockItem()
 	{
 		var bi = new BlockItem(this, new Item.Properties().tab(TAB));
-		for(var metal : metals)
-			TagAdapter.bind(ItemTags.create(MaterialType.STORAGE_BLOCK.createId(metal)), bi);
+		TagAdapter.bind(itemTag, bi);
 		return bi;
 	}
 }

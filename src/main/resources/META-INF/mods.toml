@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "[43,)"
+issueTrackerURL = "https://gitlab.com/DragonForge/<NAME>/issues"
+license = "All rights reserved"
+
+[[mods]]
+modId = "botanicadds"
+version = "${file.jarVersion}"
+displayName = "Botanic Additions"
+updateJSONURL = "http://h.zeith.org/api/fmluc/310637"
+displayURL = "http://h.zeith.org/api/fmlhp/310637"
+logoFile = "icon.png"
+authors = "Zeitheron"
+
+description = '''
+Multi-line description
+of the mod!
+'''
+
+[[dependencies.botanicadds]]
+modId = "forge"
+mandatory = true
+versionRange = "[43,)"
+ordering = "NONE" # NONE/BEFORE/AFTER
+side = "BOTH"
+[[dependencies.botanicadds]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,1.20)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.botanicadds]]
+modId = "hammerlib"
+mandatory = true
+versionRange = "[19.1,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.botanicadds]]
+modId = "botania"
+mandatory = true
+versionRange = "[1.19.2-436-FORGE,)"
+ordering = "NONE"
+side = "BOTH"

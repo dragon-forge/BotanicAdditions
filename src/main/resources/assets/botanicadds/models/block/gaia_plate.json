@@ -1,8 +1,8 @@
 {
 	"parent": "botania:block/shapes/three_high_bottom_top",
 	"textures": {
-		"bottom": "botanicadds:blocks/gaia_plate_0",
-		"up": "botanicadds:blocks/gaia_plate_1",
-		"side": "botanicadds:blocks/gaia_plate_2"
+		"bottom": "botanicadds:block/gaia_plate_0",
+		"top": "botanicadds:block/gaia_plate_1",
+		"side": "botanicadds:block/gaia_plate_2"
 	}
 }

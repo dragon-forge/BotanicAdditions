@@ -4,42 +4,43 @@ botania.category.botanicadds=Botanic Additions
 botanicadds.text.pools=~%s pools
 
 # Blocks
-tile.botanicadds:mana_tesseract.name=Mana Tesseract
-tile.botanicadds:terra_catalyst.name=Terra Catalyst
-tile.botanicadds:dreamrock.name=Dreamrock
-tile.botanicadds:mana_lapis_block.name=Mana Lapis Block
-tile.botanicadds:elven_lapis_block.name=Elven Lapis Block
-tile.botanicadds:elvenwood_log.name=Elvenwood Log
-tile.botanicadds:elven_altar.name=Elven Altar
-tile.botanicadds:pool_dreaming.name=Dreaming Mana Pool
-tile.botanicadds:pool_dreaming.tooltip0=2 Mana Pools in one block
-tile.botania:botanicadds:pool_dreaming.name=Dreaming Mana Pool
-tile.botanicadds:gaia_plate.name=Gaia Agglomeration Plate
-tile.botanicadds:gaiasteel_block.name=Gaiasteel Block
+block.botanicadds.mana_tesseract=Mana Tesseract
+block.botanicadds.terra_catalyst=Terra Catalyst
+block.botanicadds.dreamrock=Dreamrock
+block.botanicadds.mana_lapis_block=Mana Lapis Block
+block.botanicadds.elven_lapis_block=Elven Lapis Block
+block.botanicadds.elvenwood_log=Elvenwood Log
+block.botanicadds.elvenwood=Elvenwood
+block.botanicadds.elven_altar=Elven Altar
+block.botanicadds.pool_dreaming=Dreaming Mana Pool
+block.botanicadds.pool_dreaming.tooltip0=2 Mana Pools in one block
+block.botanicadds.gaia_plate=Gaia Agglomeration Plate
+block.botanicadds.gaiasteel_block=Gaiasteel Block
 
 # Flowers
-tile.botania:flower.ba_wither_flower.name=Wither Flower
-tile.botania:flower.ba_wither_flower.reference=[BA] Quite a withering experience!
+block.botanicadds.flower.ba_wither_flower=Wither Flower
+block.botanicadds.flower.ba_wither_flower.reference=[BA] Quite a withering experience!
 
-tile.botania:flower.ba_rain_flower.name=Rain Flower
-tile.botania:flower.ba_rain_flower.reference=[BA] It's wet!
+block.botanicadds.flower.ba_rain_flower=Rain Flower
+block.botanicadds.flower.ba_rain_flower.reference=[BA] It's wet!
 
-tile.botania:flower.ba_snow_flower.name=Snow Flower
-tile.botania:flower.ba_snow_flower.reference=[BA] Quite cold!
+block.botanicadds.flower.ba_snow_flower=Snow Flower
+block.botanicadds.flower.ba_snow_flower.reference=[BA] Quite cold!
 
-tile.botania:flower.ba_lightning_flower.name=Lightning Flower
-tile.botania:flower.ba_lightning_flower.reference=[BA] Shockingly powerful!
+block.botanicadds.flower.ba_lightning_flower=Lightning Flower
+block.botanicadds.flower.ba_lightning_flower.reference=[BA] Shockingly powerful!
 
 # Items
-item.botanicadds:rune_tp.name=Rune of Teleportation
-item.botanicadds:rune_energy.name=Rune of Energy
-item.botanicadds:mana_lapis.name=Mana Lapis
-item.botanicadds:elven_lapis.name=Elven Lapis
-item.botanicadds:gaia_shard.name=Gaia Shard
-item.botanicadds:gaiasteel_ingot.name=Gaiasteel Ingot
-item.botanicadds:terra_protector.name=Terra Protector
-item.botanicadds:ring_aura_gaia.name=Gaia Band of Aura
-item.botanicadds:mana_stealer_sword.name=Mana Stealing Blade
+item.botanicadds.rune_tp=Rune of Teleportation
+item.botanicadds.rune_energy=Rune of Energy
+item.botanicadds.mana_lapis=Mana Lapis
+item.botanicadds.elven_lapis=Elven Lapis
+item.botanicadds.gaia_shard=Gaia Shard
+item.botanicadds.gaiasteel_ingot=Gaiasteel Ingot
+item.botanicadds.gaiasteel_nugget=Gaiasteel Nugget
+item.botanicadds.terra_protector=Terra Protector
+item.botanicadds.ring_aura_gaia=Gaia Band of Aura
+item.botanicadds.mana_stealer_sword=Mana Stealing Blade
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Rune of Teleportation&0.

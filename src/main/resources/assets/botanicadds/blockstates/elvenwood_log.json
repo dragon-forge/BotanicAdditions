@@ -3,6 +3,6 @@
 		"axis=y": { "model": "botanicadds:block/elvenwood_log" },
 		"axis=z": { "model": "botanicadds:block/elvenwood_log", "x": 90 },
 		"axis=x": { "model": "botanicadds:block/elvenwood_log", "x": 90, "y": 90 },
-		"axis=none": { "model": "botanicadds:block/elvenwood_bark" }
+		"axis=none": { "model": "botanicadds:block/elvenwood" }
 	}
 }

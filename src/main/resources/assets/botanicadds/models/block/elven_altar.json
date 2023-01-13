@@ -2,10 +2,10 @@
 	"Comment": "Designed by Wiiv with Cubik Studio - https://cubik.studio. Retextured by Zeitheron",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"bottom": "botanicadds:blocks/elven_altar_bottom",
-		"up": "botanicadds:blocks/elven_altar_top",
-		"side": "botanicadds:blocks/elven_altar_side",
-		"particle": "botanicadds:blocks/dreamrock"
+		"bottom": "botanicadds:block/elven_altar_bottom",
+		"up": "botanicadds:block/elven_altar_top",
+		"side": "botanicadds:block/elven_altar_side",
+		"particle": "botanicadds:block/dreamrock"
 	},
 	"elements": [ 	 
 		{

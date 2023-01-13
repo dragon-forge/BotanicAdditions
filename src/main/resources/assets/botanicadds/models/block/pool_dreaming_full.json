@@ -1,7 +1,7 @@
 {
 	"parent": "botania:block/shapes/pool_full",
 	"textures": {
-		"all": "botanicadds:blocks/dreamrock",
-		"liquid": "botania:blocks/mana_water"
+		"all": "botanicadds:block/dreamrock",
+		"liquid": "botania:block/mana_water"
 	}
 }

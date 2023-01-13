@@ -4,42 +4,43 @@ botania.category.botanicadds=Botanic Additions
 botanicadds.text.pools=~%s pools
 
 # Blocks
-tile.botanicadds:mana_tesseract.name=Мана Тессеракт
-tile.botanicadds:terra_catalyst.name=Терра Катализатор
-tile.botanicadds:dreamrock.name=Камень Мечтаний
-tile.botanicadds:mana_lapis_block.name=Блок Мана Лазурита
-tile.botanicadds:elven_lapis_block.name=Эльфийский Блок Лазурита
-tile.botanicadds:elvenwood_log.name=Эльфийская Древесина
-tile.botanicadds:elven_altar.name=Эльфийский Алтарь
-tile.botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
-tile.botanicadds:pool_dreaming.tooltip0=Два Бассейна маны в одном блоке
-tile.botania:botanicadds:pool_dreaming.name=Бассейн Маны Мечтаний
-tile.botanicadds:gaia_plate.name=Агломерационная Плита Гайи
-tile.botanicadds:gaiasteel_block.name=Блок гайястали
+block.botanicadds.mana_tesseract=Мана Тессеракт
+block.botanicadds.terra_catalyst=Терра Катализатор
+block.botanicadds.dreamrock=Камень Мечтаний
+block.botanicadds.mana_lapis_block=Блок Мана Лазурита
+block.botanicadds.elven_lapis_block=Эльфийский Блок Лазурита
+block.botanicadds.elvenwood_log=Эльфийская Древесина
+block.botanicadds.elvenwood=Эльфийская Древесина
+block.botanicadds.elven_altar=Эльфийский Алтарь
+block.botanicadds.pool_dreaming=Бассейн Маны Мечтаний
+block.botanicadds.pool_dreaming.tooltip0=Два Бассейна маны в одном блоке
+block.botanicadds.gaia_plate=Агломерационная Плита Гайи
+block.botanicadds.gaiasteel_block=Блок гайястали
 
 # Flowers
-tile.botania:flower.ba_wither_flower.name=Иссушающий Цветок
-tile.botania:flower.ba_wither_flower.reference=[BA] Немного вялый опыт!
+block.botanicadds.flower.ba_wither_flower=Иссушающий Цветок
+block.botanicadds.flower.ba_wither_flower.reference=[BA] Немного вялый опыт!
 
-tile.botania:flower.ba_rain_flower.name=Дождецвет
-tile.botania:flower.ba_rain_flower.reference=[BA] Он мокрый!
+block.botanicadds.flower.ba_rain_flower=Дождецвет
+block.botanicadds.flower.ba_rain_flower.reference=[BA] Он мокрый!
 
-tile.botania:flower.ba_snow_flower.name=Снегоцвет
-tile.botania:flower.ba_snow_flower.reference=[BA] Немного холодный!
+block.botanicadds.flower.ba_snow_flower=Снегоцвет
+block.botanicadds.flower.ba_snow_flower.reference=[BA] Немного холодный!
 
-tile.botania:flower.ba_lightning_flower.name=Молнецвет
-tile.botania:flower.ba_lightning_flower.reference=[BA] Шокирующе сильный!
+block.botanicadds.flower.ba_lightning_flower=Молнецвет
+block.botanicadds.flower.ba_lightning_flower.reference=[BA] Шокирующе сильный!
 
 # Items
-item.botanicadds:rune_tp.name=Руна Телепортации
-item.botanicadds:rune_energy.name=Руна Энергии
-item.botanicadds:mana_lapis.name=Мана Лазурит
-item.botanicadds:elven_lapis.name=Эльфийский Лазурит
-item.botanicadds:gaia_shard.name=Осколок Гайи
-item.botanicadds:gaiasteel_ingot.name=Слиток Гайястали
-item.botanicadds:terra_protector.name=Терра Защитник
-item.botanicadds:ring_aura_gaia.name=Кольцо Ауры Гайи
-item.botanicadds:mana_stealer_sword.name=Маналезвие
+item.botanicadds.rune_tp=Руна Телепортации
+item.botanicadds.rune_energy=Руна Энергии
+item.botanicadds.mana_lapis=Мана Лазурит
+item.botanicadds.elven_lapis=Эльфийский Лазурит
+item.botanicadds.gaia_shard=Осколок Гайи
+item.botanicadds.gaiasteel_ingot=Слиток Гайястали
+item.botanicadds.gaiasteel_nugget=Самородок Гайястали
+item.botanicadds.terra_protector=Терра Защитник
+item.botanicadds.ring_aura_gaia=Кольцо Ауры Гайи
+item.botanicadds.mana_stealer_sword=Маналезвие
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Руна Телепортации&0.

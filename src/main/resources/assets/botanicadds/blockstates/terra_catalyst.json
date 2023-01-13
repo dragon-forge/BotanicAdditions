@@ -1,18 +1,7 @@
 {
-  "forge_marker": 1,
   "variants": {
     "": {
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/terra_catalyst",
-        "overlay": "botanicadds:block/terra_catalyst_overlay"
-      }
-    },
-    "inventory": {
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/terra_catalyst"
-      }
+      "model": "botanicadds:block/terra_catalyst"
     }
   }
 }

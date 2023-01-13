@@ -1,17 +1,7 @@
 {
-  "forge_marker": 1,
   "variants": {
-    "": [{
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/gaiasteel_block"
-      }
-    }],
-    "inventory": [{
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/gaiasteel_block"
-      }
-    }]
+    "": {
+      "model": "botanicadds:block/gaiasteel_block"
+    }
   }
 }

@@ -13,7 +13,6 @@ import org.zeith.botanicadds.proxy.ClientProxyBA;
 import org.zeith.botanicadds.proxy.CommonProxyBA;
 import org.zeith.hammerlib.core.adapter.LanguageAdapter;
 import org.zeith.hammerlib.event.fml.FMLFingerprintCheckEvent;
-import org.zeith.hammerlib.proxy.HLConstants;
 import org.zeith.hammerlib.util.CommonMessages;
 
 @Mod(BotanicAdditions.MOD_ID)
@@ -42,7 +41,7 @@ public class BotanicAdditions
 	
 	public static ResourceLocation id(String path)
 	{
-		return new ResourceLocation(HLConstants.MOD_ID, path);
+		return new ResourceLocation(MOD_ID, path);
 	}
 	
 	public void checkFingerprint(FMLFingerprintCheckEvent e)
