@@ -28,6 +28,9 @@ public interface BlocksBA
 	@RegistryName("gaia_plate")
 	BlockGaiaPlate GAIA_PLATE = new BlockGaiaPlate();
 	
+	@RegistryName("mana_tesseract")
+	BlockManaTesseract MANA_TESSERACT = new BlockManaTesseract();
+	
 	@RegistryName("dreamrock")
 	SimpleBlockBA DREAMROCK = new SimpleBlockBA(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
 	

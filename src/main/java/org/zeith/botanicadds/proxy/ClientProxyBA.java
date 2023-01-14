@@ -14,6 +14,7 @@ import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.api.FunctionalFlowerHUD;
 import org.zeith.botanicadds.api.GenerationalFlowerHUD;
 import org.zeith.botanicadds.init.ItemsBA;
+import org.zeith.botanicadds.tiles.TileManaTesseract;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
 import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
@@ -50,6 +51,10 @@ public class ClientProxyBA
 		if(be instanceof GeneratingFlowerBlockEntity gf && gf.getClass().isAnnotationPresent(GenerationalFlowerHUD.class))
 			e.addCapability(BotanicAdditions.id("wand_hud"),
 					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new GeneratingFlowerBlockEntity.GeneratingWandHud<>(gf)));
+		
+		if(be instanceof TileManaTesseract tess)
+			e.addCapability(BotanicAdditions.id("wand_hud"),
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new TileManaTesseract.WandHud(tess)));
 	}
 	
 	public float getWorldElapsedTicks()

@@ -1,17 +1,10 @@
 {
-  "forge_marker": 1,
   "variants": {
-    "": [{
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/mana_tesseract"
-      }
-    }],
-    "inventory": [{
-      "model": "block/cube_all",
-      "textures": {
-        "all": "botanicadds:block/mana_tesseract"
-      }
-    }]
+    "mode=send": {
+      "model": "botanicadds:block/mana_tesseract_send"
+    },
+    "mode=receive": {
+      "model": "botanicadds:block/mana_tesseract_receive"
+    }
   }
 }

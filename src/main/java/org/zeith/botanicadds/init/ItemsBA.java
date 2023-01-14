@@ -3,7 +3,7 @@ package org.zeith.botanicadds.init;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import org.zeith.botanicadds.BotanicAdditions;
-import org.zeith.botanicadds.items.ItemMaterial;
+import org.zeith.botanicadds.items.*;
 import org.zeith.botanicadds.util.MaterialType;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
@@ -31,6 +31,12 @@ public interface ItemsBA
 	
 	@RegistryName("gaiasteel_nugget")
 	ItemMaterial GAIASTEEL_NUGGET = new ItemMaterial(MaterialType.NUGGET, "gaiasteel");
+	
+	@RegistryName("aura_ring_gaia")
+	ItemGaiaAuraRing AURA_RING_GAIA = new ItemGaiaAuraRing();
+	
+	@RegistryName("mana_ring_gaia")
+	ItemGaiaManaBand MANA_RING_GAIA = new ItemGaiaManaBand();
 	
 	static Item newItem()
 	{

@@ -39,8 +39,13 @@ item.botanicadds.gaia_shard=Gaia Shard
 item.botanicadds.gaiasteel_ingot=Gaiasteel Ingot
 item.botanicadds.gaiasteel_nugget=Gaiasteel Nugget
 item.botanicadds.terra_protector=Terra Protector
-item.botanicadds.ring_aura_gaia=Gaia Band of Aura
+item.botanicadds.aura_ring_gaia=Gaia Band of Aura
+item.botanicadds.mana_ring_gaia=Gaia Band of Mana
 item.botanicadds.mana_stealer_sword=Mana Stealing Blade
+
+# Tooltips
+info.botanicadds.mana_tesseract.no_channel=Channel is not set.
+info.botanicadds.mana_tesseract.channel=Channel: %s.
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Rune of Teleportation&0.

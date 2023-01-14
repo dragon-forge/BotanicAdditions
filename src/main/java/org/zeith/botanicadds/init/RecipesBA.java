@@ -82,6 +82,16 @@ public class RecipesBA
 				.shape("ll", "ll")
 				.map('l', BlocksBA.ELVENWOOD_LOG)
 				.register();
+		
+		e.shapeless().result(ItemsBA.AURA_RING_GAIA)
+				.add(ItemsBA.GAIASTEEL_INGOT.getTag())
+				.add(BotaniaItems.auraRingGreater)
+				.register();
+		
+		e.shapeless().result(ItemsBA.MANA_RING_GAIA)
+				.add(ItemsBA.GAIASTEEL_INGOT.getTag())
+				.add(BotaniaItems.manaRingGreater)
+				.register();
 	}
 	
 	public void pureDaisy(RegisterRecipesEvent e)
@@ -194,6 +204,13 @@ public class RecipesBA
 				Ingredient.of(BotaniaItems.manaDiamond),
 				Ingredient.of(Tags.Items.DUSTS_REDSTONE),
 				Ingredient.of(Tags.Items.DUSTS_REDSTONE)
+		));
+		
+		e.add(new RunicAltarRecipe(e.nextId(BlocksBA.MANA_TESSERACT.asItem()), new ItemStack(BlocksBA.MANA_TESSERACT), 50_000,
+				Ingredient.of(ItemsBA.RUNE_TP),
+				Ingredient.of(BlocksBA.DREAMROCK),
+				Ingredient.of(BotaniaTags.Items.INGOTS_TERRASTEEL),
+				Ingredient.of(BotaniaItems.redString)
 		));
 	}
 	
