@@ -17,10 +17,10 @@ public interface BlocksBA
 	BlockStorage GAIASTEEL_BLOCK = new BlockStorage("gaiasteel");
 	
 	@RegistryName("mana_lapis_block")
-	BlockStorage MANA_LAPIS_BLOCK = new BlockStorage("mana_lapis");
+	BlockStorage MANA_LAPIS_BLOCK = new BlockStorage(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE), "mana_lapis");
 	
 	@RegistryName("elven_lapis_block")
-	BlockStorage ELVEN_LAPIS_BLOCK = new BlockStorage("elven_lapis");
+	BlockStorage ELVEN_LAPIS_BLOCK = new BlockStorage(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE), "elven_lapis");
 	
 	@RegistryName("terra_catalyst")
 	BlockTerraCatalyst TERRA_CATALYST = new BlockTerraCatalyst();
