@@ -1,11 +1,13 @@
 package org.zeith.botanicadds.tiles;
 
 import com.google.common.base.Predicates;
+import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.*;
 import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.Entity;
@@ -54,8 +56,16 @@ public class TileManaTesseract
 	@NBTSerializable("max_mana")
 	public int _maxMana = 100;
 	
-	@NBTSerializable
-	public String channel;
+	@NBTSerializable("channel")
+	public String channelReadable;
+	
+	@NBTSerializable("owner_name")
+	public String channelOwnerName;
+	
+	@NBTSerializable("private")
+	public boolean isPrivate;
+	
+	public GameProfile owner;
 	
 	public final PropertyInt maxManaData = new PropertyInt(DirectStorage.create(v -> _maxMana = v, () -> _maxMana));
 	public final PropertyInt manaData = new PropertyInt(DirectStorage.create(v -> _mana = v, () -> _mana));
@@ -67,14 +77,40 @@ public class TileManaTesseract
 		dispatcher.registerProperty("max_mana", maxManaData);
 	}
 	
+	@Override
+	public CompoundTag writeNBT(CompoundTag nbt)
+	{
+		nbt = super.writeNBT(nbt);
+		if(owner != null) nbt.put("OwnerGP", NbtUtils.writeGameProfile(new CompoundTag(), owner));
+		return nbt;
+	}
+	
+	@Override
+	public void readNBT(CompoundTag nbt)
+	{
+		if(nbt.contains("OwnerGP", Tag.TAG_COMPOUND)) owner = NbtUtils.readGameProfile(nbt.getCompound("OwnerGP"));
+		super.readNBT(nbt);
+	}
+	
 	public WorldTesseractData.TesseractMode getMode()
 	{
 		return getBlockState().getValue(BlockManaTesseract.MODE);
 	}
 	
+	public String getChannel()
+	{
+		if(isPrivate)
+		{
+			if(owner == null) return null;
+			return "pri/" + owner.getId().toString() + "/" + channelReadable;
+		}
+		
+		return "pub/" + channelReadable;
+	}
+	
 	public boolean hasChannel()
 	{
-		return !StringUtil.isNullOrEmpty(channel);
+		return !StringUtil.isNullOrEmpty(getChannel());
 	}
 	
 	@Override
@@ -85,6 +121,18 @@ public class TileManaTesseract
 		if(td == null) return;
 		
 		var mode = getMode();
+		var channel = getChannel();
+		
+		var srv = level.getServer();
+		if(srv != null && owner != null)
+		{
+			var sp = srv.getPlayerList().getPlayer(owner.getId());
+			if(sp != null)
+			{
+				owner = sp.getGameProfile();
+				channelOwnerName = owner.getName();
+			}
+		}
 		
 		// Update mana from pool
 		if(hasChannel())
@@ -118,8 +166,9 @@ public class TileManaTesseract
 	
 	public ItemStack storeData(ItemStack base)
 	{
-		if(hasChannel())
-			base.getOrCreateTag().putString("Channel", channel);
+		if(channelReadable != null && !channelReadable.isBlank())
+			base.getOrCreateTag().putString("Channel", channelReadable);
+		base.getOrCreateTag().putBoolean("Private", isPrivate);
 		return base;
 	}
 	
@@ -170,6 +219,8 @@ public class TileManaTesseract
 	public void receiveMana(int mana)
 	{
 		if(!hasChannel() || !isOnServer()) return;
+		
+		var channel = getChannel();
 		
 		if(mana < 0)
 			WorldTesseractData.forServer(level)
@@ -287,7 +338,7 @@ public class TileManaTesseract
 			mc.getItemRenderer().renderAndDecorateItem(new ItemStack(BotaniaBlocks.manaPool), x - 20, y);
 			mc.getItemRenderer().renderAndDecorateItem(tess, x + 26, y);
 			
-			name = this.tess.channel;
+			name = this.tess.channelReadable;
 			
 			y += 20;
 			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(name) / 2;

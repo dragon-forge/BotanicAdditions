@@ -8,6 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import org.zeith.botanicadds.BotanicAdditions;
+import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
 import org.zeith.botanicadds.crafting.RecipeGaiaPlate;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
@@ -112,6 +113,8 @@ public class RecipesBA
 				.map('d', BotaniaItems.dragonstone)
 				.map('a', BotaniaBlocks.brewery)
 				.register();
+		
+		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
 	}
 	
 	public void pureDaisy(RegisterRecipesEvent e)
@@ -231,6 +234,13 @@ public class RecipesBA
 				Ingredient.of(BlocksBA.DREAMROCK),
 				Ingredient.of(BotaniaTags.Items.INGOTS_TERRASTEEL),
 				Ingredient.of(BotaniaItems.redString)
+		));
+		
+		e.add(new RunicAltarRecipe(e.nextId(ItemsBA.TESSERACT_ATTUNER), new ItemStack(ItemsBA.TESSERACT_ATTUNER), 10_000,
+				Ingredient.of(BotaniaItems.dreamwoodTwig),
+				Ingredient.of(BotaniaItems.runeMana),
+				Ingredient.of(BotaniaItems.redString),
+				Ingredient.of(Items.NAME_TAG)
 		));
 	}
 	

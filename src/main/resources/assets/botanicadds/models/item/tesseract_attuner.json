@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "botanicadds:item/tesseract_attuner_public"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "private": 1
+      },
+      "model": "botanicadds:item/tesseract_attuner_private"
+    }
+  ]
+}

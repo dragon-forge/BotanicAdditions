@@ -22,6 +22,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.BotanicAdditions;
+import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
 import org.zeith.botanicadds.world.WorldTesseractData;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
@@ -65,8 +66,15 @@ public class BlockManaTesseract
 		getChannel(stack).ifPresent(ch ->
 				Cast.optionally(level.getBlockEntity(pos), TileManaTesseract.class)
 						.ifPresent(tess ->
-								tess.channel = ch
-						)
+						{
+							tess.isPrivate = ItemsBA.TESSERACT_ATTUNER.isPrivate(stack);
+							tess.channelReadable = ch;
+							if(ent instanceof Player pl)
+							{
+								tess.owner = pl.getGameProfile();
+								tess.channelOwnerName = tess.owner.getName();
+							}
+						})
 		);
 	}
 	
@@ -144,6 +152,21 @@ public class BlockManaTesseract
 									.withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
 					);
 				});
+				
+				int modeColor = 0x22AA22;
+				String mode = "public";
+				
+				if(ItemsBA.TESSERACT_ATTUNER.isPrivate(stack))
+				{
+					modeColor = 0xAA2222;
+					mode = "private";
+				}
+				
+				tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode",
+								Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode." + mode)
+										.withStyle(Style.EMPTY.withColor(modeColor))
+						).withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
+				);
 			}
 		};
 	}

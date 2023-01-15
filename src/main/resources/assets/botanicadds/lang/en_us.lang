@@ -43,11 +43,18 @@ item.botanicadds.terra_protector=Terra Protector
 item.botanicadds.aura_ring_gaia=Gaia Band of Aura
 item.botanicadds.mana_ring_gaia=Gaia Band of Mana
 item.botanicadds.mana_stealer_sword=Mana Stealing Blade
+item.botanicadds.tesseract_attuner=Tesseract Attunement Tool
 
 # Tooltips
 info.botanicadds.mana_tesseract.no_channel=Channel is not set.
 info.botanicadds.mana_tesseract.channel=Channel: %s.
 info.botanicadds.spark_attachable=Spark can be attached.
+info.botanicadds.tesseract_attuner1=Rename to create a channel.
+info.botanicadds.tesseract_attuner2=Sneak-click to toggle between public and private.
+info.botanicadds.tesseract_attuner3=Craft with a tesseract to set it's channel.
+info.botanicadds.tesseract_attuner.mode=Mode: %s.
+info.botanicadds.tesseract_attuner.mode.public=Public
+info.botanicadds.tesseract_attuner.mode.private=Private
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Rune of Teleportation&0.

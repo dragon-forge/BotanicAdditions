@@ -43,11 +43,18 @@ item.botanicadds.terra_protector=Терра Защитник
 item.botanicadds.aura_ring_gaia=Кольцо Ауры Гайи
 item.botanicadds.mana_ring_gaia=Кольцо Маны Гайи
 item.botanicadds.mana_stealer_sword=Мана-лезвие
+item.botanicadds.tesseract_attuner=Средство связи тессерактов
 
 # Tooltips
 info.botanicadds.mana_tesseract.no_channel=Канал не установлен.
 info.botanicadds.mana_tesseract.channel=Канал: %s.
 info.botanicadds.spark_attachable=Искра может быть прикреплена.
+info.botanicadds.tesseract_attuner1=Rename to create a channel.
+info.botanicadds.tesseract_attuner2=Sneak-click to toggle between public and private.
+info.botanicadds.tesseract_attuner3=Craft with a tesseract to set it's channel.
+info.botanicadds.tesseract_attuner.mode=Mode: %s.
+info.botanicadds.tesseract_attuner.mode.public=Public
+info.botanicadds.tesseract_attuner.mode.private=Private
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Руна Телепортации&0.

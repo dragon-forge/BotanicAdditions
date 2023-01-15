@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "botanicadds:item/tesseract_attuner_private"
+  }
+}

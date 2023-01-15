@@ -46,7 +46,7 @@ public class BlockElvenAltar
 			public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flags)
 			{
 				tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".spark_attachable")
-						.withStyle(Style.EMPTY.withColor(0x666666).withItalic(true)));
+						.withStyle(Style.EMPTY.withColor(0x444444).withItalic(true)));
 			}
 		};
 	}

@@ -43,6 +43,9 @@ public interface ItemsBA
 	@RegistryName("mana_stealer_sword")
 	ItemManaStealerSword MANA_STEALER_SWORD = new ItemManaStealerSword(baseProperties().durability(3000).rarity(GAIASTEEL_RARITY));
 	
+	@RegistryName("tesseract_attuner")
+	ItemTesseractAttuner TESSERACT_ATTUNER = new ItemTesseractAttuner(baseProperties());
+	
 	static Item newItem()
 	{
 		return new Item(baseProperties());
