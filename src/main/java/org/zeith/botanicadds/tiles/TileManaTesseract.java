@@ -40,7 +40,6 @@ import vazkii.botania.api.mana.spark.SparkAttachable;
 import vazkii.botania.client.core.helper.RenderHelper;
 import vazkii.botania.client.gui.HUDHandler;
 import vazkii.botania.common.block.BotaniaBlocks;
-import vazkii.botania.common.item.ManaTabletItem;
 
 import java.util.List;
 import java.util.Optional;
@@ -85,6 +84,8 @@ public class TileManaTesseract
 		var td = WorldTesseractData.forServer(level).orElse(null);
 		if(td == null) return;
 		
+		var mode = getMode();
+		
 		// Update mana from pool
 		if(hasChannel())
 		{
@@ -94,9 +95,10 @@ public class TileManaTesseract
 		{
 			manaData.setInt(0);
 			maxManaData.setInt(1_000_000);
+			level.destroyBlock(worldPosition, true);
 		}
 		
-		if(atTickRate(3) && getMode().shouldEmitMana())
+		if(atTickRate(3) && mode.shouldEmitMana())
 		{
 			for(Direction dir : Direction.values())
 			{
@@ -216,8 +218,7 @@ public class TileManaTesseract
 	@Override
 	public boolean areIncomingTranfersDone()
 	{
-		return !getMode().shouldAcceptMana()
-				|| isFull();
+		return isFull();
 	}
 	
 	@Override
@@ -263,17 +264,17 @@ public class TileManaTesseract
 		@Override
 		public void renderHUD(PoseStack ms, Minecraft mc)
 		{
-			var poolStack = new ItemStack(tess.getBlockState().getBlock());
-			String name = poolStack.getHoverName().getString();
+			var tess = new ItemStack(this.tess.getBlockState().getBlock());
+			String name = tess.getHoverName().getString();
 			
 			var saturation = (float) (Math.sin(Math.toRadians(System.currentTimeMillis() % 3600L / 10D)) + 1F) / 2F * 0.25F;
-			BotaniaAPIClient.instance().drawSimpleManaHUD(ms, Mth.hsvToRgb(193 / 360F, 0.5F + saturation, 1F), tess.getCurrentMana(),
-					tess.getMaxMana(), name);
+			BotaniaAPIClient.instance().drawSimpleManaHUD(ms, Mth.hsvToRgb(193 / 360F, 0.5F + saturation, 1F), this.tess.getCurrentMana(),
+					this.tess.getMaxMana(), name);
 			
 			int x = Minecraft.getInstance().getWindow().getGuiScaledWidth() / 2 - 11;
 			int y = Minecraft.getInstance().getWindow().getGuiScaledHeight() / 2 + 30;
 			
-			int u = tess.getMode().shouldEmitMana() ? 22 : 0;
+			int u = this.tess.getMode().shouldEmitMana() ? 22 : 0;
 			int v = 38;
 			
 			RenderSystem.enableBlend();
@@ -283,11 +284,15 @@ public class TileManaTesseract
 			RenderHelper.drawTexturedModalRect(ms, x, y, u, v, 22, 15);
 			RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
 			
-			ItemStack tablet = new ItemStack(BotaniaBlocks.manaPool);
-			ManaTabletItem.setStackCreative(tablet);
+			mc.getItemRenderer().renderAndDecorateItem(new ItemStack(BotaniaBlocks.manaPool), x - 20, y);
+			mc.getItemRenderer().renderAndDecorateItem(tess, x + 26, y);
 			
-			mc.getItemRenderer().renderAndDecorateItem(tablet, x - 20, y);
-			mc.getItemRenderer().renderAndDecorateItem(poolStack, x + 26, y);
+			name = this.tess.channel;
+			
+			y += 20;
+			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(name) / 2;
+			
+			mc.font.drawShadow(ms, name, x, y, 0x00A56B);
 		}
 	}
 }

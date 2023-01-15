@@ -9,13 +9,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.common.item.equipment.bauble.BandOfManaItem;
 import vazkii.botania.common.item.equipment.bauble.GreaterBandOfManaItem;
 import vazkii.botania.forge.CapabilityUtil;
 
-import static org.zeith.botanicadds.BotanicAdditions.TAB;
+import static org.zeith.botanicadds.init.ItemsBA.GAIASTEEL_RARITY;
 
 public class ItemGaiaManaBand
 		extends GreaterBandOfManaItem
@@ -24,7 +25,7 @@ public class ItemGaiaManaBand
 	
 	public ItemGaiaManaBand()
 	{
-		super(new Properties().tab(TAB).stacksTo(1));
+		super(ItemsBA.baseProperties().stacksTo(1).rarity(GAIASTEEL_RARITY));
 		TagAdapter.bind(ItemTags.create(new ResourceLocation("curios", "ring")), this);
 	}
 	

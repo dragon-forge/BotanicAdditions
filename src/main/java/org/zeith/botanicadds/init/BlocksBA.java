@@ -14,7 +14,8 @@ import org.zeith.hammerlib.annotations.SimplyRegister;
 public interface BlocksBA
 {
 	@RegistryName("gaiasteel_block")
-	BlockStorage GAIASTEEL_BLOCK = new BlockStorage("gaiasteel");
+	BlockStorage GAIASTEEL_BLOCK = new BlockStorage("gaiasteel")
+			.withItemProps(props -> props.rarity(ItemsBA.GAIASTEEL_RARITY));
 	
 	@RegistryName("mana_lapis_block")
 	BlockStorage MANA_LAPIS_BLOCK = new BlockStorage(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE), "mana_lapis");
@@ -33,6 +34,12 @@ public interface BlocksBA
 	
 	@RegistryName("dreamrock")
 	SimpleBlockBA DREAMROCK = new SimpleBlockBA(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
+	
+	@RegistryName("elven_altar")
+	BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar(BlockBehaviour.Properties.copy(DREAMROCK).requiresCorrectToolForDrops());
+	
+	@RegistryName("elven_brewery")
+	BlockElvenBrewery ELVEN_BREWERY = new BlockElvenBrewery(BlockBehaviour.Properties.copy(DREAMROCK).requiresCorrectToolForDrops());
 	
 	@RegistryName("elvenwood_log")
 	RotatedPillarBlock ELVENWOOD_LOG = log(MaterialColor.COLOR_ORANGE, MaterialColor.STONE);

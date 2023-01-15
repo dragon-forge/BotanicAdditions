@@ -5,8 +5,10 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
@@ -98,6 +101,16 @@ public class BlockManaTesseract
 				.orElse(item);
 		
 		return List.of(savedItem);
+	}
+	
+	@Override
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player)
+	{
+		final var item = new ItemStack(this);
+		
+		return Cast.optionally(level.getBlockEntity(pos), TileManaTesseract.class)
+				.map(t -> t.storeData(item))
+				.orElse(item);
 	}
 	
 	@Nullable

@@ -92,6 +92,26 @@ public class RecipesBA
 				.add(ItemsBA.GAIASTEEL_INGOT.getTag())
 				.add(BotaniaItems.manaRingGreater)
 				.register();
+		
+		e.shaped().result(ItemsBA.MANA_STEALER_SWORD)
+				.shape("g", "g", "s")
+				.map('g', ItemsBA.GAIASTEEL_INGOT.getTag())
+				.map('s', BotaniaItems.terraSword)
+				.register();
+		
+		e.shaped().result(BlocksBA.ELVEN_ALTAR)
+				.shape("rrr", "rdr", "rar")
+				.map('r', BlocksBA.DREAMROCK)
+				.map('d', BotaniaItems.dragonstone)
+				.map('a', BotaniaBlocks.runeAltar)
+				.register();
+		
+		e.shaped().result(BlocksBA.ELVEN_BREWERY)
+				.shape("rrr", "rdr", "rar")
+				.map('r', BlocksBA.DREAMROCK)
+				.map('d', BotaniaItems.dragonstone)
+				.map('a', BotaniaBlocks.brewery)
+				.register();
 	}
 	
 	public void pureDaisy(RegisterRecipesEvent e)

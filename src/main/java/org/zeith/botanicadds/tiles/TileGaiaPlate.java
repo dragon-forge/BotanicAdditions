@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.crafting.RecipeGaiaPlate;
 import org.zeith.botanicadds.init.*;
+import org.zeith.botanicadds.util.SparkUtil;
 import org.zeith.hammerlib.api.io.NBTSerializable;
 import org.zeith.hammerlib.net.properties.PropertyInt;
 import org.zeith.hammerlib.tiles.TileSyncableTickable;
@@ -27,9 +28,9 @@ import org.zeith.hammerlib.util.java.Cast;
 import org.zeith.hammerlib.util.java.DirectStorage;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
-import vazkii.botania.api.mana.ManaPool;
 import vazkii.botania.api.mana.ManaReceiver;
-import vazkii.botania.api.mana.spark.*;
+import vazkii.botania.api.mana.spark.ManaSpark;
+import vazkii.botania.api.mana.spark.SparkAttachable;
 import vazkii.botania.common.handler.BotaniaSounds;
 import vazkii.botania.network.EffectType;
 import vazkii.botania.network.clientbound.BotaniaEffectPacket;
@@ -91,19 +92,7 @@ public class TileGaiaPlate
 				{
 					removeMana = false;
 					ManaSpark spark = getAttachedSpark();
-					
-					if(spark != null)
-					{
-						List<ManaSpark> otherSparks = SparkHelper.getSparksAround(level, (double) worldPosition.getX() + 0.5, (double) worldPosition.getY() + 0.5, (double) worldPosition.getZ() + 0.5, spark.getNetwork());
-						
-						for(ManaSpark otherSpark : otherSparks)
-						{
-							if(spark != otherSpark && otherSpark.getAttachedManaReceiver() instanceof ManaPool)
-							{
-								otherSpark.registerTransfer(spark);
-							}
-						}
-					}
+					SparkUtil.startRequestingMana(this, spark);
 					
 					if(mana > 0)
 					{

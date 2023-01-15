@@ -7,14 +7,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
+import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.util.MaterialType;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
 import org.zeith.hammerlib.core.adapter.BlockHarvestAdapter;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 
 import java.util.List;
-
-import static org.zeith.botanicadds.BotanicAdditions.TAB;
+import java.util.function.UnaryOperator;
 
 public class BlockStorage
 		extends Block
@@ -24,6 +24,8 @@ public class BlockStorage
 	
 	public final TagKey<Block> blockTag;
 	public final TagKey<Item> itemTag;
+	
+	public UnaryOperator<Item.Properties> itemProps = UnaryOperator.identity();
 	
 	public BlockStorage(String metal)
 	{
@@ -40,6 +42,12 @@ public class BlockStorage
 		TagAdapter.bind(blockTag = BlockTags.create(MaterialType.STORAGE_BLOCK.createId(metal)), this);
 	}
 	
+	public BlockStorage withItemProps(UnaryOperator<Item.Properties> itemProps)
+	{
+		this.itemProps = itemProps;
+		return this;
+	}
+	
 	@Override
 	public List<ItemStack> getDrops(BlockState p_60537_, LootContext.Builder p_60538_)
 	{
@@ -49,7 +57,7 @@ public class BlockStorage
 	@Override
 	public BlockItem createBlockItem()
 	{
-		var bi = new BlockItem(this, new Item.Properties().tab(TAB));
+		var bi = new BlockItem(this, itemProps.apply(ItemsBA.baseProperties()));
 		TagAdapter.bind(itemTag, bi);
 		return bi;
 	}

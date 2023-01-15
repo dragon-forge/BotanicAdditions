@@ -12,6 +12,7 @@ block.botanicadds.elven_lapis_block=Эльфийский Блок Лазурит
 block.botanicadds.elvenwood_log=Эльфийская Древесина
 block.botanicadds.elvenwood=Эльфийская Древесина
 block.botanicadds.elven_altar=Эльфийский Алтарь
+block.botanicadds.elven_brewery=Эльфийская варочная стойка
 block.botanicadds.pool_dreaming=Бассейн Маны Мечтаний
 block.botanicadds.pool_dreaming.tooltip0=Два Бассейна маны в одном блоке
 block.botanicadds.gaia_plate=Агломерационная Плита Гайи
@@ -41,7 +42,12 @@ item.botanicadds.gaiasteel_nugget=Самородок Гайястали
 item.botanicadds.terra_protector=Терра Защитник
 item.botanicadds.aura_ring_gaia=Кольцо Ауры Гайи
 item.botanicadds.mana_ring_gaia=Кольцо Маны Гайи
-item.botanicadds.mana_stealer_sword=Маналезвие
+item.botanicadds.mana_stealer_sword=Мана-лезвие
+
+# Tooltips
+info.botanicadds.mana_tesseract.no_channel=Канал не установлен.
+info.botanicadds.mana_tesseract.channel=Канал: %s.
+info.botanicadds.spark_attachable=Искра может быть прикреплена.
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Руна Телепортации&0.
