@@ -114,6 +114,13 @@ public class RecipesBA
 				.map('a', BotaniaBlocks.brewery)
 				.register();
 		
+		e.shaped().result(BlocksBA.DREAMING_POOL)
+				.shape("ttt", "dpd", "ddd")
+				.map('d', BlocksBA.DREAMROCK)
+				.map('p', BotaniaBlocks.manaPool)
+				.map('t', BotaniaTags.Items.NUGGETS_TERRASTEEL)
+				.register();
+		
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
 	}
 	

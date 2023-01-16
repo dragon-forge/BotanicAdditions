@@ -13,8 +13,7 @@ block.botanicadds.elvenwood_log=Elvenwood Log
 block.botanicadds.elvenwood=Elvenwood
 block.botanicadds.elven_altar=Elven Altar
 block.botanicadds.elven_brewery=Elven Brewery
-block.botanicadds.pool_dreaming=Dreaming Mana Pool
-block.botanicadds.pool_dreaming.tooltip0=2 Mana Pools in one block
+block.botanicadds.dreaming_pool=Dreaming Mana Pool
 block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
 
@@ -46,6 +45,7 @@ item.botanicadds.mana_stealer_sword=Mana Stealing Blade
 item.botanicadds.tesseract_attuner=Tesseract Attunement Tool
 
 # Tooltips
+info.botanicadds.dreaming_pool=2 Mana Pools in one block
 info.botanicadds.mana_tesseract.no_channel=Channel is not set.
 info.botanicadds.mana_tesseract.channel=Channel: %s.
 info.botanicadds.spark_attachable=Spark can be attached.

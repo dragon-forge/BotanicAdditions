@@ -136,38 +136,37 @@ public class BlockManaTesseract
 	}
 	
 	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag)
+	{
+		getChannel(stack).ifPresent(channel ->
+		{
+			tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".mana_tesseract.channel",
+									Component.literal(channel)
+											.withStyle(Style.EMPTY.withColor(0x00A56B))
+							)
+							.withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
+			);
+		});
+		
+		int modeColor = 0x22AA22;
+		String mode = "public";
+		
+		if(ItemsBA.TESSERACT_ATTUNER.isPrivate(stack))
+		{
+			modeColor = 0xAA2222;
+			mode = "private";
+		}
+		
+		tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode",
+						Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode." + mode)
+								.withStyle(Style.EMPTY.withColor(modeColor))
+				).withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
+		);
+	}
+	
+	@Override
 	public BlockItem createBlockItem()
 	{
-		return new BlockItem(this, new Item.Properties().tab(TAB))
-		{
-			@Override
-			public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag)
-			{
-				getChannel(stack).ifPresent(channel ->
-				{
-					tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".mana_tesseract.channel",
-											Component.literal(channel)
-													.withStyle(Style.EMPTY.withColor(0x00A56B))
-									)
-									.withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
-					);
-				});
-				
-				int modeColor = 0x22AA22;
-				String mode = "public";
-				
-				if(ItemsBA.TESSERACT_ATTUNER.isPrivate(stack))
-				{
-					modeColor = 0xAA2222;
-					mode = "private";
-				}
-				
-				tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode",
-								Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode." + mode)
-										.withStyle(Style.EMPTY.withColor(modeColor))
-						).withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
-				);
-			}
-		};
+		return new BlockItem(this, new Item.Properties().tab(TAB));
 	}
 }

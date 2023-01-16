@@ -8,6 +8,7 @@
   "mixins": [
     "BlockEntityAccessor",
     "BreweryBlockEntityMixin",
+    "ManaPoolBlockEntityMixin",
     "RunicAltarBlockEntityAccessor"
   ],
   "client": [

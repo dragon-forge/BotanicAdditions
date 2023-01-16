@@ -16,6 +16,7 @@ public class LightningFlower
 		extends GeneratingFlowerBlockEntity
 {
 	public int cooldown;
+	protected boolean hasOvergrownSoil;
 	
 	public LightningFlower(BlockPos pos, BlockState state)
 	{
@@ -26,6 +27,8 @@ public class LightningFlower
 	public void tickFlower()
 	{
 		super.tickFlower();
+		
+		hasOvergrownSoil = overgrowth;
 		
 		if(cooldown > 0)
 		{
@@ -47,7 +50,7 @@ public class LightningFlower
 						addMana(overgrowth ? getMaxMana() : getMaxMana() / 2);
 						sync();
 						
-						cooldown = 1000;
+						cooldown = hasOvergrownSoil ? 240 : 1000;
 						
 						Vec3 p = getBlockState().getShape(level, worldPosition).bounds().getCenter();
 						e.teleportTo(p.x, p.y, p.z);
@@ -62,13 +65,13 @@ public class LightningFlower
 	
 	public int getRange()
 	{
-		return overgrowth ? 10 : 3;
+		return hasOvergrownSoil ? 10 : 3;
 	}
 	
 	@Override
 	public int getMaxMana()
 	{
-		return 20000;
+		return hasOvergrownSoil ? 40000 : 20000;
 	}
 	
 	@Override

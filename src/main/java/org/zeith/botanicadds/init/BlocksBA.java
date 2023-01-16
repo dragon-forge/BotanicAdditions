@@ -35,6 +35,9 @@ public interface BlocksBA
 	@RegistryName("dreamrock")
 	SimpleBlockBA DREAMROCK = new SimpleBlockBA(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
 	
+	@RegistryName("dreaming_pool")
+	BlockDreamingPool DREAMING_POOL = new BlockDreamingPool(BlockBehaviour.Properties.copy(DREAMROCK));
+	
 	@RegistryName("elven_altar")
 	BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar(BlockBehaviour.Properties.copy(DREAMROCK).requiresCorrectToolForDrops());
 	

@@ -8,6 +8,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.Mth;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.Entity;
@@ -23,6 +25,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL11;
+import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.blocks.BlockManaTesseract;
 import org.zeith.botanicadds.init.TilesBA;
 import org.zeith.botanicadds.world.WorldTesseractData;
@@ -41,7 +44,7 @@ import vazkii.botania.api.mana.spark.ManaSpark;
 import vazkii.botania.api.mana.spark.SparkAttachable;
 import vazkii.botania.client.core.helper.RenderHelper;
 import vazkii.botania.client.gui.HUDHandler;
-import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.item.BotaniaItems;
 
 import java.util.List;
 import java.util.Optional;
@@ -335,15 +338,34 @@ public class TileManaTesseract
 			RenderHelper.drawTexturedModalRect(ms, x, y, u, v, 22, 15);
 			RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
 			
-			mc.getItemRenderer().renderAndDecorateItem(new ItemStack(BotaniaBlocks.manaPool), x - 20, y);
+			mc.getItemRenderer().renderAndDecorateItem(new ItemStack(BotaniaItems.spark), x - 20, y);
 			mc.getItemRenderer().renderAndDecorateItem(tess, x + 26, y);
 			
-			name = this.tess.channelReadable;
+			int modeColor = 0x22AA22;
+			String mode = "public";
+			
+			if(this.tess.isPrivate)
+			{
+				modeColor = 0xAA2222;
+				mode = "private";
+			}
+			
+			var modeCom = Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode." + mode);
+			if(this.tess.isPrivate && !StringUtil.isNullOrEmpty(this.tess.channelOwnerName))
+				modeCom = modeCom.append(" (").append(this.tess.channelOwnerName).append(")");
+			var comp = Component.translatable("info." + BotanicAdditions.MOD_ID + ".tesseract_attuner.mode",
+					modeCom.withStyle(Style.EMPTY.withColor(modeColor))
+			);
 			
 			y += 20;
-			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(name) / 2;
+			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(comp) / 2;
+			mc.font.drawShadow(ms, comp, x, y, 0x00A56B);
 			
-			mc.font.drawShadow(ms, name, x, y, 0x00A56B);
+			var comp2 = Component.literal(this.tess.channelReadable);
+			
+			y += mc.font.lineHeight + 2;
+			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(comp2) / 2;
+			mc.font.drawShadow(ms, comp2, x, y, 0x00A56B);
 		}
 	}
 }

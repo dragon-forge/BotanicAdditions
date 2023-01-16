@@ -1,8 +1,7 @@
 package org.zeith.botanicadds.init;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import org.zeith.botanicadds.client.render.tile.TESRElvenBrewery;
-import org.zeith.botanicadds.client.render.tile.TESRGaiaPlate;
+import org.zeith.botanicadds.client.render.tile.*;
 import org.zeith.botanicadds.tiles.*;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
@@ -19,6 +18,10 @@ public interface TilesBA
 	
 	@RegistryName("mana_tesseract")
 	BlockEntityType<TileManaTesseract> MANA_TESSERACT = BlockAPI.createBlockEntityType(TileManaTesseract::new, BlocksBA.MANA_TESSERACT);
+	
+	@RegistryName("dreaming_pool")
+	@TileRenderer(TESRCustomManaPool.class)
+	BlockEntityType<TileDreamingPool> DREAMING_POOL = BlockAPI.createBlockEntityType(TileDreamingPool::new, BlocksBA.DREAMING_POOL);
 	
 	@RegistryName("elven_altar")
 	@TileRenderer(RunicAltarBlockEntityRenderer.class)
