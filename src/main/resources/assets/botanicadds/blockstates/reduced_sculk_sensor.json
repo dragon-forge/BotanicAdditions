@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "botanicadds:block/reduced_sculk_sensor"
+    }
+  }
+}

@@ -126,7 +126,7 @@ public class RecipesBA
 		e.shaped().result(Blocks.SCULK_SENSOR).id(BotanicAdditions.id("sculk_sensor"))
 				.shape("p p", "prp")
 				.map('p', ItemsBA.SCULK_PETAL)
-				.map('r', BlocksBA.SCULK_SENSOR_DISABLED)
+				.map('r', BlocksBA.REDUCED_SCULK_SENSOR)
 				.register();
 		
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
@@ -199,8 +199,8 @@ public class RecipesBA
 				lightBluePetals
 		));
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.WITHER_FLOWER.asItem()),
-				new ItemStack(FlowersBA.WITHER_FLOWER), seeds,
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.NECROIDUS.asItem()),
+				new ItemStack(FlowersBA.NECROIDUS), seeds,
 				
 				petalsBlack, petalsBlack, petalsBlack, petalsBlack, petalsGray, petalsGray, petalsGray, petalsGray,
 				Ingredient.of(Items.WITHER_SKELETON_SKULL),
@@ -209,18 +209,18 @@ public class RecipesBA
 				Ingredient.of(BotaniaItems.runeWrath)
 		));
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.RAIN_FLOWER.asItem()),
-				new ItemStack(FlowersBA.RAIN_FLOWER), seeds,
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.RAINUTE.asItem()),
+				new ItemStack(FlowersBA.RAINUTE), seeds,
 				petalsBlue, petalsBlue, petalsBlue, petalsBlue, petalsLightBlue, petalsLightBlue, petalsYellow
 		));
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.SNOW_FLOWER.asItem()),
-				new ItemStack(FlowersBA.SNOW_FLOWER), seeds,
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.GLACIFLORA.asItem()),
+				new ItemStack(FlowersBA.GLACIFLORA), seeds,
 				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsWhite, petalsWhite, petalsWhite
 		));
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.LIGHTNING_FLOWER.asItem()),
-				new ItemStack(FlowersBA.LIGHTNING_FLOWER), seeds,
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.TEMPESTEA.asItem()),
+				new ItemStack(FlowersBA.TEMPESTEA), seeds,
 				
 				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsBlue,
 				Ingredient.of(ItemsBA.RUNE_ENERGY)

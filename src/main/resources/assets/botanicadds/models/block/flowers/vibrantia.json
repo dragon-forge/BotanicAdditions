@@ -2,6 +2,6 @@
   "parent": "botania:block/shapes/cross",
   "render_type": "cutout",
   "textures": {
-    "cross": "botanicadds:block/flower_gen_lightning_flower"
+    "cross": "botanicadds:block/flowers/generating/vibrantia"
   }
 }

@@ -2,18 +2,20 @@ package org.zeith.botanicadds.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -34,8 +36,64 @@ public class BlockSculkSensorDisabled
 	
 	public BlockSculkSensorDisabled(Properties props)
 	{
-		super(props);
+		super(props.randomTicks());
 		TagAdapter.bind(BlockTags.MINEABLE_WITH_HOE, this);
+	}
+	
+	public static int generateRegrowDelay(RandomSource rng)
+	{
+		return 6000 + rng.nextInt(6000);
+	}
+	
+	public boolean reduce(Level level, BlockPos pos)
+	{
+		var state = level.getBlockState(pos);
+		if(state.is(Blocks.SCULK_SENSOR))
+		{
+			var hasWater = state.getValue(SculkSensorBlock.WATERLOGGED);
+			var replaceState = defaultBlockState().setValue(WATERLOGGED, hasWater);
+			level.setBlockAndUpdate(pos, replaceState);
+			level.scheduleTick(pos, this, generateRegrowDelay(level.random));
+			level.gameEvent(GameEvent.SHEAR, pos, new GameEvent.Context(null, state));
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean regrow(Level level, BlockPos pos)
+	{
+		var state = level.getBlockState(pos);
+		if(state.is(this))
+		{
+			var hasWater = state.getValue(WATERLOGGED);
+			var replaceState = Blocks.SCULK_SENSOR.defaultBlockState().setValue(SculkSensorBlock.WATERLOGGED, hasWater);
+			level.setBlockAndUpdate(pos, replaceState);
+			level.playSound(null, pos, SoundEvents.SCULK_SENSOR_PLACE, SoundSource.BLOCKS, 1F, 1.6F);
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rng)
+	{
+		if(rng.nextInt(5) == 0)
+			onTick(state, level, pos, rng, true);
+	}
+	
+	@Override
+	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rng)
+	{
+		onTick(state, level, pos, rng, false);
+	}
+	
+	public void onTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rng, boolean wasRandom)
+	{
+		if(rng.nextInt(15) == 0)
+		{
+			regrow(level, pos);
+		} else if(!wasRandom)
+			level.scheduleTick(pos, state.getBlock(), generateRegrowDelay(rng));
 	}
 	
 	@Override

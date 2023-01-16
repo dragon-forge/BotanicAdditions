@@ -11,14 +11,14 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.blocks.BlockSculkSensorDisabled;
 import org.zeith.botanicadds.init.BlocksBA;
 import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.hammerlib.api.fml.IRegisterListener;
@@ -66,15 +66,8 @@ public class ItemSculkPetal
 		var it = e.getItemStack();
 		
 		if(it.getItem() instanceof ManasteelShearsItem)
-		{
-			var state = level.getBlockState(pos);
-			if(state.is(Blocks.SCULK_SENSOR))
+			if(BlocksBA.REDUCED_SCULK_SENSOR.reduce(level, pos))
 			{
-				var water = state.getValue(SculkSensorBlock.WATERLOGGED);
-				var nstate = BlocksBA.SCULK_SENSOR_DISABLED.defaultBlockState().setValue(BlockSculkSensorDisabled.WATERLOGGED, water);
-				
-				level.setBlockAndUpdate(pos, nstate);
-				
 				// Play a mix of 2 sounds to get something interesting, maybe?
 				level.playSound(e.getEntity(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1F, 1F);
 				level.playSound(e.getEntity(), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.SCULK_SENSOR_HIT, SoundSource.PLAYERS, 1F, 0.4F);
@@ -87,6 +80,5 @@ public class ItemSculkPetal
 				e.setUseBlock(Event.Result.DENY);
 				e.setCanceled(true);
 			}
-		}
 	}
 }

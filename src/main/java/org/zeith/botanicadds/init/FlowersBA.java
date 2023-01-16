@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.zeith.botanicadds.blocks.ForgeSpecialFlowerBlockBA;
-import org.zeith.botanicadds.blocks.flowers.*;
-import org.zeith.botanicadds.blocks.flowers.base.VibrantiaBlock;
+import org.zeith.botanicadds.tiles.flowers.*;
+import org.zeith.botanicadds.blocks.flowers.VibrantiaBlock;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 import org.zeith.hammerlib.annotations.client.TileRenderer;
@@ -19,7 +19,7 @@ import vazkii.botania.common.block.BotaniaBlocks;
 
 import java.util.function.Supplier;
 
-@SimplyRegister
+@SimplyRegister(prefix = "flowers/")
 public interface FlowersBA
 {
 	BlockBehaviour.Properties FLOWER_PROPS = BlockBehaviour.Properties.copy(Blocks.POPPY);
@@ -27,38 +27,38 @@ public interface FlowersBA
 	
 	// BLOCKS
 	
-	@RegistryName("wither_flower")
-	FlowerBlock WITHER_FLOWER = createSpecialFlowerBlock(MobEffects.WITHER, 200, FLOWER_PROPS, () -> FlowersBA.WITHER_FLOWER_TYPE);
+	@RegistryName("necroidus")
+	FlowerBlock NECROIDUS = createSpecialFlowerBlock(MobEffects.WITHER, 200, FLOWER_PROPS, () -> FlowersBA.NECROIDUS_TYPE);
 	
-	@RegistryName("lightning_flower")
-	FlowerBlock LIGHTNING_FLOWER = createSpecialFlowerBlock(MobEffects.DAMAGE_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.LIGHTNING_FLOWER_TYPE);
+	@RegistryName("tempestea")
+	FlowerBlock TEMPESTEA = createSpecialFlowerBlock(MobEffects.DAMAGE_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.TEMPESTEA_TYPE);
 	
-	@RegistryName("rain_flower")
-	FlowerBlock RAIN_FLOWER = createSpecialFlowerBlock(MobEffects.WATER_BREATHING, 200, FLOWER_PROPS, () -> FlowersBA.RAIN_FLOWER_TYPE);
+	@RegistryName("rainute")
+	FlowerBlock RAINUTE = createSpecialFlowerBlock(MobEffects.WATER_BREATHING, 200, FLOWER_PROPS, () -> FlowersBA.RAINUTE_TYPE);
 	
-	@RegistryName("snow_flower")
-	FlowerBlock SNOW_FLOWER = createSpecialFlowerBlock(MobEffects.WEAKNESS, 200, FLOWER_PROPS, () -> FlowersBA.SNOW_FLOWER_TYPE);
+	@RegistryName("glaciflora")
+	FlowerBlock GLACIFLORA = createSpecialFlowerBlock(MobEffects.WEAKNESS, 200, FLOWER_PROPS, () -> FlowersBA.GLACIFLORA_TYPE);
 	
 	@RegistryName("vibrantia")
 	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, FLOWER_PROPS, () -> FlowersBA.VIBRANTIA_TYPE);
 	
 	// TILE ENTITY TYPES
 	
-	@RegistryName("wither_flower")
+	@RegistryName("necroidus")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<WitherFlower> WITHER_FLOWER_TYPE = BlockAPI.createBlockEntityType(WitherFlower::new, WITHER_FLOWER);
+	BlockEntityType<Necroidus> NECROIDUS_TYPE = BlockAPI.createBlockEntityType(Necroidus::new, NECROIDUS);
 	
-	@RegistryName("lightning_flower")
+	@RegistryName("tempestea")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<LightningFlower> LIGHTNING_FLOWER_TYPE = BlockAPI.createBlockEntityType(LightningFlower::new, LIGHTNING_FLOWER);
+	BlockEntityType<Tempestea> TEMPESTEA_TYPE = BlockAPI.createBlockEntityType(Tempestea::new, TEMPESTEA);
 	
-	@RegistryName("rain_flower")
+	@RegistryName("rainute")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<RainFlower> RAIN_FLOWER_TYPE = BlockAPI.createBlockEntityType(RainFlower::new, RAIN_FLOWER);
+	BlockEntityType<Rainute> RAINUTE_TYPE = BlockAPI.createBlockEntityType(Rainute::new, RAINUTE);
 	
-	@RegistryName("snow_flower")
+	@RegistryName("glaciflora")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<SnowFlower> SNOW_FLOWER_TYPE = BlockAPI.createBlockEntityType(SnowFlower::new, SNOW_FLOWER);
+	BlockEntityType<Glaciflora> GLACIFLORA_TYPE = BlockAPI.createBlockEntityType(Glaciflora::new, GLACIFLORA);
 	
 	@RegistryName("vibrantia")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)

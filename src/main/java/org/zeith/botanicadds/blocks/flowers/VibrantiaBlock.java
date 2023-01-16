@@ -1,4 +1,4 @@
-package org.zeith.botanicadds.blocks.flowers.base;
+package org.zeith.botanicadds.blocks.flowers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +20,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.blocks.ForgeSpecialFlowerBlockBA;
-import org.zeith.botanicadds.blocks.flowers.Vibrantia;
+import org.zeith.botanicadds.tiles.flowers.Vibrantia;
 import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
 
 import java.util.function.Supplier;

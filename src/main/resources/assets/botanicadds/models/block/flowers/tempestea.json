@@ -2,6 +2,6 @@
   "parent": "botania:block/shapes/cross",
   "render_type": "cutout",
   "textures": {
-    "cross": "botanicadds:block/flower_func_wither_flower"
+    "cross": "botanicadds:block/flowers/generating/tempestea"
   }
 }

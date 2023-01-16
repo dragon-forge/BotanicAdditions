@@ -16,23 +16,21 @@ block.botanicadds.elven_brewery=Elven Brewery
 block.botanicadds.dreaming_pool=Dreaming Mana Pool
 block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
-block.botanicadds.sculk_sensor_disabled=Reduced Sculk Sensor
+block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
 
 # Flowers
-block.botanicadds.wither_flower=Necroidus
-block.botanicadds.wither_flower.reference=I feed on death.
+block.botanicadds.flowers.necroidus=Necroidus
+block.botanicadds.flowers.rainute=Rainute
+block.botanicadds.flowers.glaciflora=Glaciflora
+block.botanicadds.flowers.tempestea=Tempestea
+block.botanicadds.flowers.vibrantia=Vibrantia
 
-block.botanicadds.rain_flower=Rainute
-block.botanicadds.rain_flower.reference=It drinks the rain.
-
-block.botanicadds.snow_flower=Glaciflora
-block.botanicadds.snow_flower.reference=Thriving in the cold.
-
-block.botanicadds.lightning_flower=Tempestea
-block.botanicadds.lightning_flower.reference=Shockingly powerful!
-
-block.botanicadds.vibrantia=Vibrantia
-block.botanicadds.vibrantia.reference=Generates mana from the echoes of the past.
+# Flower References
+block.botanicadds.flowers.necroidus.reference=I feed on death.
+block.botanicadds.flowers.rainute.reference=It drinks the rain.
+block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
+block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
+block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
 
 # Items
 item.botanicadds.rune_tp=Rune of Teleportation

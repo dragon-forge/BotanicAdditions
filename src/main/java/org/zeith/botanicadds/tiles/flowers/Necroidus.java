@@ -1,4 +1,4 @@
-package org.zeith.botanicadds.blocks.flowers;
+package org.zeith.botanicadds.tiles.flowers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -18,14 +18,14 @@ import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 
 @FunctionalFlowerHUD
-public class WitherFlower
+public class Necroidus
 		extends FunctionalFlowerBlockEntity
 {
 	private static final int RANGE = 3;
 	
-	public WitherFlower(BlockPos pos, BlockState state)
+	public Necroidus(BlockPos pos, BlockState state)
 	{
-		super(FlowersBA.WITHER_FLOWER_TYPE, pos, state);
+		super(FlowersBA.NECROIDUS_TYPE, pos, state);
 	}
 	
 	@Override

@@ -1,4 +1,4 @@
-package org.zeith.botanicadds.blocks.flowers;
+package org.zeith.botanicadds.tiles.flowers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LightningBolt;
@@ -12,15 +12,15 @@ import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 
 @GenerationalFlowerHUD
-public class LightningFlower
+public class Tempestea
 		extends GeneratingFlowerBlockEntity
 {
 	public int cooldown;
 	protected boolean hasOvergrownSoil;
 	
-	public LightningFlower(BlockPos pos, BlockState state)
+	public Tempestea(BlockPos pos, BlockState state)
 	{
-		super(FlowersBA.LIGHTNING_FLOWER_TYPE, pos, state);
+		super(FlowersBA.TEMPESTEA_TYPE, pos, state);
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class LightningFlower
 			{
 				if(worldPosition.closerToCenterThan(e.position(), getRange()))
 				{
-					boolean cap = e.getPersistentData().getBoolean("BA_LightningFlower");
+					boolean cap = e.getPersistentData().getBoolean("BA_Tempestea");
 					if(!cap)
 					{
 						addMana(overgrowth ? getMaxMana() : getMaxMana() / 2);
@@ -55,7 +55,7 @@ public class LightningFlower
 						Vec3 p = getBlockState().getShape(level, worldPosition).bounds().getCenter();
 						e.teleportTo(p.x, p.y, p.z);
 						
-						e.getPersistentData().putBoolean("BA_LightningFlower", true);
+						e.getPersistentData().putBoolean("BA_Tempestea", true);
 						break;
 					}
 				}

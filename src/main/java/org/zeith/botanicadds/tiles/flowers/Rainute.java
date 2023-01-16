@@ -1,4 +1,4 @@
-package org.zeith.botanicadds.blocks.flowers;
+package org.zeith.botanicadds.tiles.flowers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.biome.Biome;
@@ -11,12 +11,12 @@ import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 
 @GenerationalFlowerHUD
-public class RainFlower
+public class Rainute
 		extends GeneratingFlowerBlockEntity
 {
-	public RainFlower(BlockPos pos, BlockState state)
+	public Rainute(BlockPos pos, BlockState state)
 	{
-		super(FlowersBA.RAIN_FLOWER_TYPE, pos, state);
+		super(FlowersBA.RAINUTE_TYPE, pos, state);
 	}
 	
 	protected boolean hasOvergrownSoil, generatesEnergy;

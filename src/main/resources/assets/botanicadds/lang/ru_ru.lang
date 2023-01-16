@@ -16,20 +16,21 @@ block.botanicadds.elven_brewery=Эльфийская варочная стойк
 block.botanicadds.dreaming_pool=Бассейн Маны Мечтаний
 block.botanicadds.gaia_plate=Агломерационная Плита Гайи
 block.botanicadds.gaiasteel_block=Блок гайястали
-block.botanicadds.sculk_sensor_disabled=Reduced Sculk Sensor
+block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
 
 # Flowers
-block.botanicadds.wither_flower=Иссушающий Цветок
-block.botanicadds.wither_flower.reference=Немного вялый опыт!
+block.botanicadds.flowers.necroidus=Necroidus
+block.botanicadds.flowers.rainute=Rainute
+block.botanicadds.flowers.glaciflora=Glaciflora
+block.botanicadds.flowers.tempestea=Tempestea
+block.botanicadds.flowers.vibrantia=Vibrantia
 
-block.botanicadds.rain_flower=Дождецвет
-block.botanicadds.rain_flower.reference=Он мокрый!
-
-block.botanicadds.snow_flower=Снегоцвет
-block.botanicadds.snow_flower.reference=Немного холодный!
-
-block.botanicadds.lightning_flower=Молнецвет
-block.botanicadds.lightning_flower.reference=Шокирующе сильный!
+# Flower References
+block.botanicadds.flowers.necroidus.reference=I feed on death.
+block.botanicadds.flowers.rainute.reference=It drinks the rain.
+block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
+block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
+block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
 
 # Items
 item.botanicadds.rune_tp=Руна Телепортации

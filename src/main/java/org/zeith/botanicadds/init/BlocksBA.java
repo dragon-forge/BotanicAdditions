@@ -49,8 +49,8 @@ public interface BlocksBA
 	@RegistryName("elvenwood")
 	RotatedPillarBlock ELVENWOOD = new RotatedPillarBlockBA(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));
 	
-	@RegistryName("sculk_sensor_disabled")
-	BlockSculkSensorDisabled SCULK_SENSOR_DISABLED = new BlockSculkSensorDisabled(BlockBehaviour.Properties.copy(Blocks.SCULK_SENSOR));
+	@RegistryName("reduced_sculk_sensor")
+	BlockSculkSensorDisabled REDUCED_SCULK_SENSOR = new BlockSculkSensorDisabled(BlockBehaviour.Properties.copy(Blocks.SCULK_SENSOR));
 	
 	private static RotatedPillarBlock log(MaterialColor p_50789_, MaterialColor p_50790_)
 	{
