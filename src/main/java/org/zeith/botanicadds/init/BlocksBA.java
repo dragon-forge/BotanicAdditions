@@ -1,8 +1,7 @@
 package org.zeith.botanicadds.init;
 
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -49,6 +48,9 @@ public interface BlocksBA
 	
 	@RegistryName("elvenwood")
 	RotatedPillarBlock ELVENWOOD = new RotatedPillarBlockBA(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));
+	
+	@RegistryName("sculk_sensor_disabled")
+	BlockSculkSensorDisabled SCULK_SENSOR_DISABLED = new BlockSculkSensorDisabled(BlockBehaviour.Properties.copy(Blocks.SCULK_SENSOR));
 	
 	private static RotatedPillarBlock log(MaterialColor p_50789_, MaterialColor p_50790_)
 	{

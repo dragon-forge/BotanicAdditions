@@ -16,19 +16,23 @@ block.botanicadds.elven_brewery=Elven Brewery
 block.botanicadds.dreaming_pool=Dreaming Mana Pool
 block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
+block.botanicadds.sculk_sensor_disabled=Reduced Sculk Sensor
 
 # Flowers
-block.botanicadds.wither_flower=Wither Flower
-block.botanicadds.wither_flower.reference=[BA] Quite a withering experience!
+block.botanicadds.wither_flower=Necroidus
+block.botanicadds.wither_flower.reference=I feed on death.
 
-block.botanicadds.rain_flower=Rain Flower
-block.botanicadds.rain_flower.reference=[BA] It's wet!
+block.botanicadds.rain_flower=Rainute
+block.botanicadds.rain_flower.reference=It drinks the rain.
 
-block.botanicadds.snow_flower=Snow Flower
-block.botanicadds.snow_flower.reference=[BA] Quite cold!
+block.botanicadds.snow_flower=Glaciflora
+block.botanicadds.snow_flower.reference=Thriving in the cold.
 
-block.botanicadds.lightning_flower=Lightning Flower
-block.botanicadds.lightning_flower.reference=[BA] Shockingly powerful!
+block.botanicadds.lightning_flower=Tempestea
+block.botanicadds.lightning_flower.reference=Shockingly powerful!
+
+block.botanicadds.vibrantia=Vibrantia
+block.botanicadds.vibrantia.reference=Generates mana from the echoes of the past.
 
 # Items
 item.botanicadds.rune_tp=Rune of Teleportation
@@ -43,6 +47,7 @@ item.botanicadds.aura_ring_gaia=Gaia Band of Aura
 item.botanicadds.mana_ring_gaia=Gaia Band of Mana
 item.botanicadds.mana_stealer_sword=Mana Stealing Blade
 item.botanicadds.tesseract_attuner=Tesseract Attunement Tool
+item.botanicadds.sculk_petal=Sculk Petal
 
 # Tooltips
 info.botanicadds.dreaming_pool=2 Mana Pools in one block
@@ -55,6 +60,7 @@ info.botanicadds.tesseract_attuner3=Craft with a tesseract to set it's channel.
 info.botanicadds.tesseract_attuner.mode=Mode: %s.
 info.botanicadds.tesseract_attuner.mode.public=Public
 info.botanicadds.tesseract_attuner.mode.private=Private
+info.botanicadds.sculk_petal=Obtained by shearing %s with %s.
 
 # Lexicon
 botania.page.runeAltar.ba_tp_rune=The &1Rune of Teleportation&0.

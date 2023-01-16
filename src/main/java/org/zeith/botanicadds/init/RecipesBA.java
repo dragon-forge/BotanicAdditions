@@ -6,10 +6,12 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
 import org.zeith.botanicadds.crafting.RecipeGaiaPlate;
+import org.zeith.botanicadds.items.ItemSculkPetal;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
 import org.zeith.hammerlib.core.RecipeHelper;
@@ -121,6 +123,12 @@ public class RecipesBA
 				.map('t', BotaniaTags.Items.NUGGETS_TERRASTEEL)
 				.register();
 		
+		e.shaped().result(Blocks.SCULK_SENSOR).id(BotanicAdditions.id("sculk_sensor"))
+				.shape("p p", "prp")
+				.map('p', ItemsBA.SCULK_PETAL)
+				.map('r', BlocksBA.SCULK_SENSOR_DISABLED)
+				.register();
+		
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
 	}
 	
@@ -180,6 +188,7 @@ public class RecipesBA
 		var petalsRed = Ingredient.of(BotaniaTags.Items.PETALS_RED);
 		var petalsWhite = Ingredient.of(BotaniaTags.Items.PETALS_WHITE);
 		var petalsYellow = Ingredient.of(BotaniaTags.Items.PETALS_YELLOW);
+		var petalsSculk = Ingredient.of(ItemSculkPetal.PETALS_SCULK);
 		
 		var zeithHead = new ItemStack(Items.PLAYER_HEAD);
 		ItemNBTHelper.setString(zeithHead, "SkullOwner", "Zeitheron");
@@ -215,6 +224,13 @@ public class RecipesBA
 				
 				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsBlue,
 				Ingredient.of(ItemsBA.RUNE_ENERGY)
+		));
+		
+		e.add(new PetalsRecipe(e.nextId(FlowersBA.VIBRANTIA.asItem()),
+				new ItemStack(FlowersBA.VIBRANTIA), seeds,
+				
+				petalsSculk, petalsSculk, petalsGray, petalsBlack, petalsBlack,
+				Ingredient.of(BotaniaItems.runeMana)
 		));
 	}
 	

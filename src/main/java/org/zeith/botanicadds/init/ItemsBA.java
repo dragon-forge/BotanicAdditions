@@ -17,10 +17,15 @@ public interface ItemsBA
 	
 	@RegistryName("rune_tp")
 	Item RUNE_TP = newItem();
+	
 	@RegistryName("rune_energy")
 	Item RUNE_ENERGY = newItem();
+	
 	@RegistryName("gaia_shard")
 	Item GAIA_SHARD = newItem(p -> p.rarity(Rarity.RARE));
+	
+	@RegistryName("sculk_petal")
+	ItemSculkPetal SCULK_PETAL = new ItemSculkPetal(baseProperties().rarity(Rarity.UNCOMMON));
 	
 	@RegistryName("mana_lapis")
 	ItemMaterial MANA_LAPIS = new ItemMaterial(MaterialType.GEM, "mana_lapis");

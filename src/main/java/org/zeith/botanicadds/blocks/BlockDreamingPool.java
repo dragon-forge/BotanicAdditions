@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.init.TilesBA;
 import org.zeith.botanicadds.tiles.TileDreamingPool;
+import org.zeith.hammerlib.api.blocks.ICreativeTabBlock;
 import vazkii.botania.api.state.BotaniaStateProperties;
 import vazkii.botania.common.block.BotaniaWaterloggedBlock;
 import vazkii.botania.common.block.block_entity.mana.ManaPoolBlockEntity;
@@ -36,7 +37,7 @@ import static vazkii.botania.api.state.BotaniaStateProperties.OPTIONAL_DYE_COLOR
 
 public class BlockDreamingPool
 		extends BotaniaWaterloggedBlock
-		implements EntityBlock
+		implements EntityBlock, ICreativeTabBlock
 {
 	private static final VoxelShape NORMAL_SHAPE;
 	private static final VoxelShape NORMAL_SHAPE_BURST;
@@ -52,6 +53,12 @@ public class BlockDreamingPool
 	{
 		super(builder);
 		registerDefaultState(defaultBlockState().setValue(OPTIONAL_DYE_COLOR, BotaniaStateProperties.OptionalDyeColor.NONE));
+	}
+	
+	@Override
+	public CreativeModeTab getCreativeTab()
+	{
+		return BotanicAdditions.TAB;
 	}
 	
 	@Override

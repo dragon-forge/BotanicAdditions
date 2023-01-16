@@ -8,9 +8,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.zeith.botanicadds.blocks.ForgeSpecialFlowerBlockBA;
 import org.zeith.botanicadds.blocks.flowers.*;
+import org.zeith.botanicadds.blocks.flowers.base.VibrantiaBlock;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 import org.zeith.hammerlib.annotations.client.TileRenderer;
+import org.zeith.hammerlib.api.forge.BlockAPI;
 import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
 import vazkii.botania.client.render.block_entity.SpecialFlowerBlockEntityRenderer;
 import vazkii.botania.common.block.BotaniaBlocks;
@@ -37,23 +39,30 @@ public interface FlowersBA
 	@RegistryName("snow_flower")
 	FlowerBlock SNOW_FLOWER = createSpecialFlowerBlock(MobEffects.WEAKNESS, 200, FLOWER_PROPS, () -> FlowersBA.SNOW_FLOWER_TYPE);
 	
+	@RegistryName("vibrantia")
+	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, FLOWER_PROPS, () -> FlowersBA.VIBRANTIA_TYPE);
+	
 	// TILE ENTITY TYPES
 	
 	@RegistryName("wither_flower")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<WitherFlower> WITHER_FLOWER_TYPE = BlockEntityType.Builder.of(WitherFlower::new, WITHER_FLOWER).build(null);
+	BlockEntityType<WitherFlower> WITHER_FLOWER_TYPE = BlockAPI.createBlockEntityType(WitherFlower::new, WITHER_FLOWER);
 	
 	@RegistryName("lightning_flower")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<LightningFlower> LIGHTNING_FLOWER_TYPE = BlockEntityType.Builder.of(LightningFlower::new, LIGHTNING_FLOWER).build(null);
+	BlockEntityType<LightningFlower> LIGHTNING_FLOWER_TYPE = BlockAPI.createBlockEntityType(LightningFlower::new, LIGHTNING_FLOWER);
 	
 	@RegistryName("rain_flower")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<RainFlower> RAIN_FLOWER_TYPE = BlockEntityType.Builder.of(RainFlower::new, RAIN_FLOWER).build(null);
+	BlockEntityType<RainFlower> RAIN_FLOWER_TYPE = BlockAPI.createBlockEntityType(RainFlower::new, RAIN_FLOWER);
 	
 	@RegistryName("snow_flower")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
-	BlockEntityType<SnowFlower> SNOW_FLOWER_TYPE = BlockEntityType.Builder.of(SnowFlower::new, SNOW_FLOWER).build(null);
+	BlockEntityType<SnowFlower> SNOW_FLOWER_TYPE = BlockAPI.createBlockEntityType(SnowFlower::new, SNOW_FLOWER);
+	
+	@RegistryName("vibrantia")
+	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
+	BlockEntityType<Vibrantia> VIBRANTIA_TYPE = BlockAPI.createBlockEntityType(Vibrantia::new, VIBRANTIA);
 	
 	private static FlowerBlock createSpecialFlowerBlock(MobEffect effect, int effectDuration, BlockBehaviour.Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> beType)
 	{
