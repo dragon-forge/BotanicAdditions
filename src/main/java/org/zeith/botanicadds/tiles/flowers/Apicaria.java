@@ -129,7 +129,7 @@ public class Apicaria
 		return BlockPos.betweenClosedStream(BoundingBox.fromCorners(pos.offset(-16, -6, -16), pos.offset(16, 2, 16)))
 				.map(pos0 ->
 				{
-					if(level.getBlockEntity(pos0) instanceof Apicaria a && a.getMana() >= 150)
+					if(level.getBlockEntity(pos0) instanceof Apicaria a && a.worldPosition.closerThan(pos, a.getRange()) && a.getMana() >= 150)
 						return a;
 					return null;
 				})
