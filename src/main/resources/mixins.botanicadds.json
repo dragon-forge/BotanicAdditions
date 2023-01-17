@@ -10,7 +10,8 @@
     "CampfireBlockMixin",
     "LootPoolAccessor",
     "ManaPoolBlockEntityMixin",
-    "RunicAltarBlockEntityAccessor"
+    "RunicAltarBlockEntityAccessor",
+    "SpecialFlowerBlockEntityAccessor"
   ],
   "client": [
     "ModelAccessor",

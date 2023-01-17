@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "sculk_sensor_phase=active": {
+      "model": "botanicadds:block/flowers/floating/vibrantia_active"
+    },
+    "sculk_sensor_phase=cooldown": {
+      "model": "botanicadds:block/flowers/floating/vibrantia"
+    },
+    "sculk_sensor_phase=inactive": {
+      "model": "botanicadds:block/flowers/floating/vibrantia"
+    }
+  }
+}

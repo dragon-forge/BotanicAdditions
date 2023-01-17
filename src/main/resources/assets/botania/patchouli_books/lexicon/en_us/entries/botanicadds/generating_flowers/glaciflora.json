@@ -14,6 +14,6 @@
     }
   ],
   "extra_recipe_mappings": {
-    "botanicadds:floating_glaciflora": 1
+    "botanicadds:flowers/floating/glaciflora": 1
   }
 }

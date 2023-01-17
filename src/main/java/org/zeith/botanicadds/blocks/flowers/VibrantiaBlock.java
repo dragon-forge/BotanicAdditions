@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEventListener;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.blocks.ForgeSpecialFlowerBlockBA;
 import org.zeith.botanicadds.tiles.flowers.Vibrantia;
 import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
 
@@ -53,6 +52,20 @@ public class VibrantiaBlock
 			deactivate(lvl, pos, state);
 	}
 	
+	@Nullable
+	@Override
+	public <T extends BlockEntity> GameEventListener getListener(ServerLevel level, T be)
+	{
+		return be instanceof Vibrantia vib ? vib.getListener() : null;
+	}
+	
+	@Override
+	protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos)
+	{
+		return state.is(Blocks.SCULK)
+				|| super.mayPlaceOn(state, worldIn, pos);
+	}
+	
 	public static void deactivate(Level level, BlockPos pos, BlockState state)
 	{
 		level.setBlock(pos, state.setValue(PHASE, SculkSensorPhase.COOLDOWN), 3);
@@ -74,20 +87,5 @@ public class VibrantiaBlock
 	{
 		level.updateNeighborsAt(pos, Blocks.SCULK_SENSOR);
 		level.updateNeighborsAt(pos.relative(Direction.UP.getOpposite()), Blocks.SCULK_SENSOR);
-	}
-	
-	
-	@Nullable
-	@Override
-	public <T extends BlockEntity> GameEventListener getListener(ServerLevel level, T be)
-	{
-		return be instanceof Vibrantia vib ? vib.getListener() : null;
-	}
-	
-	@Override
-	protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos)
-	{
-		return state.is(Blocks.SCULK)
-				|| super.mayPlaceOn(state, worldIn, pos);
 	}
 }

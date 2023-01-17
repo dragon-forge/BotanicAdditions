@@ -26,6 +26,14 @@ block.botanicadds.flowers.tempestea=Tempestea
 block.botanicadds.flowers.vibrantia=Vibrantia
 block.botanicadds.flowers.apicaria=Apicaria
 
+# Floating flowers
+block.botanicadds.flowers.floating.necroidus=Floating Necroidus
+block.botanicadds.flowers.floating.rainute=Floating Rainute
+block.botanicadds.flowers.floating.glaciflora=Floating Glaciflora
+block.botanicadds.flowers.floating.tempestea=Floating Tempestea
+block.botanicadds.flowers.floating.vibrantia=Floating Vibrantia
+block.botanicadds.flowers.floating.apicaria=Floating Apicaria
+
 # Flower References
 block.botanicadds.flowers.necroidus.reference=I feed on death.
 block.botanicadds.flowers.rainute.reference=It drinks the rain.

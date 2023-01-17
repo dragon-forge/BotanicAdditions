@@ -14,6 +14,6 @@
     }
   ],
   "extra_recipe_mappings": {
-    "botanicadds:floating_rainute": 1
+    "botanicadds:flowers/floating/rainute": 1
   }
 }

@@ -1,4 +1,4 @@
-package org.zeith.botanicadds.blocks;
+package org.zeith.botanicadds.blocks.flowers;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;

@@ -1,10 +1,13 @@
 package org.zeith.botanicadds.proxy;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -12,6 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.api.FunctionalFlowerHUD;
 import org.zeith.botanicadds.api.GenerationalFlowerHUD;
@@ -22,10 +26,13 @@ import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
 import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.common.block.block_entity.BreweryBlockEntity;
+import vazkii.botania.common.block.decor.BotaniaMushroomBlock;
+import vazkii.botania.common.block.decor.FloatingFlowerBlock;
 import vazkii.botania.forge.CapabilityUtil;
 
 import java.awt.*;
 import java.util.*;
+import java.util.function.BiConsumer;
 
 public class ClientProxyBA
 		extends CommonProxyBA
@@ -45,12 +52,28 @@ public class ClientProxyBA
 		MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, this::attachBeCapabilities);
 	}
 	
+	@SuppressWarnings("removal")
 	private void clientSetup(FMLClientSetupEvent e)
 	{
 		ItemProperties.register(ItemsBA.TESSERACT_ATTUNER, new ResourceLocation("private"), (item, p_174626_, p_174627_, p_174628_) ->
 		{
 			return ItemsBA.TESSERACT_ATTUNER.isPrivate(item) ? 1 : 0;
 		});
+		
+		
+		initRenderTypes(ItemBlockRenderTypes::setRenderLayer);
+	}
+	
+	public static void initRenderTypes(BiConsumer<Block, RenderType> consumer)
+	{
+		ForgeRegistries.BLOCKS.getEntries().stream().filter(b -> b.getKey().location().getNamespace().equals(BotanicAdditions.MOD_ID))
+				.forEach(e ->
+				{
+					var b = e.getValue();
+					if(b instanceof FloatingFlowerBlock || b instanceof FlowerBlock
+							|| b instanceof TallFlowerBlock || b instanceof BotaniaMushroomBlock)
+						consumer.accept(b, RenderType.cutout());
+				});
 	}
 	
 	private void attachBeCapabilities(AttachCapabilitiesEvent<BlockEntity> e)

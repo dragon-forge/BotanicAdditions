@@ -14,6 +14,6 @@
     }
   ],
   "extra_recipe_mappings": {
-    "botanicadds:floating_apicaria": 1
+    "botanicadds:flowers/floating/apicaria": 1
   }
 }
