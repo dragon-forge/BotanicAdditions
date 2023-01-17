@@ -1,0 +1,8 @@
+{
+  "parent": "botanicadds:block/islands/base",
+  "textures": {
+    "top": "botania:block/enchanted_soil_top",
+	"side": "botania:block/enchanted_soil_side",
+	"bottom": "block/dirt"
+  }
+}

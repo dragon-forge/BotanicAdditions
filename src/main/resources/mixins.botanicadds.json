@@ -11,7 +11,9 @@
     "LootPoolAccessor",
     "ManaPoolBlockEntityMixin",
     "RunicAltarBlockEntityAccessor",
-    "SpecialFlowerBlockEntityAccessor"
+    "SpecialFlowerBlockEntityAccessor",
+    "floating_overgrowth.OvergrowthSeedItemMixin",
+    "floating_overgrowth.SpecialFlowerBlockEntityMixin"
   ],
   "client": [
     "ModelAccessor",

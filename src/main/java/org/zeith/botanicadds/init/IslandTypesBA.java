@@ -10,6 +10,7 @@ import vazkii.botania.api.block.FloatingFlower;
 public interface IslandTypesBA
 {
 	FloatingFlower.IslandType SCULK = getOrCreate("SCULK");
+	FloatingFlower.IslandType OVERGROWTH = getOrCreate("OVERGROWTH");
 	
 	@ClientSetup
 	@OnlyIn(Dist.CLIENT)
@@ -17,6 +18,9 @@ public interface IslandTypesBA
 	{
 		BotaniaAPIClient.instance()
 				.registerIslandTypeModel(SCULK, BotanicAdditions.id("block/islands/sculk"));
+		
+		BotaniaAPIClient.instance()
+				.registerIslandTypeModel(OVERGROWTH, BotanicAdditions.id("block/islands/enchanted"));
 	}
 	
 	static FloatingFlower.IslandType getOrCreate(String name)
