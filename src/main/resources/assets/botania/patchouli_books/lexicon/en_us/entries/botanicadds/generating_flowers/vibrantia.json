@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.vibrantia",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/vibrantia",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.vibrantia0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.vibrantia1",
+      "recipe": "botanicadds:flowers/vibrantia"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_vibrantia": 1
+  }
+}

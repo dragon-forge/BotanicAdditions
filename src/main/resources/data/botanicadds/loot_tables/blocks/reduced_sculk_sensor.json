@@ -21,7 +21,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "botanicadds:sculk_sensor_disabled"
+          "name": "botanicadds:reduced_sculk_sensor"
         }
       ],
       "rolls": 1.0

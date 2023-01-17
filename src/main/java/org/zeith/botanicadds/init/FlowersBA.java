@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.zeith.botanicadds.blocks.ForgeSpecialFlowerBlockBA;
-import org.zeith.botanicadds.tiles.flowers.*;
 import org.zeith.botanicadds.blocks.flowers.VibrantiaBlock;
+import org.zeith.botanicadds.tiles.flowers.*;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 import org.zeith.hammerlib.annotations.client.TileRenderer;
@@ -28,19 +28,22 @@ public interface FlowersBA
 	// BLOCKS
 	
 	@RegistryName("necroidus")
-	FlowerBlock NECROIDUS = createSpecialFlowerBlock(MobEffects.WITHER, 200, FLOWER_PROPS, () -> FlowersBA.NECROIDUS_TYPE);
+	FlowerBlock NECROIDUS = createFunctionalFlowerBlock(MobEffects.WITHER, 200, FLOWER_PROPS, () -> FlowersBA.NECROIDUS_TYPE);
 	
 	@RegistryName("tempestea")
-	FlowerBlock TEMPESTEA = createSpecialFlowerBlock(MobEffects.DAMAGE_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.TEMPESTEA_TYPE);
+	FlowerBlock TEMPESTEA = createGeneratingFlowerBlock(MobEffects.DAMAGE_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.TEMPESTEA_TYPE);
 	
 	@RegistryName("rainute")
-	FlowerBlock RAINUTE = createSpecialFlowerBlock(MobEffects.WATER_BREATHING, 200, FLOWER_PROPS, () -> FlowersBA.RAINUTE_TYPE);
+	FlowerBlock RAINUTE = createGeneratingFlowerBlock(MobEffects.WATER_BREATHING, 200, FLOWER_PROPS, () -> FlowersBA.RAINUTE_TYPE);
 	
 	@RegistryName("glaciflora")
-	FlowerBlock GLACIFLORA = createSpecialFlowerBlock(MobEffects.WEAKNESS, 200, FLOWER_PROPS, () -> FlowersBA.GLACIFLORA_TYPE);
+	FlowerBlock GLACIFLORA = createGeneratingFlowerBlock(MobEffects.WEAKNESS, 200, FLOWER_PROPS, () -> FlowersBA.GLACIFLORA_TYPE);
 	
 	@RegistryName("vibrantia")
 	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, FLOWER_PROPS, () -> FlowersBA.VIBRANTIA_TYPE);
+	
+	@RegistryName("apicaria")
+	FlowerBlock APICARIA = createGeneratingFlowerBlock(MobEffects.POISON, 100, FLOWER_PROPS, () -> FlowersBA.APICARIA_TYPE);
 	
 	// TILE ENTITY TYPES
 	
@@ -64,8 +67,17 @@ public interface FlowersBA
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
 	BlockEntityType<Vibrantia> VIBRANTIA_TYPE = BlockAPI.createBlockEntityType(Vibrantia::new, VIBRANTIA);
 	
-	private static FlowerBlock createSpecialFlowerBlock(MobEffect effect, int effectDuration, BlockBehaviour.Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> beType)
+	@RegistryName("apicaria")
+	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
+	BlockEntityType<Apicaria> APICARIA_TYPE = BlockAPI.createBlockEntityType(Apicaria::new, APICARIA);
+	
+	private static FlowerBlock createFunctionalFlowerBlock(MobEffect effect, int effectDuration, BlockBehaviour.Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> beType)
 	{
-		return new ForgeSpecialFlowerBlockBA(effect, effectDuration, props, beType);
+		return new ForgeSpecialFlowerBlockBA(ForgeSpecialFlowerBlockBA.FlowerKind.FUNCTIONAL, effect, effectDuration, props, beType);
+	}
+	
+	private static FlowerBlock createGeneratingFlowerBlock(MobEffect effect, int effectDuration, BlockBehaviour.Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> beType)
+	{
+		return new ForgeSpecialFlowerBlockBA(ForgeSpecialFlowerBlockBA.FlowerKind.GENERATING, effect, effectDuration, props, beType);
 	}
 }

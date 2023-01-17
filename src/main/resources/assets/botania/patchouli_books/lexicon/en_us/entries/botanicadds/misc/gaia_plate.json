@@ -1,0 +1,53 @@
+{
+  "name": "block.botanicadds.gaia_plate",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:gaia_plate",
+  
+  "entry_color": "FF666D",
+  "advancement": "botania:main/gaia_guardian_kill",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.gaia_plate0"
+    },
+    {
+      "type": "crafting",
+      "title": "botanicadds.page.gaia_plate3",
+      "text": "botanicadds.page.gaia_plate1",
+      "recipe": "botanicadds:gaia_plate"
+    },
+    {
+      "type": "multiblock",
+      "multiblock_id": "botanicadds:gaia_plate",
+      "text": "botanicadds.page.gaia_plate3",
+      "symmetrical": true
+    },
+    {
+      "type": "botania:botanicadds_gaia_plate",
+      "recipe": "botanicadds:terrasteel",
+      "text": "botanicadds.page.gaia_plate4"
+    },
+    {
+      "type": "botania:botanicadds_gaia_plate",
+      "recipe": "botanicadds:gaiasteel_ingot",
+      "text": "botanicadds.page.gaia_plate5"
+    },
+    {
+      "type": "crafting",
+      "recipe": "botanicadds:gaiasteel_nugget"
+    },
+    {
+      "type": "crafting",
+      "recipe": "botanicadds:gaiasteel_ingot_from_nuggets"
+    },
+    {
+      "type": "crafting",
+      "recipe": "botanicadds:gaiasteel_block"
+    },
+    {
+      "type": "crafting",
+      "recipe": "botanicadds:gaiasteel_ingots_from_block"
+    }
+  ]
+}

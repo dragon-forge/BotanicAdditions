@@ -1,0 +1,20 @@
+{
+  "name": "block.botanicadds.elven_brewery",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:elven_brewery",
+  
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.elven_brewery0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.elven_brewery1",
+      "recipe": "botanicadds:elven_brewery"
+    }
+  ]
+}

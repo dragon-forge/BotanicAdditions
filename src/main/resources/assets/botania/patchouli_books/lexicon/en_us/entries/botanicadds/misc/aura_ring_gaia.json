@@ -1,0 +1,20 @@
+{
+  "name": "item.botanicadds.aura_ring_gaia",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:aura_ring_gaia",
+  
+  "entry_color": "FF666D",
+  "advancement": "botania:main/gaia_guardian_kill",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.aura_ring_gaia0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.aura_ring_gaia1",
+      "recipe": "botanicadds:aura_ring_gaia"
+    }
+  ]
+}

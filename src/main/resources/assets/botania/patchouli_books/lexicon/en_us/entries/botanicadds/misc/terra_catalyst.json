@@ -1,0 +1,25 @@
+{
+  "name": "block.botanicadds.terra_catalyst",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:terra_catalyst",
+  
+  "entry_color": "FF666D",
+  "advancement": "botania:main/gaia_guardian_kill",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.terra_catalyst0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.terra_catalyst1",
+      "recipe": "botanicadds:terra_catalyst"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "text": "botanicadds.page.terra_catalyst2",
+      "recipes": "botanicadds:gaia_shard"
+    }
+  ]
+}

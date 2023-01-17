@@ -24,6 +24,7 @@ block.botanicadds.flowers.rainute=Rainute
 block.botanicadds.flowers.glaciflora=Glaciflora
 block.botanicadds.flowers.tempestea=Tempestea
 block.botanicadds.flowers.vibrantia=Vibrantia
+block.botanicadds.flowers.apicaria=Apicaria
 
 # Flower References
 block.botanicadds.flowers.necroidus.reference=I feed on death.
@@ -31,6 +32,7 @@ block.botanicadds.flowers.rainute.reference=It drinks the rain.
 block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
 block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
 block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
+block.botanicadds.flowers.apicaria.reference=Can soothe even the most ferocious of bees.
 
 # Items
 item.botanicadds.rune_tp=Rune of Teleportation
@@ -61,73 +63,73 @@ info.botanicadds.tesseract_attuner.mode.private=Private
 info.botanicadds.sculk_petal=Obtained by shearing %s with %s.
 
 # Lexicon
-botania.page.runeAltar.ba_tp_rune=The &1Rune of Teleportation&0.
-botania.page.runeAltar.ba_energy_rune=The &1Rune of Energy&0.
-botania.page.pool.ba_mana_lapis=Infusing &1Mana Lapis&0
-botania.page.elfResources.ba_elven_lapis=Trading for &1Elven Lapis&0
-botania.page.elfResources.ba_elven_log=Trading for &1Elvenwood Log&0
-botania.page.elfResources.ba_dreamrock=Trading for &1Dreamrock&0
+botanicadds.category=Botanic Additions
 
-botania.entry.ba_wither_flower=Wither Flower
-botania.tagline.ba_wither_flower=Wither builder!
-botania.page.ba_wither_flower1=&1Wither Flower&0 is essentially a wither builder, but uses mana instead. You will need to drop soul sand and wither skulls nearby for the flower to build. Note: building will be anchored on the blocks above the flower, up to 4 blocks and the creation process doesn't use very much mana.
-botania.page.ba_wither_flower2=Wither boi
+botanicadds.page.necroidus0=$(item)Necroidus$(0) is essentially a wither builder, but uses mana instead. You will need to drop soul sand and wither skulls nearby for the flower to build. Note: building will be anchored on the blocks above the flower, up to 4 blocks and the creation process doesn't use very much mana.
+botanicadds.page.necroidus1=Wither boi
 
-botania.entry.ba_mana_tesseract=Mana Tesseract
-botania.tagline.ba_mana_tesseract=Diving into space and time... and mana
-botania.page.ba_mana_tesseract1=Transporting mana over insane distances, especially between dimensions was a dream, until now! &1Mana Tesseract&0 is your new way of transporting mana! Of course it's far from perfect, but at least it can get you going. To change channel, craft it with any item. (The item will be retained.)
-botania.page.ba_mana_tesseract2=Space may be broken...
+botanicadds.page.rainute0=$(item)Rainute$(0) produces $(item)Mana$(0) while it's raining. Note: This flower doesn't produce anything in snow environment.
+botanicadds.page.rainute1=Don't get it too wet!
 
-botania.entry.ba_elven_altar=Elven Altar
-botania.tagline.ba_elven_altar=Alternative to runic altar!
-botania.page.ba_elven_altar1=&1Elven Altar&0 is suitable for faster crafting. By improving it with &4Dragonstone&0 and &4Dreamrock&0 you can get an altar that is capable of accepting &4Mana&0 from &4Sparks&0. Since they transfer mana much faster, this seems to be an important device to upgrade!
-botania.page.ba_elven_altar2=Crafting the &1Elven Altar&0.
+botanicadds.page.glaciflora0=$(item)Glaciflora$(0) is an alternative to $(item)Rainute$(0) but for snow biomes. You know why this is a thing....
+botanicadds.page.glaciflora1=Cold to the touch!
 
-botania.entry.ba_terra_catalyst=Terra Catalyst
-botania.tagline.ba_terra_catalyst=Handling much more complex items
-botania.page.ba_terra_catalyst1=&1Terra Catalyst&0 is used as another type of catalyst. It may also be used as a splitter for some resources such as &1Gaia Spirit&0.
-botania.page.ba_terra_catalyst2=Crafting the &1Terra Catalyst&0.
-botania.page.ba_terra_catalyst3=Conjuring some &1Gaia Shards&0.
+botanicadds.page.tempestea0=$(item)Tempestea$(0) is another weather-dependent flower except this one isn't a passive one. $(item)Tempestea$(0) generates mana when a lightning occurs nearby. Afterwards, it redirects it on self and generates a lot of mana. This process heats the flower and it needs $(thing)roughly a minute$(0) to cool down.
+botanicadds.page.tempestea1=Essentially an energy converter!
 
-botania.entry.ba_rain_flower=Rain Flower
-botania.tagline.ba_rain_flower=Produces mana from rain.
-botania.page.ba_rain_flower1=&1Rain Flower&0 produces &4Mana&0 while it's raining. Note: This flower doesn't produce anything in snow environment.
-botania.page.ba_rain_flower2=Don't get it too wet!
+botanicadds.page.vibrantia0=$(item)Vibrantia$(0) comes from deep underground, where $(thing)Sculk$(0) lives. It harnesses power of $(thing)Sculk$(0) to generate mana when it senses vibrations nearby.$(br2)Making a flower from sculk, however, reduces it's feeling abilities, and thus it can no longer hear mana bursts and other projectiles at all.
+botanicadds.page.vibrantia1=I sense you...
 
-botania.entry.ba_snow_flower=Snow Flower
-botania.tagline.ba_snow_flower=Produces mana from snow.
-botania.page.ba_snow_flower1=&1Snow Flower&0 is an alternative to &4Rain Flower&0 but for snow biomes. You know why this is a thing....
-botania.page.ba_snow_flower2=Cold to the touch!
+botanicadds.page.apicaria0=The $(item)Apicaria$(0) is a relaxing flower. Not you though, it takes care of keeping your bees calm.$(br2)It channels $(thing)Mana$(0) into angered bees (whom you shouldn't have touched in the first place) and saves the player from bee's anger.$(br)It also prevents bees from angering at player when one harvests the $(item)Beehive$(0)'s content.
+botanicadds.page.apicaria1=Bzzzzzz.
 
-botania.entry.ba_lightning_flower=Lightning Flower
-botania.tagline.ba_lightning_flower=Produces mana from lightning.
-botania.page.ba_lightning_flower1=&1Lightning Flower&0 is another weather-dependent flower except this one isn't a passive one. &1Lightning Flower&0 generates mana when a lightning occurs nearby. Afterwards, it redirects it on self and generates a lot of mana. This process heats the flower and it needs &4roughly a minute&0 to cool down.
-botania.page.ba_lightning_flower2=Essentially an energy converter!
+botanicadds.page.mana_tesseract0=Transporting mana over insane distances, especially between dimensions was a dream, until now! $(item)Mana Tesseract$(0) is your new way of transporting mana! Of course it's far from perfect, but at least it can get you going. To change channels, you'll need to rename the $(item)Tesseract Attunement Tool$(0).
+botanicadds.page.mana_tesseract1=Space may be broken...
+botanicadds.page.mana_tesseract2=Crafting the $(item)Tesseract Attunement Tool$(0).
 
-botania.entry.ba_dreaming_pool=Dreaming Mana Pool
-botania.tagline.ba_dreaming_pool=Larger mana storage!
-botania.page.ba_dreaming_pool1=&1Dreaming Mana Pool&0 is another pool of mana, made from &1Dreamrock&0. This pool is twice larger than a normal pool. Enjoy!
-botania.page.ba_dreaming_pool2=Getting ridiculous...
+botanicadds.page.elven_altar0=$(item)Elven Altar$(0) is suitable for faster crafting. By improving it with $(l:alfhomancy/elf_resources)$(item)Dragonstone$(0)$(/l) and $(l:botanicadds/dreamrock)$(item)Dreamrock$(0)$(/l) you can get an altar that is capable of accepting $(item)Mana$(0) from $(item)Sparks$(0). Since they transfer mana much faster, this seems to be an important device to upgrade!
+botanicadds.page.elven_altar1=Crafting the $(item)Elven Altar$(0).
 
-botania.entry.ba_gaia_plate=Gaia Agglomeration Plate
-botania.tagline.ba_gaia_plate=Why would this be ever needed?!
-botania.page.ba_gaia_plate1=After getting your palms on elven resources, why not to upgrade your &4Terrestrial Agglomeration Plate&0? It has been pretty good at doing what it should. But perhaps it's time to upgrade? &1Gaia Agglomeration Plate&0 is way more efficient in creating &1Terrasteel&0 AND it can create more than just that!
-botania.page.ba_gaia_plate2=Crafting the &1Gaia Agglomeration Plate&0.
-botania.page.ba_gaia_plate3=G.A. Plate
-botania.page.ba_gaia_plate4=Creating &1Terrasteel&0 (there's &1Dreamrock&0 under the plate)
-botania.page.ba_gaia_plate5=Creating &1Gaiasteel&0 (there's &1Dreamrock&0 under the plate)
+botanicadds.entry.elf_resources_extra=Extra Alfheim Resources
+botanicadds.page.elf_resources_extra0=$(thing)Botanic Additions$(0) expands on Alfheim resource stack, giving you more resources, which are required by this mod.
+botanicadds.page.elf_resources_extra1=Trading for $(item)Elven Lapis$(0)
+botanicadds.page.elf_resources_extra2=Trading for $(item)Dreamrock$(0)
+botanicadds.page.elf_resources_extra3=Trading for $(item)Elvenwood$(0)
+
+botanicadds.entry.basic_resources_extra=Extra Resources
+botanicadds.page.basic_resources_extra0=$(thing)Botanic Additions$(0) expands material set, adding a few runes and other miscellaneous things.
+botanicadds.page.basic_resources_extra1=Infusing $(item)Mana Lapis$(0)
+botanicadds.page.basic_resources_extra2=The $(item)Rune of Teleportation$(0)
+botanicadds.page.basic_resources_extra3=The $(item)Rune of Energy$(0)
+botanicadds.page.basic_resources_extra4=Making $(item)Elvenwood$(0)
+
+botanicadds.page.gaia_plate0=After getting your palms on elven resources, why not to upgrade your $(item)Terrestrial Agglomeration Plate$(0)? It has been pretty good at doing what it should. But perhaps it's time to upgrade? $(item)Gaia Agglomeration Plate$(0) is way more efficient in creating $(item)Terrasteel$(0) AND it can create more than just that!
+botanicadds.page.gaia_plate1=Crafting the $(item)Gaia Agglomeration Plate$(0).
+botanicadds.page.gaia_plate3=G.A. Plate
+botanicadds.page.gaia_plate4=Creating $(item)Terrasteel$(0)
+botanicadds.page.gaia_plate5=Creating $(item)Gaiasteel$(0)
+
+botanicadds.page.terra_catalyst0=$(item)Terra Catalyst$(0) is used as another type of catalyst. It may also be used as a splitter for some resources such as $(item)Gaia Spirit$(0).
+botanicadds.page.terra_catalyst1=Crafting the $(item)Terra Catalyst$(0).
+botanicadds.page.terra_catalyst2=Conjuring some $(item)Gaia Shards$(0).
+
+botanicadds.page.dreaming_pool0=$(item)Dreaming Mana Pool$(0) is another pool of mana, made from $(item)Dreamrock$(0). This pool is twice larger than a normal pool. Enjoy!
+botanicadds.page.dreaming_pool1=Getting ridiculous...
+
+botanicadds.page.mana_stealer_sword0=$(item)Mana Stealing Blade$(0) is an improvement to $(item)Terra Blade$(0). This time though, it deals more damage AND it's capable of drawing mana from your enemy players!
+botanicadds.page.mana_stealer_sword1=Crafting the $(item)Mana Stealing Blade$(0).
+
+botanicadds.page.elven_brewery0=$(item)Elven Brewery$(0) is an improved version of $(item)Botanical Brewery$(0). Combining it with $(l:alfhomancy/elf_resources)$(item)Dragonstone$(0)$(/l) and $(l:botanicadds/basics/elf_resources_extra)$(item)Dreamrock$(0)$(/l) allows attaching $(item)Sparks$(0) to it, making the crafting process way faster.
+botanicadds.page.elven_brewery1=Making $(item)Elven Brewery$(0)
+
+botanicadds.page.aura_ring_gaia0=The $(item)Gaia Band of Aura$(0) is an upgrade to $(l:baubles/aura_ring)$(item)Greater Band of Aura$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band creates mana twice as fast, as a $(item)Greater Band of Aura$(0)!
+botanicadds.page.aura_ring_gaia1=Crafting the $(item)Gaia Band of Aura$(0).
+
+botanicadds.page.mana_ring_gaia0=The $(item)Gaia Band of Mana$(0) is an upgrade to $(l:baubles/mana_ring)$(item)Greater Band of Mana$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band stores about four times as much mana, as a $(item)Greater Band of Mana$(0)!
+botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
+
+
 
 botania.entry.ba_terra_protector=Terra Protector
-botania.tagline.ba_terra_protector=Not Draconic Evolution.
-botania.page.ba_terra_protector1=&1Terra Protector&0 is aimed at providing complete protection to any damage at cost of mana. It's not made from rubber though, thus it can overheat and stop working. Don't use it too much, if you don't want to die. A good way to demonstrate what will happen is hugging a cacti.
-botania.page.ba_terra_protector2=Crafting the &1Terra Protector&0.
-
-botania.entry.ba_ring_aura_gaia=Gaia Band of Aura
-botania.tagline.ba_ring_aura_gaia=Stuff your tablets with mana!
-botania.page.ba_ring_aura_gaia1=The &1Gaia Band of Aura&0 is an upgrade to &4Greater Band of Aura&0 with a piece of &1Gaiasteel&0. This band creates mana twice as fast, as a &4Greater Band of Aura&0!
-botania.page.ba_ring_aura_gaia2=Crafting the &1Gaia Band of Aura&0.
-
-botania.entry.ba_mana_stealer_sword=Mana Stealing Blade
-botania.tagline.ba_mana_stealer_sword=Oh, and it hurts, too!
-botania.page.ba_mana_stealer_sword1=&1Mana Stealing Blade&0 is an improvement to &4Terra Blade&0. This time though, it deals more damage AND it's capable of drawing mana from your enemy players!
-botania.page.ba_mana_stealer_sword2=Crafting the &1Mana Stealing Blade&0.
+botania.page.ba_terra_protector1=$(item)Terra Protector$(0) is aimed at providing complete protection to any damage at cost of mana. It's not made from rubber though, thus it can overheat and stop working. Don't use it too much, if you don't want to die. A good way to demonstrate what will happen is hugging a cacti.
+botania.page.ba_terra_protector2=Crafting the $(item)Terra Protector$(0).

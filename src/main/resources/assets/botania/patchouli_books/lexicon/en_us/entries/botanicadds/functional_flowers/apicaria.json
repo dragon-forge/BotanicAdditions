@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.apicaria",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/apicaria",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.apicaria0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.apicaria1",
+      "recipe": "botanicadds:flowers/apicaria"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_apicaria": 1
+  }
+}

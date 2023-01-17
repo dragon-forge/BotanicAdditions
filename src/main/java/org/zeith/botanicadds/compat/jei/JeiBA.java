@@ -3,7 +3,6 @@ package org.zeith.botanicadds.compat.jei;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.*;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -13,10 +12,12 @@ import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.compat.jei.cats.GaiaPlateRecipeCategory;
 import org.zeith.botanicadds.init.BlocksBA;
 import org.zeith.botanicadds.init.RecipeTypesBA;
+import org.zeith.hammerlib.compat.jei.JeiHammerLib;
 import vazkii.botania.client.integration.jei.BreweryRecipeCategory;
 import vazkii.botania.client.integration.jei.RunicAltarRecipeCategory;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
 
 @JeiPlugin
 public class JeiBA
@@ -52,10 +53,8 @@ public class JeiBA
 	
 	private static <T extends Recipe<C>, C extends Container> List<T> sortRecipes(RecipeType<T> type, Comparator<? super T> comparator)
 	{
-		var lvl = Minecraft.getInstance().level;
-		Collection<T> recipes = lvl != null ? lvl.getRecipeManager().byType(type).values() : Collections.emptyList();
-		List<T> list = new ArrayList<>(recipes);
-		list.sort(comparator);
-		return list;
+		return JeiHammerLib.getRecipes(type)
+				.sorted(comparator)
+				.toList();
 	}
 }

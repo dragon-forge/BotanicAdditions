@@ -5,8 +5,11 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -23,13 +26,21 @@ public class RecipeAttuneTesseract
 	@RegistryName("attune_tesseract")
 	public static final SimpleRecipeSerializer<RecipeAttuneTesseract> ATTUNE_TESSERACT = new SimpleRecipeSerializer<>(RecipeAttuneTesseract::new);
 	
+	public static final TagKey<Item> TESSERACT_ATTUNABLE = ItemTags.create(BotanicAdditions.id("tesseract_attunable"));
+	
 	public RecipeAttuneTesseract(ResourceLocation id)
 	{
 		super(id, BotanicAdditions.MOD_ID + "_tesseract_attune", new ItemStack(BlocksBA.MANA_TESSERACT), Util.make(NonNullList.create(), lst ->
 		{
 			lst.add(Ingredient.of(ItemsBA.TESSERACT_ATTUNER));
-			lst.add(Ingredient.of(BlocksBA.MANA_TESSERACT.asItem()));
+			lst.add(Ingredient.of(TESSERACT_ATTUNABLE));
 		}));
+	}
+	
+	@Override
+	public boolean isSpecial()
+	{
+		return true;
 	}
 	
 	@Override
@@ -93,6 +104,7 @@ public class RecipeAttuneTesseract
 		{
 			ItemStack it = inv.getItem(j);
 			if(!it.isEmpty())
+			{
 				if(it.is(ItemsBA.TESSERACT_ATTUNER))
 				{
 					CompoundTag compoundtag = it.getTagElement("display");
@@ -114,7 +126,11 @@ public class RecipeAttuneTesseract
 							compoundtag.remove("Name");
 						}
 					}
+				} else
+				{
+					item = it.copy().split(1);
 				}
+			}
 		}
 		
 		if(channel == null) return ItemStack.EMPTY;

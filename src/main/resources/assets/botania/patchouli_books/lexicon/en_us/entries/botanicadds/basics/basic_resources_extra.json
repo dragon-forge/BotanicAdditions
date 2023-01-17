@@ -1,0 +1,26 @@
+{
+  "name": "botanicadds.entry.basic_resources_extra",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:mana_lapis",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.basic_resources_extra0"
+    },
+    {
+      "type": "botania:mana_infusion",
+      "text": "botanicadds.page.basic_resources_extra1",
+      "recipes": [ "botanicadds:mana_lapis", "botanicadds:mana_lapis_block" ]
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "botanicadds.page.basic_resources_extra2",
+      "recipe": "botanicadds:rune_tp"
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "botanicadds.page.basic_resources_extra3",
+      "recipe": "botanicadds:rune_energy"
+    }
+  ]
+}

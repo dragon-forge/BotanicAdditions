@@ -1,0 +1,20 @@
+{
+  "name": "item.botanicadds.mana_stealer_sword",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:mana_stealer_sword",
+  
+  "entry_color": "FF666D",
+  "advancement": "botania:main/gaia_guardian_kill",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.mana_stealer_sword0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.mana_stealer_sword1",
+      "recipe": "botanicadds:mana_stealer_sword"
+    }
+  ]
+}

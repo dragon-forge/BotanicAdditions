@@ -6,7 +6,7 @@ mod_version=19.3.0
 
 # Maven Info
 maven_group=org.zeith.botanicadds
-hl_version=19.3.46
+hl_version=19.3.49
 
 # MC Info
 mc_version=1.19.2

@@ -1,0 +1,20 @@
+{
+  "name": "block.botanicadds.elven_altar",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:elven_altar",
+  
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.elven_altar0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.elven_altar1",
+      "recipe": "botanicadds:elven_altar"
+    }
+  ]
+}

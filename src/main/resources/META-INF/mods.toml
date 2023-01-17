@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
-issueTrackerURL = "https://gitlab.com/DragonForge/<NAME>/issues"
+issueTrackerURL = "https://github.com/dragon-forge/BotanicAdditions/issues"
 license = "All rights reserved"
 
 [[mods]]
@@ -13,8 +13,7 @@ logoFile = "icon.png"
 authors = "Zeitheron"
 
 description = '''
-Multi-line description
-of the mod!
+Implementing handy features for Botania!
 '''
 
 [[dependencies.botanicadds]]
@@ -23,18 +22,21 @@ mandatory = true
 versionRange = "[43,)"
 ordering = "NONE" # NONE/BEFORE/AFTER
 side = "BOTH"
+
 [[dependencies.botanicadds]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,1.20)"
 ordering = "NONE"
 side = "BOTH"
+
 [[dependencies.botanicadds]]
 modId = "hammerlib"
 mandatory = true
-versionRange = "[19.1,)"
+versionRange = "[19.3.49,)"
 ordering = "NONE"
 side = "BOTH"
+
 [[dependencies.botanicadds]]
 modId = "botania"
 mandatory = true

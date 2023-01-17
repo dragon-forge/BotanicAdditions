@@ -22,12 +22,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.BotanicAdditions;
+import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
 import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
 import org.zeith.botanicadds.world.WorldTesseractData;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
 import org.zeith.hammerlib.api.forge.BlockAPI;
 import org.zeith.hammerlib.core.adapter.BlockHarvestAdapter;
+import org.zeith.hammerlib.core.adapter.TagAdapter;
 import org.zeith.hammerlib.util.java.Cast;
 
 import java.util.List;
@@ -167,6 +169,8 @@ public class BlockManaTesseract
 	@Override
 	public BlockItem createBlockItem()
 	{
-		return new BlockItem(this, new Item.Properties().tab(TAB));
+		var bi = new BlockItem(this, new Item.Properties().tab(TAB));
+		TagAdapter.bind(RecipeAttuneTesseract.TESSERACT_ATTUNABLE, bi);
+		return bi;
 	}
 }

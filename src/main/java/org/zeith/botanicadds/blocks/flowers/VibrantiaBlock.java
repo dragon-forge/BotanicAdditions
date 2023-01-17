@@ -32,7 +32,7 @@ public class VibrantiaBlock
 {
 	public VibrantiaBlock(MobEffect stewEffect, int stewDuration, Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> blockEntityType)
 	{
-		super(stewEffect, stewDuration, props, blockEntityType);
+		super(FlowerKind.GENERATING, stewEffect, stewDuration, props, blockEntityType);
 	}
 	
 	@Override

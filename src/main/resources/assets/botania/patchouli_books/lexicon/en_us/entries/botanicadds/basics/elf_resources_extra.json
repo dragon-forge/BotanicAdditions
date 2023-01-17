@@ -1,0 +1,35 @@
+{
+  "name": "botanicadds.entry.elf_resources_extra",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:dreamrock",
+  
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.elf_resources_extra0"
+    },
+    {
+      "type": "botania:elven_trade",
+      "text": "botanicadds.page.elf_resources_extra1",
+      "recipes": [ "botanicadds:elven_lapis", "botanicadds:elven_lapis_block" ]
+    },
+    {
+      "type": "botania:elven_trade",
+      "text": "botanicadds.page.elf_resources_extra2",
+      "recipes": "botanicadds:dreamrock"
+    },
+    {
+      "type": "botania:elven_trade",
+      "text": "botanicadds.page.elf_resources_extra3",
+      "recipes": "botanicadds:elvenwood_log"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.elf_resources_extra4",
+      "recipe": "botanicadds:elvenwood"
+    }
+  ]
+}

@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.api.tile.IElvenBrewery;
 import org.zeith.botanicadds.init.TilesBA;
-import org.zeith.botanicadds.mixins.BlockEntityAccessor;
 import org.zeith.botanicadds.util.SparkUtil;
+import org.zeith.hammerlib.api.forge.BlockAPI;
 import org.zeith.hammerlib.util.java.Cast;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -43,7 +43,7 @@ public class TileElvenBrewery
 	public TileElvenBrewery(BlockPos pos, BlockState state)
 	{
 		super(pos, state);
-		((BlockEntityAccessor) this).botanicAdditionsSetType(TilesBA.ELVEN_BREWERY);
+		BlockAPI.spoofBlockEntityType(this, TilesBA.ELVEN_BREWERY);
 	}
 	
 	@Override

@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.rainute",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/rainute",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.rainute0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.rainute1",
+      "recipe": "botanicadds:flowers/rainute"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_rainute": 1
+  }
+}

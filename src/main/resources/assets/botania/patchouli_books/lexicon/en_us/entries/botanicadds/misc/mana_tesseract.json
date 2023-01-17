@@ -1,0 +1,25 @@
+{
+  "name": "block.botanicadds.mana_tesseract",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:mana_tesseract",
+  
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.mana_tesseract0"
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "botanicadds.page.mana_tesseract1",
+      "recipe": "botanicadds:mana_tesseract"
+    },
+    {
+      "type": "botania:runic_altar",
+      "text": "botanicadds.page.mana_tesseract2",
+      "recipe": "botanicadds:tesseract_attuner"
+    }
+  ]
+}

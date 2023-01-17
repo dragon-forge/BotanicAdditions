@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.tempestea",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/tempestea",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.tempestea0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.tempestea1",
+      "recipe": "botanicadds:flowers/tempestea"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_tempestea": 1
+  }
+}

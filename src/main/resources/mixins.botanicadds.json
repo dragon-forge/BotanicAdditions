@@ -6,8 +6,9 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BlockEntityAccessor",
     "BreweryBlockEntityMixin",
+    "CampfireBlockMixin",
+    "LootPoolAccessor",
     "ManaPoolBlockEntityMixin",
     "RunicAltarBlockEntityAccessor"
   ],

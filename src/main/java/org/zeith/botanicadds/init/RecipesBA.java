@@ -1,29 +1,23 @@
 package org.zeith.botanicadds.init;
 
-import net.minecraft.commands.CommandFunction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.zeith.botanicadds.BotanicAdditions;
+import org.zeith.botanicadds.api.recipes.BotanicAdditionsRecipeExtension;
 import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
-import org.zeith.botanicadds.crafting.RecipeGaiaPlate;
 import org.zeith.botanicadds.items.ItemSculkPetal;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
-import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.event.recipe.RegisterRecipesEvent;
 import vazkii.botania.common.block.BotaniaBlocks;
-import vazkii.botania.common.crafting.*;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.BotaniaItems;
 import vazkii.botania.common.lib.BotaniaTags;
 
 import java.util.Arrays;
-import java.util.Set;
 
 @ProvideRecipes
 public class RecipesBA
@@ -32,12 +26,19 @@ public class RecipesBA
 	@Override
 	public void provideRecipes(RegisterRecipesEvent e)
 	{
-		pureDaisy(e);
-		manaInfusionRecipes(e);
-		petalApothecary(e);
-		altar(e);
-		elvenTrade(e);
-		gaiaPlate(e);
+		var ba = e.extension(BotanicAdditionsRecipeExtension.class);
+		if(ba == null)
+		{
+			BotanicAdditions.LOG.error("Failed to grab BotanicAdditionsRecipeExtension while reloading recipes.");
+			return;
+		}
+		
+		pureDaisy(ba);
+		manaInfusionRecipes(ba);
+		petalApothecary(ba);
+		altar(ba);
+		elvenTrade(ba);
+		gaiaPlate(ba);
 		
 		e.shaped().result(BlocksBA.TERRA_CATALYST)
 				.shape("sgs", "tct", "sts")
@@ -62,14 +63,14 @@ public class RecipesBA
 				.map('l', ItemsBA.GAIASTEEL_INGOT.getTag())
 				.register();
 		
-		e.shaped().result(ItemsBA.GAIASTEEL_INGOT)
+		e.shaped().result(ItemsBA.GAIASTEEL_INGOT).id(BotanicAdditions.id("gaiasteel_ingot_from_nuggets"))
 				.shape("lll", "lll", "lll")
 				.map('l', ItemsBA.GAIASTEEL_NUGGET.getTag())
 				.register();
 		
 		e.shapeless().add(BlocksBA.MANA_LAPIS_BLOCK.itemTag).result(new ItemStack(ItemsBA.MANA_LAPIS, 9)).register();
 		e.shapeless().add(BlocksBA.ELVEN_LAPIS_BLOCK.itemTag).result(new ItemStack(ItemsBA.ELVEN_LAPIS, 9)).register();
-		e.shapeless().add(BlocksBA.GAIASTEEL_BLOCK.itemTag).result(new ItemStack(ItemsBA.GAIASTEEL_INGOT, 9)).register();
+		e.shapeless().add(BlocksBA.GAIASTEEL_BLOCK.itemTag).id(BotanicAdditions.id("gaiasteel_ingots_from_block")).result(new ItemStack(ItemsBA.GAIASTEEL_INGOT, 9)).register();
 		e.shapeless().add(ItemsBA.GAIASTEEL_INGOT.getTag()).result(new ItemStack(ItemsBA.GAIASTEEL_NUGGET, 9)).register();
 		
 		e.shaped().result(BlocksBA.GAIA_PLATE)
@@ -132,184 +133,145 @@ public class RecipesBA
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
 	}
 	
-	public void pureDaisy(RegisterRecipesEvent e)
+	public void pureDaisy(BotanicAdditionsRecipeExtension e)
 	{
-		e.add(new PureDaisyRecipe(e.nextId(BotaniaBlocks.dreamwood.asItem()),
-				new BlocksStateIngredient(Set.of(BlocksBA.ELVENWOOD_LOG, BlocksBA.ELVENWOOD)),
-				BotaniaBlocks.dreamwood.defaultBlockState(),
-				60 * 20,
-				CommandFunction.CacheableFunction.NONE
-		));
+		e.pureDaisy().result(BotaniaBlocks.dreamwood)
+				.input(BlocksBA.ELVENWOOD_LOG, BlocksBA.ELVENWOOD)
+				.register();
 	}
 	
-	public void manaInfusionRecipes(RegisterRecipesEvent e)
+	public void manaInfusionRecipes(BotanicAdditionsRecipeExtension e)
 	{
 		int lapisInfusion = 5000;
 		
-		e.add(new ManaInfusionRecipe(e.nextId(ItemsBA.MANA_LAPIS),
-				new ItemStack(ItemsBA.MANA_LAPIS),
-				RecipeHelper.fromTag(Tags.Items.GEMS_LAPIS),
-				lapisInfusion,
-				null, null
-		));
+		e.manaPool().result(ItemsBA.MANA_LAPIS)
+				.input(Tags.Items.GEMS_LAPIS)
+				.mana(lapisInfusion)
+				.register();
 		
-		e.add(new ManaInfusionRecipe(e.nextId(BlocksBA.MANA_LAPIS_BLOCK.asItem()),
-				new ItemStack(BlocksBA.MANA_LAPIS_BLOCK),
-				RecipeHelper.fromTag(Tags.Items.STORAGE_BLOCKS_LAPIS),
-				lapisInfusion * 9,
-				null, null
-		));
+		e.manaPool().result(BlocksBA.MANA_LAPIS_BLOCK)
+				.input(Tags.Items.STORAGE_BLOCKS_LAPIS)
+				.mana(lapisInfusion * 9)
+				.register();
 		
-		e.add(new ManaInfusionRecipe(e.nextId(ItemsBA.GAIA_SHARD),
-				new ItemStack(ItemsBA.GAIA_SHARD, 8),
-				Ingredient.of(BotaniaItems.lifeEssence),
-				10000,
-				null, new BlocksStateIngredient(Set.of(BlocksBA.TERRA_CATALYST))
-		));
+		e.manaPool().result(ItemsBA.GAIA_SHARD, 8)
+				.input(BotaniaItems.lifeEssence)
+				.mana(10_000)
+				.catalyst(BlocksBA.TERRA_CATALYST)
+				.register();
 	}
 	
-	public void petalApothecary(RegisterRecipesEvent e)
+	public void petalApothecary(BotanicAdditionsRecipeExtension e)
 	{
-		var seeds = Ingredient.of(BotaniaTags.Items.SEED_APOTHECARY_REAGENT);
-		
-		var petalsBlack = Ingredient.of(BotaniaTags.Items.PETALS_BLACK);
-		var petalsBlue = Ingredient.of(BotaniaTags.Items.PETALS_BLUE);
-		var petalsBrown = Ingredient.of(BotaniaTags.Items.PETALS_BROWN);
-		var petalsCyan = Ingredient.of(BotaniaTags.Items.PETALS_CYAN);
-		var petalsGray = Ingredient.of(BotaniaTags.Items.PETALS_GRAY);
-		var petalsGreen = Ingredient.of(BotaniaTags.Items.PETALS_GREEN);
-		var petalsLightBlue = Ingredient.of(BotaniaTags.Items.PETALS_LIGHT_BLUE);
-		var petalsLightGray = Ingredient.of(BotaniaTags.Items.PETALS_LIGHT_GRAY);
-		var petalsLime = Ingredient.of(BotaniaTags.Items.PETALS_LIME);
-		var petalsMagenta = Ingredient.of(BotaniaTags.Items.PETALS_MAGENTA);
-		var petalsOrange = Ingredient.of(BotaniaTags.Items.PETALS_ORANGE);
-		var petalsPink = Ingredient.of(BotaniaTags.Items.PETALS_PINK);
-		var petalsPurple = Ingredient.of(BotaniaTags.Items.PETALS_PURPLE);
-		var petalsRed = Ingredient.of(BotaniaTags.Items.PETALS_RED);
-		var petalsWhite = Ingredient.of(BotaniaTags.Items.PETALS_WHITE);
-		var petalsYellow = Ingredient.of(BotaniaTags.Items.PETALS_YELLOW);
-		var petalsSculk = Ingredient.of(ItemSculkPetal.PETALS_SCULK);
+		var petalsBlack = BotaniaTags.Items.PETALS_BLACK;
+		var petalsBlue = BotaniaTags.Items.PETALS_BLUE;
+		var petalsBrown = BotaniaTags.Items.PETALS_BROWN;
+		var petalsCyan = BotaniaTags.Items.PETALS_CYAN;
+		var petalsGray = BotaniaTags.Items.PETALS_GRAY;
+		var petalsGreen = BotaniaTags.Items.PETALS_GREEN;
+		var petalsLightBlue = BotaniaTags.Items.PETALS_LIGHT_BLUE;
+		var petalsLightGray = BotaniaTags.Items.PETALS_LIGHT_GRAY;
+		var petalsLime = BotaniaTags.Items.PETALS_LIME;
+		var petalsMagenta = BotaniaTags.Items.PETALS_MAGENTA;
+		var petalsOrange = BotaniaTags.Items.PETALS_ORANGE;
+		var petalsPink = BotaniaTags.Items.PETALS_PINK;
+		var petalsPurple = BotaniaTags.Items.PETALS_PURPLE;
+		var petalsRed = BotaniaTags.Items.PETALS_RED;
+		var petalsWhite = BotaniaTags.Items.PETALS_WHITE;
+		var petalsYellow = BotaniaTags.Items.PETALS_YELLOW;
+		var petalsSculk = ItemSculkPetal.PETALS_SCULK;
 		
 		var zeithHead = new ItemStack(Items.PLAYER_HEAD);
 		ItemNBTHelper.setString(zeithHead, "SkullOwner", "Zeitheron");
-		Ingredient[] lightBluePetals = new Ingredient[16];
+		Object[] lightBluePetals = new Object[16];
 		Arrays.fill(lightBluePetals, petalsLightBlue);
-		e.add(new PetalsRecipe(BotanicAdditions.id("zeitheron_head"),
-				zeithHead, seeds,
-				lightBluePetals
-		));
+		e.petalApothecary().result(zeithHead)
+				.addAll(lightBluePetals)
+				.register();
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.NECROIDUS.asItem()),
-				new ItemStack(FlowersBA.NECROIDUS), seeds,
-				
-				petalsBlack, petalsBlack, petalsBlack, petalsBlack, petalsGray, petalsGray, petalsGray, petalsGray,
-				Ingredient.of(Items.WITHER_SKELETON_SKULL),
-				Ingredient.of(BotaniaItems.redstoneRoot),
-				Ingredient.of(BotaniaItems.runeGluttony),
-				Ingredient.of(BotaniaItems.runeWrath)
-		));
+		e.petalApothecary().result(FlowersBA.NECROIDUS)
+				.addAll(petalsBlack, petalsBlack, petalsBlack, petalsBlack, petalsGray, petalsGray, petalsGray, petalsGray)
+				.addAll(Items.WITHER_SKELETON_SKULL, BotaniaItems.redstoneRoot, BotaniaItems.runeGluttony, BotaniaItems.runeWrath)
+				.register();
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.RAINUTE.asItem()),
-				new ItemStack(FlowersBA.RAINUTE), seeds,
-				petalsBlue, petalsBlue, petalsBlue, petalsBlue, petalsLightBlue, petalsLightBlue, petalsYellow
-		));
+		e.petalApothecary().result(FlowersBA.RAINUTE)
+				.addAll(petalsBlue, petalsBlue, petalsBlue, petalsBlue, petalsLightBlue, petalsLightBlue, petalsYellow)
+				.register();
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.GLACIFLORA.asItem()),
-				new ItemStack(FlowersBA.GLACIFLORA), seeds,
-				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsWhite, petalsWhite, petalsWhite
-		));
+		e.petalApothecary().result(FlowersBA.GLACIFLORA)
+				.addAll(petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsWhite, petalsWhite, petalsWhite)
+				.register();
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.TEMPESTEA.asItem()),
-				new ItemStack(FlowersBA.TEMPESTEA), seeds,
-				
-				petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsBlue,
-				Ingredient.of(ItemsBA.RUNE_ENERGY)
-		));
+		e.petalApothecary().result(FlowersBA.TEMPESTEA)
+				.addAll(petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsLightBlue, petalsBlue)
+				.add(ItemsBA.RUNE_ENERGY)
+				.register();
 		
-		e.add(new PetalsRecipe(e.nextId(FlowersBA.VIBRANTIA.asItem()),
-				new ItemStack(FlowersBA.VIBRANTIA), seeds,
-				
-				petalsSculk, petalsSculk, petalsGray, petalsBlack, petalsBlack,
-				Ingredient.of(BotaniaItems.runeMana)
-		));
+		e.petalApothecary().result(FlowersBA.VIBRANTIA)
+				.addAll(petalsSculk, petalsSculk, petalsGray, petalsBlack, petalsBlack)
+				.add(BotaniaItems.runeMana)
+				.register();
+		
+		e.petalApothecary().result(FlowersBA.APICARIA)
+				.add(Items.HONEYCOMB)
+				.addAll(petalsYellow, petalsYellow, petalsOrange, petalsOrange)
+				.add(BotaniaItems.runeSpring)
+				.register();
 	}
 	
-	public void altar(RegisterRecipesEvent e)
+	public void altar(BotanicAdditionsRecipeExtension e)
 	{
-		e.add(new RunicAltarRecipe(e.nextId(ItemsBA.RUNE_TP), ItemsBA.RUNE_TP.getDefaultInstance(), 18_000,
-				Ingredient.of(BotaniaItems.runeMana),
-				Ingredient.of(Tags.Items.ENDER_PEARLS),
-				Ingredient.of(BotaniaItems.manaDiamond),
-				Ingredient.of(BotaniaItems.manaDiamond)
-		));
+		e.runicAltar().result(ItemsBA.RUNE_TP)
+				.addAll(Tags.Items.ENDER_PEARLS, BotaniaItems.runeMana, BotaniaItems.manaDiamond, BotaniaItems.manaDiamond)
+				.mana(18_000)
+				.register();
 		
-		e.add(new RunicAltarRecipe(e.nextId(ItemsBA.RUNE_ENERGY), ItemsBA.RUNE_ENERGY.getDefaultInstance(), 18_000,
-				Ingredient.of(BotaniaItems.runeFire),
-				Ingredient.of(BotaniaItems.runeAir),
-				Ingredient.of(BotaniaItems.manaDiamond),
-				Ingredient.of(BotaniaItems.manaDiamond),
-				Ingredient.of(Tags.Items.DUSTS_REDSTONE),
-				Ingredient.of(Tags.Items.DUSTS_REDSTONE)
-		));
+		e.runicAltar().result(ItemsBA.RUNE_ENERGY)
+				.addAll(BotaniaItems.runeFire, BotaniaItems.runeAir, BotaniaItems.manaDiamond, BotaniaItems.manaDiamond)
+				.addAll(Tags.Items.DUSTS_REDSTONE, Tags.Items.DUSTS_REDSTONE)
+				.mana(18_000)
+				.register();
 		
-		e.add(new RunicAltarRecipe(e.nextId(BlocksBA.MANA_TESSERACT.asItem()), new ItemStack(BlocksBA.MANA_TESSERACT), 50_000,
-				Ingredient.of(ItemsBA.RUNE_TP),
-				Ingredient.of(BlocksBA.DREAMROCK),
-				Ingredient.of(BotaniaTags.Items.INGOTS_TERRASTEEL),
-				Ingredient.of(BotaniaItems.redString)
-		));
+		e.runicAltar().result(BlocksBA.MANA_TESSERACT)
+				.addAll(ItemsBA.RUNE_TP, BlocksBA.DREAMROCK, BotaniaTags.Items.INGOTS_TERRASTEEL, BotaniaItems.redString)
+				.mana(50_000)
+				.register();
 		
-		e.add(new RunicAltarRecipe(e.nextId(ItemsBA.TESSERACT_ATTUNER), new ItemStack(ItemsBA.TESSERACT_ATTUNER), 10_000,
-				Ingredient.of(BotaniaItems.dreamwoodTwig),
-				Ingredient.of(BotaniaItems.runeMana),
-				Ingredient.of(BotaniaItems.redString),
-				Ingredient.of(Items.NAME_TAG)
-		));
+		e.runicAltar().result(ItemsBA.TESSERACT_ATTUNER)
+				.addAll(BotaniaItems.dreamwoodTwig, BotaniaItems.runeMana, BotaniaItems.redString, Items.NAME_TAG)
+				.mana(10_000)
+				.register();
 	}
 	
-	public void elvenTrade(RegisterRecipesEvent e)
+	public void elvenTrade(BotanicAdditionsRecipeExtension e)
 	{
-		e.add(new ElvenTradeRecipe(e.nextId(ItemsBA.ELVEN_LAPIS),
-				new ItemStack[] { ItemsBA.ELVEN_LAPIS.getDefaultInstance() },
-				RecipeHelper.fromComponent(ItemsBA.MANA_LAPIS.getTag())
-		));
+		e.elvenTrade().result(ItemsBA.ELVEN_LAPIS)
+				.input(ItemsBA.MANA_LAPIS.getTag())
+				.register();
 		
-		e.add(new ElvenTradeRecipe(e.nextId(BlocksBA.ELVEN_LAPIS_BLOCK.asItem()),
-				new ItemStack[] { new ItemStack(BlocksBA.ELVEN_LAPIS_BLOCK) },
-				RecipeHelper.fromComponent(BlocksBA.MANA_LAPIS_BLOCK.itemTag)
-		));
+		e.elvenTrade().result(BlocksBA.ELVEN_LAPIS_BLOCK)
+				.input(BlocksBA.MANA_LAPIS_BLOCK.itemTag)
+				.register();
 		
-		e.add(new ElvenTradeRecipe(e.nextId(BlocksBA.ELVENWOOD_LOG.asItem()),
-				new ItemStack[] { new ItemStack(BlocksBA.ELVENWOOD_LOG) },
-				RecipeHelper.fromComponent(ItemTags.OVERWORLD_NATURAL_LOGS)
-		));
+		e.elvenTrade().result(BlocksBA.ELVENWOOD_LOG)
+				.input(ItemTags.OVERWORLD_NATURAL_LOGS)
+				.register();
 		
-		e.add(new ElvenTradeRecipe(e.nextId(BlocksBA.DREAMROCK.asItem()),
-				new ItemStack[] { new ItemStack(BlocksBA.DREAMROCK) },
-				RecipeHelper.fromComponent(BotaniaBlocks.livingrock)
-		));
+		e.elvenTrade().result(BlocksBA.DREAMROCK)
+				.input(BotaniaBlocks.livingrock)
+				.register();
 	}
 	
-	public void gaiaPlate(RegisterRecipesEvent e)
+	public void gaiaPlate(BotanicAdditionsRecipeExtension e)
 	{
-		e.add(new RecipeGaiaPlate(e.nextId(BotaniaItems.terrasteel),
-				300_000,
-				NonNullList.of(Ingredient.EMPTY,
-						RecipeHelper.fromComponent(BotaniaItems.manaSteel),
-						RecipeHelper.fromComponent(BotaniaItems.manaDiamond),
-						RecipeHelper.fromComponent(BotaniaItems.manaPearl)
-				),
-				new ItemStack(BotaniaItems.terrasteel)
-		));
+		e.gaiaPlate().result(BotaniaItems.terrasteel).id(BotanicAdditions.id("terrasteel"))
+				.addAll(BotaniaItems.manaSteel, BotaniaItems.manaDiamond, BotaniaItems.manaPearl)
+				.mana(300_000)
+				.register();
 		
-		e.add(new RecipeGaiaPlate(e.nextId(ItemsBA.GAIASTEEL_INGOT),
-				1_000_000,
-				NonNullList.of(Ingredient.EMPTY,
-						RecipeHelper.fromComponent(BotaniaItems.dragonstone),
-						RecipeHelper.fromComponent(BotaniaItems.pixieDust),
-						RecipeHelper.fromComponent(BotaniaItems.gaiaIngot)
-				),
-				new ItemStack(ItemsBA.GAIASTEEL_INGOT)
-		));
+		e.gaiaPlate().result(ItemsBA.GAIASTEEL_INGOT)
+				.addAll(BotaniaItems.dragonstone, BotaniaItems.pixieDust, BotaniaItems.gaiaIngot)
+				.mana(1_000_000)
+				.register();
 	}
 }

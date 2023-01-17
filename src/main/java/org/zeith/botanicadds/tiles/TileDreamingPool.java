@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import org.zeith.botanicadds.api.tile.ICustomCapacityManaPool;
 import org.zeith.botanicadds.init.TilesBA;
-import org.zeith.botanicadds.mixins.BlockEntityAccessor;
+import org.zeith.hammerlib.api.forge.BlockAPI;
 import vazkii.botania.common.block.block_entity.mana.ManaPoolBlockEntity;
 
 public class TileDreamingPool
@@ -14,7 +14,7 @@ public class TileDreamingPool
 	public TileDreamingPool(BlockPos pos, BlockState state)
 	{
 		super(pos, state);
-		((BlockEntityAccessor) this).botanicAdditionsSetType(TilesBA.DREAMING_POOL);
+		BlockAPI.spoofBlockEntityType(this, TilesBA.DREAMING_POOL);
 	}
 	
 	@Override

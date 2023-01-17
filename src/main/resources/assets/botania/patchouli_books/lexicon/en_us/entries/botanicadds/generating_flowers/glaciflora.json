@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.glaciflora",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/glaciflora",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.glaciflora0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.glaciflora1",
+      "recipe": "botanicadds:flowers/glaciflora"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_glaciflora": 1
+  }
+}

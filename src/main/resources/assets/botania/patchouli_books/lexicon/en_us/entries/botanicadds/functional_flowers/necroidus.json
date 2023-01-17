@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.necroidus",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/necroidus",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.necroidus0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.necroidus1",
+      "recipe": "botanicadds:flowers/necroidus"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:floating_necroidus": 1
+  }
+}

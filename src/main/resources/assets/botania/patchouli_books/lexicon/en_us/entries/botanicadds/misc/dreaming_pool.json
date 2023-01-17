@@ -1,0 +1,20 @@
+{
+  "name": "block.botanicadds.dreaming_pool",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:dreaming_pool",
+  
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.dreaming_pool0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.dreaming_pool1",
+      "recipe": "botanicadds:dreaming_pool"
+    }
+  ]
+}

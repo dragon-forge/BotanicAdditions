@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL11;
 import org.zeith.botanicadds.init.TilesBA;
-import org.zeith.botanicadds.mixins.BlockEntityAccessor;
 import org.zeith.botanicadds.mixins.RunicAltarBlockEntityAccessor;
 import org.zeith.botanicadds.util.SparkUtil;
+import org.zeith.hammerlib.api.forge.BlockAPI;
 import org.zeith.hammerlib.util.java.Cast;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
@@ -45,7 +45,7 @@ public class TileElvenAltar
 	public TileElvenAltar(BlockPos pos, BlockState state)
 	{
 		super(pos, state);
-		((BlockEntityAccessor) this).botanicAdditionsSetType(TilesBA.ELVEN_ALTAR);
+		BlockAPI.spoofBlockEntityType(this, TilesBA.ELVEN_ALTAR);
 	}
 	
 	@Override
