@@ -43,7 +43,7 @@ public interface FlowersBA
 	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, FLOWER_PROPS, () -> FlowersBA.VIBRANTIA_TYPE);
 	
 	@RegistryName("apicaria")
-	FlowerBlock APICARIA = createGeneratingFlowerBlock(MobEffects.POISON, 100, FLOWER_PROPS, () -> FlowersBA.APICARIA_TYPE);
+	FlowerBlock APICARIA = createFunctionalFlowerBlock(MobEffects.POISON, 100, FLOWER_PROPS, () -> FlowersBA.APICARIA_TYPE);
 	
 	// TILE ENTITY TYPES
 	
