@@ -44,6 +44,12 @@ public class Glaciflora
 		}
 	}
 	
+	@Override
+	public boolean isOvergrowthAffected()
+	{
+		return false;
+	}
+	
 	public int getDelayBetweenPassiveGeneration()
 	{
 		return hasOvergrownSoil ? 1 : 4;

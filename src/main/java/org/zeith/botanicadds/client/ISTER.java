@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import org.zeith.botanicadds.client.render.tile.TESRGaiasteelPylon;
 import org.zeith.botanicadds.init.BlocksBA;
 import vazkii.botania.client.render.block_entity.TEISR;
 
@@ -19,6 +20,7 @@ import java.util.function.Function;
 public class ISTER
 {
 	public static final Map<Block, Function<Block, TEISR>> BE_ITEM_RENDERER_FACTORIES = Map.of(
+			BlocksBA.GAIASTEEL_PYLON, TESRGaiasteelPylon.ItemRenderer::new,
 			BlocksBA.ELVEN_BREWERY, TEISR::new
 	);
 	

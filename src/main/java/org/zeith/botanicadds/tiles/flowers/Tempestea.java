@@ -63,6 +63,12 @@ public class Tempestea
 		}
 	}
 	
+	@Override
+	public boolean isOvergrowthAffected()
+	{
+		return false;
+	}
+	
 	public int getRange()
 	{
 		return hasOvergrownSoil ? 10 : 3;

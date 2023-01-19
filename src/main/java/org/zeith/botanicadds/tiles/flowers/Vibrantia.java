@@ -63,6 +63,12 @@ public class Vibrantia
 	}
 	
 	@Override
+	public boolean isOvergrowthAffected()
+	{
+		return false;
+	}
+	
+	@Override
 	public int getMaxMana()
 	{
 		return hasOvergrownSoil ? 2000 : 1000;

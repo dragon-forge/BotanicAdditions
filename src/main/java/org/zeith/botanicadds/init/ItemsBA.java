@@ -8,12 +8,14 @@ import org.zeith.botanicadds.util.MaterialType;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 
+import java.awt.*;
 import java.util.function.UnaryOperator;
 
 @SimplyRegister
 public interface ItemsBA
 {
-	Rarity GAIASTEEL_RARITY = Rarity.create("BotanicAdditionsGaiaSteel", style -> style.withColor(0xFF666D));
+	Color GAIASTEEL_COLOR = new Color(0xFF666D);
+	Rarity GAIASTEEL_RARITY = Rarity.create("BotanicAdditionsGaiaSteel", style -> style.withColor(GAIASTEEL_COLOR.getRGB()));
 	
 	@RegistryName("rune_tp")
 	Item RUNE_TP = newItem();

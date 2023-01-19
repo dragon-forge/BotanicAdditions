@@ -1,0 +1,20 @@
+{
+  "name": "block.botanicadds.gaiasteel_pylon",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:gaiasteel_pylon",
+
+  "entry_color": "FF666D",
+  "advancement": "botania:main/gaia_guardian_kill",
+  
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.gaiasteel_pylon0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.gaiasteel_pylon1",
+      "recipe": "botanicadds:gaiasteel_pylon"
+    }
+  ]
+}

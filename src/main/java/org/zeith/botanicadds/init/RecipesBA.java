@@ -82,6 +82,13 @@ public class RecipesBA
 				.map('g', ItemsBA.GAIA_SHARD)
 				.register();
 		
+		e.shaped().result(BlocksBA.GAIASTEEL_PYLON)
+				.shape(" g ", "xpx", " g ")
+				.map('g', ItemsBA.GAIASTEEL_NUGGET.getTag())
+				.map('p', BotaniaBlocks.naturaPylon)
+				.map('x', BotaniaBlocks.dreamwoodGlimmering)
+				.register();
+		
 		e.shaped().result(new ItemStack(BlocksBA.ELVENWOOD, 3))
 				.shape("ll", "ll")
 				.map('l', BlocksBA.ELVENWOOD_LOG)

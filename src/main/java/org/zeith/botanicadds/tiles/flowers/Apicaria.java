@@ -60,6 +60,12 @@ public class Apicaria
 		}
 	}
 	
+	@Override
+	public boolean isOvergrowthAffected()
+	{
+		return false;
+	}
+	
 	public int getRange()
 	{
 		return hasOvergrownSoil ? 16 : 8;

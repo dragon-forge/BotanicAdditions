@@ -6,10 +6,13 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AlfheimPortalBlockEntityMixin",
     "BreweryBlockEntityMixin",
     "CampfireBlockMixin",
     "LootPoolAccessor",
     "ManaPoolBlockEntityMixin",
+    "PylonBlockEntityMixin",
+    "RenderHelperAccessor",
     "RunicAltarBlockEntityAccessor",
     "SpecialFlowerBlockEntityAccessor",
     "floating_overgrowth.OvergrowthSeedItemMixin",

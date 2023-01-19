@@ -52,6 +52,9 @@ public interface BlocksBA
 	@RegistryName("reduced_sculk_sensor")
 	BlockSculkSensorDisabled REDUCED_SCULK_SENSOR = new BlockSculkSensorDisabled(BlockBehaviour.Properties.copy(Blocks.SCULK_SENSOR));
 	
+	@RegistryName("gaiasteel_pylon")
+	BlockGaiasteelPylon GAIASTEEL_PYLON = new BlockGaiasteelPylon(BlockBehaviour.Properties.of(Material.METAL).strength(5.5F).sound(SoundType.METAL).lightLevel(s -> 13).requiresCorrectToolForDrops());
+	
 	private static RotatedPillarBlock log(MaterialColor p_50789_, MaterialColor p_50790_)
 	{
 		return new RotatedPillarBlockBA(BlockBehaviour.Properties.of(Material.WOOD, (p_152624_) -> p_152624_.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? p_50789_ : p_50790_).strength(2.0F).sound(SoundType.WOOD));

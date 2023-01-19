@@ -180,6 +180,12 @@ public class Necroidus
 		}
 	}
 	
+	@Override
+	public boolean isOvergrowthAffected()
+	{
+		return false;
+	}
+	
 	public int getRange()
 	{
 		return RANGE;

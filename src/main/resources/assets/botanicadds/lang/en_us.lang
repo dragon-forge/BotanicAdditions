@@ -17,6 +17,7 @@ block.botanicadds.dreaming_pool=Dreaming Mana Pool
 block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
 block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
+block.botanicadds.gaiasteel_pylon=Gaiasteel Pylon
 
 # Flowers
 block.botanicadds.flowers.necroidus=Necroidus
@@ -136,6 +137,8 @@ botanicadds.page.aura_ring_gaia1=Crafting the $(item)Gaia Band of Aura$(0).
 botanicadds.page.mana_ring_gaia0=The $(item)Gaia Band of Mana$(0) is an upgrade to $(l:baubles/mana_ring)$(item)Greater Band of Mana$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band stores about four times as much mana, as a $(item)Greater Band of Mana$(0)!
 botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
 
+botanicadds.page.gaiasteel_pylon0=The $(item)Gaiasteel Pylon$(0) is a better version of $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l).$(br2)By applying some $(l:botanicadds/misc/gaia_plate)$(item)Gaiasteel$(0)$(/l) to $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l), it can be upgraded, thus reducing any mana cost for operating $(l:alfhomancy/intro)$(item)The Portal to Alfheim$(0)$(/l) by around four times.
+botanicadds.page.gaiasteel_pylon1=Crafting $(item)Gaiasteel Pylon$(0)
 
 
 botania.entry.ba_terra_protector=Terra Protector

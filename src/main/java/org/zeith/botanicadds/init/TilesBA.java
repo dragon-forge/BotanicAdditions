@@ -30,4 +30,8 @@ public interface TilesBA
 	@RegistryName("elven_brewery")
 	@TileRenderer(TESRElvenBrewery.class)
 	BlockEntityType<TileElvenBrewery> ELVEN_BREWERY = BlockAPI.createBlockEntityType(TileElvenBrewery::new, BlocksBA.ELVEN_BREWERY);
+	
+	@RegistryName("gaiasteel_pylon")
+	@TileRenderer(TESRGaiasteelPylon.class)
+	BlockEntityType<TileGaiasteelPylon> GAIASTEEL_PYLON = BlockAPI.createBlockEntityType(TileGaiasteelPylon::new, BlocksBA.GAIASTEEL_PYLON);
 }
