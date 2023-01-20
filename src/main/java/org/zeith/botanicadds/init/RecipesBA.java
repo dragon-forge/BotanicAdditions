@@ -13,6 +13,7 @@ import org.zeith.botanicadds.items.ItemSculkPetal;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
 import org.zeith.hammerlib.event.recipe.RegisterRecipesEvent;
+import org.zeith.hammerlib.event.recipe.SpoofRecipesEvent;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.BotaniaItems;
@@ -24,6 +25,9 @@ import java.util.Arrays;
 public class RecipesBA
 		implements IRecipeProvider
 {
+	public static final ResourceLocation OLD_GAIA_MANA_SPREADER_ID = new ResourceLocation("botania", "gaia_spreader");
+	public static final ResourceLocation OLD_MANA_FLUXFIELD_ID = new ResourceLocation("botania", "mana_fluxfield");
+	
 	@Override
 	public void provideRecipes(RegisterRecipesEvent e)
 	{
@@ -140,13 +144,17 @@ public class RecipesBA
 		
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
 		
-		e.removeRecipe(new ResourceLocation("botania", "mana_fluxfield"));
-		e.shaped().id(BotanicAdditions.id("mana_fluxfield"))
+		e.removeRecipe(OLD_MANA_FLUXFIELD_ID).shaped().id(BotanicAdditions.id("mana_fluxfield"))
 				.shape("lrl", "rer", "lrl")
 				.map('l', BotaniaBlocks.livingrock)
 				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
 				.map('e', ItemsBA.RUNE_ENERGY)
 				.result(BotaniaBlocks.rfGenerator)
+				.register();
+		
+		e.removeRecipe(OLD_GAIA_MANA_SPREADER_ID).shapeless().id(BotanicAdditions.id("gaia_spreader"))
+				.result(BotaniaBlocks.gaiaSpreader)
+				.addAll(BotaniaBlocks.elvenSpreader, BotaniaItems.dragonstone, ItemsBA.GAIA_SHARD)
 				.register();
 		
 		e.shaped().result(BlocksBA.ELVEN_FLUX_FIELD)
@@ -155,6 +163,13 @@ public class RecipesBA
 				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
 				.map('e', BotaniaBlocks.rfGenerator)
 				.register();
+	}
+	
+	@Override
+	public void spoofRecipes(SpoofRecipesEvent e)
+	{
+		e.spoofRecipe(OLD_MANA_FLUXFIELD_ID, BotanicAdditions.id("mana_fluxfield"));
+		e.spoofRecipe(OLD_GAIA_MANA_SPREADER_ID, BotanicAdditions.id("gaia_spreader"));
 	}
 	
 	public void pureDaisy(BotanicAdditionsRecipeExtension e)
