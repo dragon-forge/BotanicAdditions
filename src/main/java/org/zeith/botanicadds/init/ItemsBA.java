@@ -17,6 +17,18 @@ public interface ItemsBA
 	Color GAIASTEEL_COLOR = new Color(0xFF666D);
 	Rarity GAIASTEEL_RARITY = Rarity.create("BotanicAdditionsGaiaSteel", style -> style.withColor(GAIASTEEL_COLOR.getRGB()));
 	
+	@RegistryName("aura_ring_gaia")
+	ItemGaiaAuraRing AURA_RING_GAIA = new ItemGaiaAuraRing();
+	
+	@RegistryName("mana_ring_gaia")
+	ItemGaiaManaBand MANA_RING_GAIA = new ItemGaiaManaBand();
+	
+	@RegistryName("mana_stealer_sword")
+	ItemManaStealerSword MANA_STEALER_SWORD = new ItemManaStealerSword(baseProperties().durability(3000).rarity(GAIASTEEL_RARITY));
+	
+	@RegistryName("tesseract_attuner")
+	ItemTesseractAttuner TESSERACT_ATTUNER = new ItemTesseractAttuner(baseProperties());
+	
 	@RegistryName("rune_tp")
 	Item RUNE_TP = newItem();
 	
@@ -40,18 +52,6 @@ public interface ItemsBA
 	
 	@RegistryName("gaiasteel_nugget")
 	ItemMaterial GAIASTEEL_NUGGET = new ItemMaterial(baseProperties().rarity(GAIASTEEL_RARITY), MaterialType.NUGGET, "gaiasteel");
-	
-	@RegistryName("aura_ring_gaia")
-	ItemGaiaAuraRing AURA_RING_GAIA = new ItemGaiaAuraRing();
-	
-	@RegistryName("mana_ring_gaia")
-	ItemGaiaManaBand MANA_RING_GAIA = new ItemGaiaManaBand();
-	
-	@RegistryName("mana_stealer_sword")
-	ItemManaStealerSword MANA_STEALER_SWORD = new ItemManaStealerSword(baseProperties().durability(3000).rarity(GAIASTEEL_RARITY));
-	
-	@RegistryName("tesseract_attuner")
-	ItemTesseractAttuner TESSERACT_ATTUNER = new ItemTesseractAttuner(baseProperties());
 	
 	static Item newItem()
 	{

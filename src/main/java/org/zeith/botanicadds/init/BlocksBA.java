@@ -12,6 +12,27 @@ import org.zeith.hammerlib.annotations.SimplyRegister;
 @SimplyRegister
 public interface BlocksBA
 {
+	@RegistryName("gaiasteel_pylon")
+	BlockGaiasteelPylon GAIASTEEL_PYLON = new BlockGaiasteelPylon(BlockBehaviour.Properties.of(Material.METAL).strength(5.5F).sound(SoundType.METAL).lightLevel(s -> 13).requiresCorrectToolForDrops());
+	
+	@RegistryName("terra_catalyst")
+	BlockTerraCatalyst TERRA_CATALYST = new BlockTerraCatalyst();
+	
+	@RegistryName("gaia_plate")
+	BlockGaiaPlate GAIA_PLATE = new BlockGaiaPlate();
+	
+	@RegistryName("dreaming_pool")
+	BlockDreamingPool DREAMING_POOL = new BlockDreamingPool(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F));
+	
+	@RegistryName("elven_altar")
+	BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
+	
+	@RegistryName("elven_brewery")
+	BlockElvenBrewery ELVEN_BREWERY = new BlockElvenBrewery(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
+	
+	@RegistryName("mana_tesseract")
+	BlockManaTesseract MANA_TESSERACT = new BlockManaTesseract();
+	
 	@RegistryName("gaiasteel_block")
 	BlockStorage GAIASTEEL_BLOCK = new BlockStorage("gaiasteel")
 			.withItemProps(props -> props.rarity(ItemsBA.GAIASTEEL_RARITY));
@@ -22,26 +43,8 @@ public interface BlocksBA
 	@RegistryName("elven_lapis_block")
 	BlockStorage ELVEN_LAPIS_BLOCK = new BlockStorage(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE), "elven_lapis");
 	
-	@RegistryName("terra_catalyst")
-	BlockTerraCatalyst TERRA_CATALYST = new BlockTerraCatalyst();
-	
-	@RegistryName("gaia_plate")
-	BlockGaiaPlate GAIA_PLATE = new BlockGaiaPlate();
-	
-	@RegistryName("mana_tesseract")
-	BlockManaTesseract MANA_TESSERACT = new BlockManaTesseract();
-	
 	@RegistryName("dreamrock")
 	SimpleBlockBA DREAMROCK = new SimpleBlockBA(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
-	
-	@RegistryName("dreaming_pool")
-	BlockDreamingPool DREAMING_POOL = new BlockDreamingPool(BlockBehaviour.Properties.copy(DREAMROCK));
-	
-	@RegistryName("elven_altar")
-	BlockElvenAltar ELVEN_ALTAR = new BlockElvenAltar(BlockBehaviour.Properties.copy(DREAMROCK).requiresCorrectToolForDrops());
-	
-	@RegistryName("elven_brewery")
-	BlockElvenBrewery ELVEN_BREWERY = new BlockElvenBrewery(BlockBehaviour.Properties.copy(DREAMROCK).requiresCorrectToolForDrops());
 	
 	@RegistryName("elvenwood_log")
 	RotatedPillarBlock ELVENWOOD_LOG = log(MaterialColor.COLOR_ORANGE, MaterialColor.STONE);
@@ -51,9 +54,6 @@ public interface BlocksBA
 	
 	@RegistryName("reduced_sculk_sensor")
 	BlockSculkSensorDisabled REDUCED_SCULK_SENSOR = new BlockSculkSensorDisabled(BlockBehaviour.Properties.copy(Blocks.SCULK_SENSOR));
-	
-	@RegistryName("gaiasteel_pylon")
-	BlockGaiasteelPylon GAIASTEEL_PYLON = new BlockGaiasteelPylon(BlockBehaviour.Properties.of(Material.METAL).strength(5.5F).sound(SoundType.METAL).lightLevel(s -> 13).requiresCorrectToolForDrops());
 	
 	private static RotatedPillarBlock log(MaterialColor p_50789_, MaterialColor p_50790_)
 	{

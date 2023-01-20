@@ -31,7 +31,7 @@ public class BotanicAdditions
 		@Override
 		public ItemStack makeIcon()
 		{
-			return ItemsBA.RUNE_TP.getDefaultInstance();
+			return BlocksBA.MANA_TESSERACT.asItem().getDefaultInstance();
 		}
 	};
 	
