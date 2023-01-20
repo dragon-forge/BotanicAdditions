@@ -1,0 +1,20 @@
+{
+  "name": "block.botanicadds.elven_fluxfield",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:elven_fluxfield",
+
+  "entry_color": "aa00",
+  "advancement": "botania:main/elf_lexicon_pickup",
+
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.elven_fluxfield0"
+    },
+    {
+      "type": "crafting",
+      "text": "botanicadds.page.elven_fluxfield1",
+      "recipe": "botanicadds:elven_fluxfield"
+    }
+  ]
+}

@@ -34,4 +34,7 @@ public interface TilesBA
 	@RegistryName("gaiasteel_pylon")
 	@TileRenderer(TESRGaiasteelPylon.class)
 	BlockEntityType<TileGaiasteelPylon> GAIASTEEL_PYLON = BlockAPI.createBlockEntityType(TileGaiasteelPylon::new, BlocksBA.GAIASTEEL_PYLON);
+	
+	@RegistryName("elven_fluxfield")
+	BlockEntityType<TileElvenFluxField> ELVEN_FLUX_FIELD = BlockAPI.createBlockEntityType(TileElvenFluxField::new, BlocksBA.ELVEN_FLUX_FIELD);
 }

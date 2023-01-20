@@ -11,7 +11,7 @@ import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.block.block_entity.PylonBlockEntity;
 import vazkii.botania.common.block.block_entity.mana.ManaPoolBlockEntity;
 
-@Mixin(PylonBlockEntity.class)
+@Mixin(value = PylonBlockEntity.class, remap = false)
 @Implements({
 		@Interface(iface = IElvenGatewayPylonTile.class, prefix = "egpt$")
 })

@@ -33,6 +33,9 @@ public interface BlocksBA
 	@RegistryName("mana_tesseract")
 	BlockManaTesseract MANA_TESSERACT = new BlockManaTesseract();
 	
+	@RegistryName("elven_fluxfield")
+	BlockElvenFluxField ELVEN_FLUX_FIELD = new BlockElvenFluxField(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops());
+	
 	@RegistryName("gaiasteel_block")
 	BlockStorage GAIASTEEL_BLOCK = new BlockStorage("gaiasteel")
 			.withItemProps(props -> props.rarity(ItemsBA.GAIASTEEL_RARITY));

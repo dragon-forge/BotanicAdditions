@@ -18,6 +18,7 @@ block.botanicadds.gaia_plate=Агломерационная Плита Гайи
 block.botanicadds.gaiasteel_block=Блок гайястали
 block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
 block.botanicadds.gaiasteel_pylon=Gaiasteel Pylon
+block.botanicadds.elven_fluxfield=Elven Mana Fluxfield
 
 # Flowers
 block.botanicadds.flowers.necroidus=Necroidus
@@ -135,6 +136,9 @@ botanicadds.page.aura_ring_gaia1=Crafting the $(item)Gaia Band of Aura$(0).
 
 botanicadds.page.mana_ring_gaia0=The $(item)Gaia Band of Mana$(0) is an upgrade to $(l:baubles/mana_ring)$(item)Greater Band of Mana$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band stores about four times as much mana, as a $(item)Greater Band of Mana$(0)!
 botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
+
+botanicadds.page.elven_fluxfield0=Improving on $(l:mana/rf_generator)$(item)Mana Fluxfield$(0)$(/l) with elven resources allows one to attach spark to the Fluxfield, while also improving it's overall capacity.
+botanicadds.page.elven_fluxfield1=Twisting the fabric of magic mod reality.
 
 
 

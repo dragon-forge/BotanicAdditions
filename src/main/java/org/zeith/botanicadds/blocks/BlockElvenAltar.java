@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,6 +33,13 @@ public class BlockElvenAltar
 	}
 	
 	@Override
+	public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flags)
+	{
+		tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".spark_attachable")
+				.withStyle(Style.EMPTY.withColor(0x444444).withItalic(true)));
+	}
+	
+	@Override
 	public @NotNull BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state)
 	{
 		return new TileElvenAltar(pos, state);
@@ -40,15 +48,7 @@ public class BlockElvenAltar
 	@Override
 	public BlockItem createBlockItem()
 	{
-		return new BlockItem(this, ItemsBA.baseProperties())
-		{
-			@Override
-			public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flags)
-			{
-				tooltip.add(Component.translatable("info." + BotanicAdditions.MOD_ID + ".spark_attachable")
-						.withStyle(Style.EMPTY.withColor(0x444444).withItalic(true)));
-			}
-		};
+		return new BlockItem(this, ItemsBA.baseProperties());
 	}
 	
 	@Nullable

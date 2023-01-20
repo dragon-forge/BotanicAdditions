@@ -1,5 +1,6 @@
 package org.zeith.botanicadds.init;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -138,6 +139,22 @@ public class RecipesBA
 				.register();
 		
 		e.add(new RecipeAttuneTesseract(BotanicAdditions.id("tesseract_attune")));
+		
+		e.removeRecipe(new ResourceLocation("botania", "mana_fluxfield"));
+		e.shaped().id(BotanicAdditions.id("mana_fluxfield"))
+				.shape("lrl", "rer", "lrl")
+				.map('l', BotaniaBlocks.livingrock)
+				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+				.map('e', ItemsBA.RUNE_ENERGY)
+				.result(BotaniaBlocks.rfGenerator)
+				.register();
+		
+		e.shaped().result(BlocksBA.ELVEN_FLUX_FIELD)
+				.shape("lrl", "rer", "lrl")
+				.map('l', BlocksBA.DREAMROCK)
+				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+				.map('e', BotaniaBlocks.rfGenerator)
+				.register();
 	}
 	
 	public void pureDaisy(BotanicAdditionsRecipeExtension e)

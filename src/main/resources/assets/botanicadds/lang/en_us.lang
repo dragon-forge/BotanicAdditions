@@ -18,6 +18,7 @@ block.botanicadds.gaia_plate=Gaia Agglomeration Plate
 block.botanicadds.gaiasteel_block=Gaiasteel Block
 block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
 block.botanicadds.gaiasteel_pylon=Gaiasteel Pylon
+block.botanicadds.elven_fluxfield=Elven Mana Fluxfield
 
 # Flowers
 block.botanicadds.flowers.necroidus=Necroidus
@@ -140,6 +141,8 @@ botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
 botanicadds.page.gaiasteel_pylon0=The $(item)Gaiasteel Pylon$(0) is a better version of $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l).$(br2)By applying some $(l:botanicadds/misc/gaia_plate)$(item)Gaiasteel$(0)$(/l) to $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l), it can be upgraded, thus reducing any mana cost for operating $(l:alfhomancy/intro)$(item)The Portal to Alfheim$(0)$(/l) by around four times.
 botanicadds.page.gaiasteel_pylon1=Crafting $(item)Gaiasteel Pylon$(0)
 
+botanicadds.page.elven_fluxfield0=Improving on $(l:mana/rf_generator)$(item)Mana Fluxfield$(0)$(/l) with elven resources allows one to attach spark to the Fluxfield, while also improving it's overall capacity.
+botanicadds.page.elven_fluxfield1=Twisting the fabric of magic mod reality.
 
 botania.entry.ba_terra_protector=Terra Protector
 botania.page.ba_terra_protector1=$(item)Terra Protector$(0) is aimed at providing complete protection to any damage at cost of mana. It's not made from rubber though, thus it can overheat and stop working. Don't use it too much, if you don't want to die. A good way to demonstrate what will happen is hugging a cacti.
