@@ -9,8 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -19,7 +18,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.api.FunctionalFlowerHUD;
 import org.zeith.botanicadds.api.GenerationalFlowerHUD;
+import org.zeith.botanicadds.client.particle.lightning.BoltParticle;
 import org.zeith.botanicadds.init.ItemsBA;
+import org.zeith.botanicadds.particle.BoltParticleType;
 import org.zeith.botanicadds.tiles.TileElvenBrewery;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
@@ -48,8 +49,14 @@ public class ClientProxyBA
 		bus.addListener(this::registerItemColors);
 		bus.addListener(this::registerMaterials);
 		bus.addListener(this::clientSetup);
+		bus.addListener(this::bindParticles);
 		
 		MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, this::attachBeCapabilities);
+	}
+	
+	private void bindParticles(RegisterParticleProvidersEvent e)
+	{
+		e.register(BoltParticleType.TYPE, new BoltParticle.Provider());
 	}
 	
 	@SuppressWarnings("removal")

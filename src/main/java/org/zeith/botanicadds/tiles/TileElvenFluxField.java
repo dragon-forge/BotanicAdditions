@@ -108,7 +108,7 @@ public class TileElvenFluxField
 	@Override
 	public boolean canReceiveManaFromBursts()
 	{
-		return isFull();
+		return !isFull();
 	}
 	
 	@Override

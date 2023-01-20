@@ -1,0 +1,19 @@
+{
+  "name": "block.botanicadds.flowers.energizera",
+  "category": "botania:botanicadds",
+  "icon": "botanicadds:flowers/energizera",
+  "pages": [
+    {
+      "type": "text",
+      "text": "botanicadds.page.energizera0"
+    },
+    {
+      "type": "botania:petal_apothecary",
+      "text": "botanicadds.page.energizera1",
+      "recipe": "botanicadds:flowers/energizera"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "botanicadds:flowers/floating/energizera": 1
+  }
+}

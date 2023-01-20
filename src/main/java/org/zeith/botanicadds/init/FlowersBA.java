@@ -61,6 +61,11 @@ public interface FlowersBA
 	@RegistryName("floating/vibrantia")
 	FloatingVibrantiaBlock VIBRANTIA_FLOATING = new FloatingVibrantiaBlock(FLOATING_PROPS, () -> FlowersBA.VIBRANTIA, () -> FlowersBA.VIBRANTIA_TYPE);
 	
+	@RegistryName("energizera")
+	FlowerBlock ENERGIZERA = createGeneratingFlowerBlock(MobEffects.HEALTH_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.ENERGIZERA_TYPE);
+	@RegistryName("floating/energizera")
+	FloatingSpecialFlowerBlockBA ENERGIZERA_FLOATING = new FloatingSpecialFlowerBlockBA(FLOATING_PROPS, () -> FlowersBA.ENERGIZERA, () -> FlowersBA.ENERGIZERA_TYPE);
+	
 	// TILE ENTITY TYPES
 	
 	// Functional
@@ -90,6 +95,10 @@ public interface FlowersBA
 	@RegistryName("vibrantia")
 	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
 	BlockEntityType<Vibrantia> VIBRANTIA_TYPE = BlockAPI.createBlockEntityType(Vibrantia::new, VIBRANTIA, VIBRANTIA_FLOATING);
+	
+	@RegistryName("energizera")
+	@TileRenderer(SpecialFlowerBlockEntityRenderer.class)
+	BlockEntityType<Energizera> ENERGIZERA_TYPE = BlockAPI.createBlockEntityType(Energizera::new, ENERGIZERA, ENERGIZERA_FLOATING);
 	
 	private static FlowerBlock createFunctionalFlowerBlock(MobEffect effect, int effectDuration, BlockBehaviour.Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> beType)
 	{

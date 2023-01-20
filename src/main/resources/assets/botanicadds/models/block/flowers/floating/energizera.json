@@ -1,0 +1,8 @@
+{
+  "loader": "botania:floating_flower",
+  "parent": "minecraft:block/block",
+  "render_type": "cutout",
+  "flower": {
+    "parent": "botanicadds:block/flowers/energizera"
+  }
+}

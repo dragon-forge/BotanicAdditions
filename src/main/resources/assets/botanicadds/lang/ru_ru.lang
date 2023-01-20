@@ -27,6 +27,7 @@ block.botanicadds.flowers.glaciflora=Glaciflora
 block.botanicadds.flowers.tempestea=Tempestea
 block.botanicadds.flowers.vibrantia=Vibrantia
 block.botanicadds.flowers.apicaria=Apicaria
+block.botanicadds.flowers.energizera=Energizera
 
 # Floating flowers
 block.botanicadds.flowers.floating.necroidus=Floating Necroidus
@@ -35,6 +36,7 @@ block.botanicadds.flowers.floating.glaciflora=Floating Glaciflora
 block.botanicadds.flowers.floating.tempestea=Floating Tempestea
 block.botanicadds.flowers.floating.vibrantia=Floating Vibrantia
 block.botanicadds.flowers.floating.apicaria=Floating Apicaria
+block.botanicadds.flowers.floating.energizera=Floating Energizera
 
 # Flower References
 block.botanicadds.flowers.necroidus.reference=I feed on death.
@@ -43,6 +45,7 @@ block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
 block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
 block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
 block.botanicadds.flowers.apicaria.reference=Can soothe even the most ferocious of bees.
+block.botanicadds.flowers.energizera.reference=The silent energy harvester.
 
 # Items
 item.botanicadds.rune_tp=Руна Телепортации
@@ -70,6 +73,7 @@ info.botanicadds.tesseract_attuner3=Craft with a tesseract to set it's channel.
 info.botanicadds.tesseract_attuner.mode=Mode: %s.
 info.botanicadds.tesseract_attuner.mode.public=Public
 info.botanicadds.tesseract_attuner.mode.private=Private
+info.botanicadds.sculk_petal=Obtained by shearing %s with %s.
 
 # Lexicon
 botanicadds.category=Botanic Additions
@@ -137,11 +141,11 @@ botanicadds.page.aura_ring_gaia1=Crafting the $(item)Gaia Band of Aura$(0).
 botanicadds.page.mana_ring_gaia0=The $(item)Gaia Band of Mana$(0) is an upgrade to $(l:baubles/mana_ring)$(item)Greater Band of Mana$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band stores about four times as much mana, as a $(item)Greater Band of Mana$(0)!
 botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
 
+botanicadds.page.gaiasteel_pylon0=The $(item)Gaiasteel Pylon$(0) is a better version of $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l).$(br2)By applying some $(l:botanicadds/misc/gaia_plate)$(item)Gaiasteel$(0)$(/l) to $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l), it can be upgraded, thus reducing any mana cost for operating $(l:alfhomancy/intro)$(item)The Portal to Alfheim$(0)$(/l) by around four times.
+botanicadds.page.gaiasteel_pylon1=Crafting $(item)Gaiasteel Pylon$(0)botania.page.ba_terra_protector2
+
 botanicadds.page.elven_fluxfield0=Improving on $(l:mana/rf_generator)$(item)Mana Fluxfield$(0)$(/l) with elven resources allows one to attach spark to the Fluxfield, while also improving it's overall capacity.
 botanicadds.page.elven_fluxfield1=Twisting the fabric of magic mod reality.
 
-
-
 botania.entry.ba_terra_protector=Terra Protector
 botania.page.ba_terra_protector1=$(item)Terra Protector$(0) is aimed at providing complete protection to any damage at cost of mana. It's not made from rubber though, thus it can overheat and stop working. Don't use it too much, if you don't want to die. A good way to demonstrate what will happen is hugging a cacti.
-botania.page.ba_terra_protector2=Crafting the $(item)Terra Protector$(0).

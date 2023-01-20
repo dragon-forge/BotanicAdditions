@@ -27,6 +27,7 @@ block.botanicadds.flowers.glaciflora=Glaciflora
 block.botanicadds.flowers.tempestea=Tempestea
 block.botanicadds.flowers.vibrantia=Vibrantia
 block.botanicadds.flowers.apicaria=Apicaria
+block.botanicadds.flowers.energizera=Energizera
 
 # Floating flowers
 block.botanicadds.flowers.floating.necroidus=Floating Necroidus
@@ -35,6 +36,7 @@ block.botanicadds.flowers.floating.glaciflora=Floating Glaciflora
 block.botanicadds.flowers.floating.tempestea=Floating Tempestea
 block.botanicadds.flowers.floating.vibrantia=Floating Vibrantia
 block.botanicadds.flowers.floating.apicaria=Floating Apicaria
+block.botanicadds.flowers.floating.energizera=Floating Energizera
 
 # Flower References
 block.botanicadds.flowers.necroidus.reference=I feed on death.
@@ -43,6 +45,7 @@ block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
 block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
 block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
 block.botanicadds.flowers.apicaria.reference=Can soothe even the most ferocious of bees.
+block.botanicadds.flowers.energizera.reference=The silent energy harvester.
 
 # Items
 item.botanicadds.rune_tp=Rune of Teleportation
@@ -92,6 +95,9 @@ botanicadds.page.vibrantia1=I sense you...
 
 botanicadds.page.apicaria0=The $(item)Apicaria$(0) is a relaxing flower. Not you though, it takes care of keeping your bees calm.$(br2)It channels $(thing)Mana$(0) into angered bees (whom you shouldn't have touched in the first place) and saves the player from bee's anger.$(br)It also prevents bees from angering at player when one harvests the $(item)Beehive$(0)'s content.
 botanicadds.page.apicaria1=Bzzzzzz.
+
+botanicadds.page.energizera0=Through careful energy channeling, this flower creates $(thing)Mana$(0) from $(thing)Forge Energy$(0).$(br2)Any nearby blocks, containing $(thing)Forge Energy$(0) will feed the flower with energy.
+botanicadds.page.energizera1=Power is mana!
 
 botanicadds.page.mana_tesseract0=Transporting mana over insane distances, especially between dimensions was a dream, until now! $(item)Mana Tesseract$(0) is your new way of transporting mana! Of course it's far from perfect, but at least it can get you going. To change channels, you'll need to rename the $(item)Tesseract Attunement Tool$(0).
 botanicadds.page.mana_tesseract1=Space may be broken...

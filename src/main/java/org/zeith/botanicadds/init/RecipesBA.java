@@ -241,6 +241,11 @@ public class RecipesBA
 				.addAll(petalsYellow, petalsYellow, petalsOrange, petalsOrange)
 				.add(BotaniaItems.runeSpring)
 				.register();
+		
+		e.petalApothecary().result(FlowersBA.ENERGIZERA)
+				.add(ItemsBA.RUNE_ENERGY)
+				.addAll(petalsRed, petalsRed, petalsRed, petalsGreen)
+				.register();
 	}
 	
 	public void altar(BotanicAdditionsRecipeExtension e)
@@ -296,6 +301,11 @@ public class RecipesBA
 		e.gaiaPlate().result(ItemsBA.GAIASTEEL_INGOT)
 				.addAll(BotaniaItems.dragonstone, BotaniaItems.pixieDust, BotaniaItems.gaiaIngot)
 				.mana(1_000_000)
+				.register();
+		
+		e.gaiaPlate().result(BotaniaItems.overgrowthSeed).id(BotanicAdditions.id("overgrowth_seed"))
+				.addAll(BotaniaTags.Items.NUGGETS_TERRASTEEL, BotaniaItems.grassSeeds, ItemsBA.GAIA_SHARD)
+				.mana(250_000)
 				.register();
 	}
 }
