@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.*;
 import org.jetbrains.annotations.NotNull;
@@ -53,6 +54,12 @@ public class BlockDreamingPool
 	{
 		super(builder);
 		registerDefaultState(defaultBlockState().setValue(OPTIONAL_DYE_COLOR, BotaniaStateProperties.OptionalDyeColor.NONE));
+	}
+	
+	@Override
+	public List<ItemStack> getDrops(BlockState p_60537_, LootContext.Builder p_60538_)
+	{
+		return List.of(new ItemStack(this));
 	}
 	
 	@Override
