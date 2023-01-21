@@ -30,10 +30,10 @@ public interface ItemsBA
 	ItemTesseractAttuner TESSERACT_ATTUNER = new ItemTesseractAttuner(baseProperties());
 	
 	@RegistryName("rune_tp")
-	Item RUNE_TP = newItem();
+	Item RUNE_TP = new ItemRuneBA(baseProperties());
 	
 	@RegistryName("rune_energy")
-	Item RUNE_ENERGY = newItem();
+	Item RUNE_ENERGY = new ItemRuneBA(baseProperties());
 	
 	@RegistryName("gaia_shard")
 	Item GAIA_SHARD = newItem(p -> p.rarity(Rarity.RARE));
