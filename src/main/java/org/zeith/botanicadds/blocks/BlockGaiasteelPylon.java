@@ -1,6 +1,7 @@
 package org.zeith.botanicadds.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
@@ -19,6 +20,7 @@ import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.init.TilesBA;
 import org.zeith.botanicadds.tiles.TileGaiasteelPylon;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
+import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.common.block.BotaniaWaterloggedBlock;
 
 import java.util.List;
@@ -33,6 +35,7 @@ public class BlockGaiasteelPylon
 	public BlockGaiasteelPylon(Properties builder)
 	{
 		super(builder);
+		TagAdapter.bind(BlockTags.MINEABLE_WITH_PICKAXE, this);
 	}
 	
 	@Override

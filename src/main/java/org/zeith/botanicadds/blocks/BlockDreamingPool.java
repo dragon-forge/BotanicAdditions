@@ -3,6 +3,7 @@ package org.zeith.botanicadds.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -24,6 +25,7 @@ import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.init.TilesBA;
 import org.zeith.botanicadds.tiles.TileDreamingPool;
 import org.zeith.hammerlib.api.blocks.ICreativeTabBlock;
+import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.api.state.BotaniaStateProperties;
 import vazkii.botania.common.block.BotaniaWaterloggedBlock;
 import vazkii.botania.common.block.block_entity.mana.ManaPoolBlockEntity;
@@ -54,6 +56,7 @@ public class BlockDreamingPool
 	{
 		super(builder);
 		registerDefaultState(defaultBlockState().setValue(OPTIONAL_DYE_COLOR, BotaniaStateProperties.OptionalDyeColor.NONE));
+		TagAdapter.bind(BlockTags.MINEABLE_WITH_PICKAXE, this);
 	}
 	
 	@Override
