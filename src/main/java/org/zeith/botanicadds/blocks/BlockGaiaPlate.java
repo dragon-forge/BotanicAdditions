@@ -28,7 +28,6 @@ import org.zeith.hammerlib.api.blocks.ICreativeTabBlock;
 import org.zeith.hammerlib.api.forge.BlockAPI;
 import org.zeith.hammerlib.core.adapter.BlockHarvestAdapter;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
-import vazkii.botania.common.block.block_entity.TerrestrialAgglomerationPlateBlockEntity;
 import vazkii.botania.common.lib.BotaniaTags;
 
 import static org.zeith.botanicadds.BotanicAdditions.TAB;
@@ -110,8 +109,8 @@ public class BlockGaiaPlate
 	@Override
 	public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos)
 	{
-		TerrestrialAgglomerationPlateBlockEntity plate = (TerrestrialAgglomerationPlateBlockEntity) world.getBlockEntity(pos);
-		return plate.getComparatorLevel();
+		if(world.getBlockEntity(pos) instanceof TileGaiaPlate plate) return plate.getComparatorLevel();
+		return 0;
 	}
 	
 	@Override
