@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.api.FunctionalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.init.FlowersBA;
 import org.zeith.botanicadds.init.TagsBA;
 import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
@@ -20,7 +20,7 @@ import vazkii.botania.api.block_entity.RadiusDescriptor;
 import java.util.Objects;
 import java.util.Optional;
 
-@FunctionalFlowerHUD
+@FlowerHUD
 public class Apicaria
 		extends FunctionalFlowerBlockEntity
 {

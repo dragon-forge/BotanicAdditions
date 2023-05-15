@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.api.GenerationalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.init.FlowersBA;
 import org.zeith.botanicadds.net.PacketSpawnEnergizeraFX;
 import org.zeith.hammerlib.net.Network;
@@ -18,7 +18,7 @@ import vazkii.botania.client.fx.WispParticleData;
 
 import static org.zeith.botanicadds.tiles.TileElvenFluxField.BOTANIA_MANA;
 
-@GenerationalFlowerHUD
+@FlowerHUD
 public class Energizera
 		extends GeneratingFlowerBlockEntity
 {

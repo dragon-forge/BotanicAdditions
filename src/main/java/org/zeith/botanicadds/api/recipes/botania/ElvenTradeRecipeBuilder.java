@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
+import org.zeith.botanicadds.util.RecipeRegistrationContext;
 import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.common.crafting.ElvenTradeRecipe;
@@ -70,10 +71,11 @@ public class ElvenTradeRecipeBuilder
 			throw new IllegalStateException(getClass().getSimpleName() + " does not have any defined outputs!");
 	}
 	
-	public void register()
+	public void register(RecipeRegistrationContext ctx)
 	{
 		validate();
 		var id = getIdentifier();
-		event.register(id, new ElvenTradeRecipe(id, outputs.toArray(ItemStack[]::new), inputs.toArray(Ingredient[]::new)));
+		if(ctx.enableRecipe(id))
+			event.register(id, new ElvenTradeRecipe(id, outputs.toArray(ItemStack[]::new), inputs.toArray(Ingredient[]::new)));
 	}
 }

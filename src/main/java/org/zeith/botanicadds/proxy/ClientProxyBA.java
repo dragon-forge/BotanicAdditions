@@ -16,16 +16,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.zeith.botanicadds.BotanicAdditions;
-import org.zeith.botanicadds.api.FunctionalFlowerHUD;
-import org.zeith.botanicadds.api.GenerationalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.client.particle.lightning.BoltParticle;
 import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.particle.BoltParticleType;
 import org.zeith.botanicadds.tiles.TileElvenBrewery;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
-import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
-import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
+import vazkii.botania.api.block_entity.BindableSpecialFlowerBlockEntity;
 import vazkii.botania.common.block.block_entity.BreweryBlockEntity;
 import vazkii.botania.common.block.decor.BotaniaMushroomBlock;
 import vazkii.botania.common.block.decor.FloatingFlowerBlock;
@@ -87,13 +85,9 @@ public class ClientProxyBA
 	{
 		var be = e.getObject();
 		
-		if(be instanceof FunctionalFlowerBlockEntity ff && ff.getClass().isAnnotationPresent(FunctionalFlowerHUD.class))
+		if(be instanceof BindableSpecialFlowerBlockEntity<?> gf && gf.getClass().isAnnotationPresent(FlowerHUD.class))
 			e.addCapability(BotanicAdditions.id("wand_hud"),
-					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new FunctionalFlowerBlockEntity.FunctionalWandHud<>(ff)));
-		
-		if(be instanceof GeneratingFlowerBlockEntity gf && gf.getClass().isAnnotationPresent(GenerationalFlowerHUD.class))
-			e.addCapability(BotanicAdditions.id("wand_hud"),
-					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new GeneratingFlowerBlockEntity.GeneratingWandHud<>(gf)));
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new BindableSpecialFlowerBlockEntity.BindableFlowerWandHud<>(gf)));
 		
 		if(be instanceof TileManaTesseract tess)
 			e.addCapability(BotanicAdditions.id("wand_hud"),

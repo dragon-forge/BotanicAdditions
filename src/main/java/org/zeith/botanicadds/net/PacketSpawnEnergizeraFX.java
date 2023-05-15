@@ -47,7 +47,7 @@ public class PacketSpawnEnergizeraFX
 		
 		long seed = level.random.nextLong();
 		
-		var options = new Bolt(seed, 30, 1.5F, 2, new Bolt.Fractal(2, 30F),
+		var options = new Bolt(seed, 30, 1.5F, 2, new Bolt.Fractal(1, 30F),
 				new Bolt.Layer(771, 0xff2222, true),
 				new Bolt.Layer(772, 0xff0000, true)
 		);

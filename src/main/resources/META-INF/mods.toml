@@ -33,13 +33,13 @@ side = "BOTH"
 [[dependencies.botanicadds]]
 modId = "hammerlib"
 mandatory = true
-versionRange = "[19.3.51,)"
+versionRange = "[19.3.56,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.botanicadds]]
 modId = "botania"
 mandatory = true
-versionRange = "[1.19.2-436-FORGE,)"
+versionRange = "[1.19.2-439-FORGE,)"
 ordering = "AFTER"
 side = "BOTH"

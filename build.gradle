@@ -92,7 +92,7 @@ dependencies {
 
     implementation "org.zeith.hammerlib:HammerLib-${config.mc_version}:${config.hl_version}:deobf"
 
-    implementation fg.deobf("vazkii.botania:Botania:1.19.2-436-FORGE")
+    implementation fg.deobf("vazkii.botania:Botania:1.19.2-439-FORGE")
 
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 

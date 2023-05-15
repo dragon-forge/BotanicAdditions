@@ -9,14 +9,14 @@ import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
 import net.minecraft.world.level.gameevent.*;
 import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.api.GenerationalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.blocks.flowers.VibrantiaBlock;
 import org.zeith.botanicadds.init.FlowersBA;
 import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 import vazkii.botania.api.internal.ManaBurst;
 
-@GenerationalFlowerHUD
+@FlowerHUD
 public class Vibrantia
 		extends GeneratingFlowerBlockEntity
 		implements VibrationListener.VibrationListenerConfig

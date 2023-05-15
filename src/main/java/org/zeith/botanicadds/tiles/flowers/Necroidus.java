@@ -11,13 +11,13 @@ import net.minecraft.world.level.block.entity.SkullBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.api.FunctionalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.init.FlowersBA;
 import org.zeith.hammerlib.util.java.Cast;
 import vazkii.botania.api.block_entity.FunctionalFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 
-@FunctionalFlowerHUD
+@FlowerHUD
 public class Necroidus
 		extends FunctionalFlowerBlockEntity
 {

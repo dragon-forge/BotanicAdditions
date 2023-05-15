@@ -5,12 +5,12 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.jetbrains.annotations.Nullable;
-import org.zeith.botanicadds.api.GenerationalFlowerHUD;
+import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.init.FlowersBA;
 import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 
-@GenerationalFlowerHUD
+@FlowerHUD
 public class Glaciflora
 		extends GeneratingFlowerBlockEntity
 {

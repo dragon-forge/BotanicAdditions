@@ -6,6 +6,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.zeith.botanicadds.util.RecipeRegistrationContext;
 import org.zeith.hammerlib.core.adapter.recipe.RecipeGroup;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.api.recipe.StateIngredient;
@@ -116,10 +117,11 @@ public class PureDaisyRecipeBuilder
 			throw new IllegalStateException(getClass().getSimpleName() + " does not have any defined output!");
 	}
 	
-	public void register()
+	public void register(RecipeRegistrationContext ctx)
 	{
 		validate();
 		var id = getIdentifier();
-		event.register(id, new PureDaisyRecipe(id, input, output, time, function));
+		if(ctx.enableRecipe(id))
+			event.register(id, new PureDaisyRecipe(id, input, output, time, function));
 	}
 }
