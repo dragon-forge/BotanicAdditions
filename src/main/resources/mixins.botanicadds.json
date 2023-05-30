@@ -12,7 +12,6 @@
     "LootPoolAccessor",
     "ManaPoolBlockEntityMixin",
     "PylonBlockEntityMixin",
-    "RecipeBuilderAccessor",
     "RenderHelperAccessor",
     "RunicAltarBlockEntityAccessor",
     "SpecialFlowerBlockEntityAccessor",

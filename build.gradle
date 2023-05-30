@@ -17,6 +17,7 @@ buildscript {
 }
 
 plugins {
+    id "com.modrinth.minotaur" version "2.+"
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
@@ -92,7 +93,7 @@ dependencies {
 
     implementation "org.zeith.hammerlib:HammerLib-${config.mc_version}:${config.hl_version}:deobf"
 
-    implementation fg.deobf("vazkii.botania:Botania:1.19.2-439-FORGE")
+    implementation fg.deobf("vazkii.botania:Botania:1.19.2-440-FORGE")
 
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
 
@@ -211,21 +212,132 @@ artifacts {
     archives srcJar
 }
 
+modrinth {
+    token = System.env.MODRINTH_TOKEN != null ? System.env.MODRINTH_TOKEN : "NONE"
+    projectId = config.modrinth_project as String
+    versionNumber = config.mod_version as String
+    versionType = config.release_type as String
+    uploadFile = jar
+    gameVersions = [config.mc_version as String]
+    dependencies {
+        def mods = (config.required_mods as String).split(";")
+        if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+            for (final def one in mods) {
+                if (one.isBlank()) continue
+                if (one.startsWith("@")) {
+                    def pars = one.substring(1).split(":", 2)
+                    if (pars[0].equalsIgnoreCase("m")) {
+                        required.project pars[1].trim()
+                    }
+                } else
+                    required.project one.trim()
+            }
+
+        mods = (config.optional_mods as String).split(";")
+        if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+            for (final def one in mods) {
+                if (one.isBlank()) continue
+                if (one.startsWith("@")) {
+                    def pars = one.substring(1).split(":", 2)
+                    if (pars[0].equalsIgnoreCase("m")) {
+                        optional.project pars[1].trim()
+                    }
+                } else
+                    optional.project one.trim()
+            }
+
+        mods = (config.incompatible_mods as String).split(";")
+        if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+            for (final def one in mods) {
+                if (one.isBlank()) continue
+                if (one.startsWith("@")) {
+                    def pars = one.substring(1).split(":", 2)
+                    if (pars[0].equalsIgnoreCase("m")) {
+                        incompatible.project pars[1].trim()
+                    }
+                } else
+                    incompatible.project one.trim()
+            }
+
+        mods = (config.embedded_mods as String).split(";")
+        if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+            for (final def one in mods) {
+                if (one.isBlank()) continue
+                if (one.startsWith("@")) {
+                    def pars = one.substring(1).split(":", 2)
+                    if (pars[0].equalsIgnoreCase("m")) {
+                        embedded.project pars[1].trim()
+                    }
+                } else
+                    embedded.project one.trim()
+            }
+    }
+}
+
 curseforge {
-    apiKey = System.env.CURSEFORGE_API_KEY
+    apiKey = System.env.CURSEFORGE_API_KEY != null ? System.env.CURSEFORGE_API_KEY : "NONE"
     project {
-        id = "${config.cf_project}"
+        id = config.cf_project as String
         changelogType = 'html'
         changelog = ""
-        releaseType = "${config.release_type}"
-        addGameVersion "${config.mc_version}"
+        releaseType = config.release_type as String
+        addGameVersion config.mc_version as String
         addGameVersion "Forge"
         mainArtifact(jar) {
             displayName = "[${config.mc_version}] ${config.mod_name} - ${config.mod_version}"
         }
         relations {
-            requiredDependency 'Hammer-Lib'
-            requiredDependency 'Botania'
+            def mods = (config.required_mods as String).split(";")
+            if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+                for (final def one in mods) {
+                    if (one.isBlank()) continue
+                    if (one.startsWith("@")) {
+                        def pars = one.substring(1).split(":", 2)
+                        if (pars[0].equalsIgnoreCase("c")) {
+                            requiredDependency pars[1].trim()
+                        }
+                    } else
+                        requiredDependency one.trim()
+                }
+
+            mods = (config.optional_mods as String).split(";")
+            if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+                for (final def one in mods) {
+                    if (one.isBlank()) continue
+                    if (one.startsWith("@")) {
+                        def pars = one.substring(1).split(":", 2)
+                        if (pars[0].equalsIgnoreCase("c")) {
+                            optionalDependency pars[1].trim()
+                        }
+                    } else
+                        optionalDependency one.trim()
+                }
+
+            mods = (config.incompatible_mods as String).split(";")
+            if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+                for (final def one in mods) {
+                    if (one.isBlank()) continue
+                    if (one.startsWith("@")) {
+                        def pars = one.substring(1).split(":", 2)
+                        if (pars[0].equalsIgnoreCase("c")) {
+                            incompatible pars[1].trim()
+                        }
+                    } else
+                        incompatible one.trim()
+                }
+
+            mods = (config.embedded_mods as String).split(";")
+            if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
+                for (final def one in mods) {
+                    if (one.isBlank()) continue
+                    if (one.startsWith("@")) {
+                        def pars = one.substring(1).split(":", 2)
+                        if (pars[0].equalsIgnoreCase("c")) {
+                            embeddedLibrary pars[1].trim()
+                        }
+                    } else
+                        embeddedLibrary one.trim()
+                }
         }
     }
 }
@@ -255,8 +367,18 @@ publish.dependsOn('reobfJar')
 
 build.dependsOn signJar
 
+tasks.register('buildAndUploadMod') {
+    group = "upload"
+    dependsOn "curseforge${config.cf_project}", 'modrinth'
+
+    doLast {
+        println "Upload complete."
+    }
+}
+
 afterEvaluate {
     tasks["curseforge${config.cf_project}"].dependsOn.add(publish)
+    tasks["modrinth"].dependsOn.add(publish)
 }
 
 publishing {

@@ -2,11 +2,11 @@
 mod_id=botanicadds
 archive_name=BotanicAdditions
 mod_name=Botanic Additions
-mod_version=19.3.4
+mod_version=19.3.5
 
 # Maven Info
 maven_group=org.zeith.botanicadds
-hl_version=19.3.56
+hl_version=19.3.57
 
 # MC Info
 mc_version=1.19.2
@@ -18,6 +18,17 @@ java=17
 
 # Project ID on CurseForge
 cf_project=310637
+modrinth_project=2u3eevWi
+
+# List of mods separated by ;
+# If a specific mod for one platform is needed, @m: or @c: prefixes are used.
+# Example for adding Hammer Lib for both Modrinth & CurseForge:
+# @m:PlkSuVtM;@c:hammer-lib;
+# Which can be simplified to be just "hammer-lib" since the slug is the same on both platforms.
+required_mods=hammer-lib;botania;
+optional_mods=
+incompatible_mods=
+embedded_mods=
 
 # alpha, beta, release
 release_type=release

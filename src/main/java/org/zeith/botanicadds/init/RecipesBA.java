@@ -10,11 +10,11 @@ import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.api.recipes.BotanicAdditionsRecipeExtension;
 import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
 import org.zeith.botanicadds.items.ItemSculkPetal;
-import org.zeith.botanicadds.util.RecipeRegistrationContext;
 import org.zeith.hammerlib.annotations.ProvideRecipes;
 import org.zeith.hammerlib.api.IRecipeProvider;
 import org.zeith.hammerlib.event.recipe.RegisterRecipesEvent;
 import org.zeith.hammerlib.event.recipe.SpoofRecipesEvent;
+import org.zeith.hammerlib.util.mcf.RecipeRegistrationContext;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.BotaniaItems;
@@ -32,7 +32,7 @@ public class RecipesBA
 	@Override
 	public void provideRecipes(RegisterRecipesEvent e)
 	{
-		RecipeRegistrationContext ctx = RecipeRegistrationContext.load(BotanicAdditions.MOD_ID);
+		RecipeRegistrationContext ctx = e.getContext(BotanicAdditions.MOD_ID);
 		
 		var ba = e.extension(BotanicAdditionsRecipeExtension.class);
 		if(ba == null)
@@ -164,7 +164,7 @@ public class RecipesBA
 	
 	public void pureDaisy(RecipeRegistrationContext ctx, BotanicAdditionsRecipeExtension e)
 	{
-		e.pureDaisy().result(BotaniaBlocks.dreamwood)
+		e.pureDaisy().result(BotaniaBlocks.dreamwood).id(BotanicAdditions.id("dreamwood_from_elvenwood"))
 				.input(BlocksBA.ELVENWOOD_LOG, BlocksBA.ELVENWOOD)
 				.register(ctx);
 	}
@@ -211,7 +211,7 @@ public class RecipesBA
 		ItemNBTHelper.setString(zeithHead, "SkullOwner", "Zeitheron");
 		Object[] lightBluePetals = new Object[16];
 		Arrays.fill(lightBluePetals, petalsLightBlue);
-		e.petalApothecary().result(zeithHead)
+		e.petalApothecary().result(zeithHead).id(BotanicAdditions.id("zeitheron_head"))
 				.addAll(lightBluePetals)
 				.register();
 		

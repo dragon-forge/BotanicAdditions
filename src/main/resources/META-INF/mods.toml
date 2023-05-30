@@ -7,8 +7,8 @@ license = "All rights reserved"
 modId = "botanicadds"
 version = "${file.jarVersion}"
 displayName = "Botanic Additions"
-updateJSONURL = "http://h.zeith.org/api/fmluc/310637"
-displayURL = "http://h.zeith.org/api/fmlhp/310637"
+updateJSONURL = "https://api.modrinth.com/updates/2u3eevWi/forge_updates.json"
+displayURL = "https://h.zeith.org/api/fmlhp/310637"
 logoFile = "icon.png"
 authors = "Zeitheron"
 
@@ -33,13 +33,13 @@ side = "BOTH"
 [[dependencies.botanicadds]]
 modId = "hammerlib"
 mandatory = true
-versionRange = "[19.3.56,)"
+versionRange = "[19.3.57,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.botanicadds]]
 modId = "botania"
 mandatory = true
-versionRange = "[1.19.2-439-FORGE,)"
+versionRange = "[1.19.2-440-FORGE,)"
 ordering = "AFTER"
 side = "BOTH"
