@@ -2,11 +2,11 @@
 mod_id=botanicadds
 archive_name=BotanicAdditions
 mod_name=Botanic Additions
-mod_version=19.3.5
+mod_version=19.3.6
 
 # Maven Info
 maven_group=org.zeith.botanicadds
-hl_version=19.3.57
+hl_version=19.3.60
 
 # MC Info
 mc_version=1.19.2

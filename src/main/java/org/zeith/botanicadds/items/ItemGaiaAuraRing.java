@@ -9,6 +9,7 @@ import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.item.equipment.bauble.BaubleItem;
+import vazkii.botania.common.lib.BotaniaTags;
 
 import static org.zeith.botanicadds.init.ItemsBA.GAIASTEEL_RARITY;
 
@@ -19,6 +20,7 @@ public class ItemGaiaAuraRing
 	{
 		super(ItemsBA.baseProperties().stacksTo(1).rarity(GAIASTEEL_RARITY));
 		TagAdapter.bind(ItemTags.create(new ResourceLocation("curios", "ring")), this);
+		TagAdapter.bind(BotaniaTags.Items.TERRA_PICK_BLACKLIST, this);
 	}
 	
 	@Override

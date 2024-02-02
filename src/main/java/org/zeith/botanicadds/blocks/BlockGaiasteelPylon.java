@@ -20,6 +20,8 @@ import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.init.TilesBA;
 import org.zeith.botanicadds.tiles.TileGaiasteelPylon;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
+import org.zeith.hammerlib.api.lighting.ColoredLight;
+import org.zeith.hammerlib.api.lighting.impl.IGlowingBlock;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.common.block.BotaniaWaterloggedBlock;
 
@@ -28,7 +30,7 @@ import java.util.function.Consumer;
 
 public class BlockGaiasteelPylon
 		extends BotaniaWaterloggedBlock
-		implements EntityBlock, ICustomBlockItem
+		implements EntityBlock, ICustomBlockItem, IGlowingBlock
 {
 	private static final VoxelShape SHAPE = box(2, 0, 2, 14, 21, 14);
 	
@@ -90,5 +92,15 @@ public class BlockGaiasteelPylon
 			}
 		};
 		return bi;
+	}
+	
+	@Override
+	public ColoredLight produceColoredLight(Level level, BlockPos pos, BlockState state, float partialTicks)
+	{
+		return ColoredLight.builder()
+				.pos(pos)
+				.color(249 / 255F, 6 / 255F, 35 / 255F)
+				.radius(13)
+				.build();
 	}
 }
