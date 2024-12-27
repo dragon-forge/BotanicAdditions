@@ -16,36 +16,36 @@ block.botanicadds.elven_brewery=Эльфийская варочная стойк
 block.botanicadds.dreaming_pool=Бассейн Маны Мечтаний
 block.botanicadds.gaia_plate=Агломерационная Плита Гайи
 block.botanicadds.gaiasteel_block=Блок гайястали
-block.botanicadds.reduced_sculk_sensor=Reduced Sculk Sensor
-block.botanicadds.gaiasteel_pylon=Gaiasteel Pylon
-block.botanicadds.elven_fluxfield=Elven Mana Fluxfield
+block.botanicadds.reduced_sculk_sensor=Скалк сенсор
+block.botanicadds.gaiasteel_pylon=Пилон из гиастали
+block.botanicadds.elven_fluxfield=Эльфийская Мана Флюксфилд
 
 # Flowers
-block.botanicadds.flowers.necroidus=Necroidus
-block.botanicadds.flowers.rainute=Rainute
-block.botanicadds.flowers.glaciflora=Glaciflora
-block.botanicadds.flowers.tempestea=Tempestea
-block.botanicadds.flowers.vibrantia=Vibrantia
-block.botanicadds.flowers.apicaria=Apicaria
-block.botanicadds.flowers.energizera=Energizera
+block.botanicadds.flowers.necroidus=Некроидус
+block.botanicadds.flowers.rainute=Райнут
+block.botanicadds.flowers.glaciflora=Глацифлора
+block.botanicadds.flowers.tempestea=Темпестея
+block.botanicadds.flowers.vibrantia=Вибрантия
+block.botanicadds.flowers.apicaria=Апикария
+block.botanicadds.flowers.energizera=Энергизера
 
 # Floating flowers
-block.botanicadds.flowers.floating.necroidus=Floating Necroidus
-block.botanicadds.flowers.floating.rainute=Floating Rainute
-block.botanicadds.flowers.floating.glaciflora=Floating Glaciflora
-block.botanicadds.flowers.floating.tempestea=Floating Tempestea
-block.botanicadds.flowers.floating.vibrantia=Floating Vibrantia
-block.botanicadds.flowers.floating.apicaria=Floating Apicaria
-block.botanicadds.flowers.floating.energizera=Floating Energizera
+block.botanicadds.flowers.floating.necroidus=Парящий Некроидус
+block.botanicadds.flowers.floating.rainute=Парящий Райнут
+block.botanicadds.flowers.floating.glaciflora=Парящая Глацифлора
+block.botanicadds.flowers.floating.tempestea=Парящая Темпестея
+block.botanicadds.flowers.floating.vibrantia=Парящая Вибрантия
+block.botanicadds.flowers.floating.apicaria=Парящая Апикария
+block.botanicadds.flowers.floating.energizera=Парящая Энергизера
 
 # Flower References
-block.botanicadds.flowers.necroidus.reference=I feed on death.
-block.botanicadds.flowers.rainute.reference=It drinks the rain.
-block.botanicadds.flowers.glaciflora.reference=Thriving in the cold.
-block.botanicadds.flowers.tempestea.reference=Shockingly powerful!
-block.botanicadds.flowers.vibrantia.reference=Generates mana from the echoes of the past.
-block.botanicadds.flowers.apicaria.reference=Can soothe even the most ferocious of bees.
-block.botanicadds.flowers.energizera.reference=The silent energy harvester.
+block.botanicadds.flowers.necroidus.reference=Я питаюсь смертью.  
+block.botanicadds.flowers.rainute.reference=Он пьёт дождь.  
+block.botanicadds.flowers.glaciflora.reference=Процветает в холоде.  
+block.botanicadds.flowers.tempestea.reference=Ошеломляюще мощный!  
+block.botanicadds.flowers.vibrantia.reference=Генерирует ману из эха прошлого.  
+block.botanicadds.flowers.apicaria.reference=Может успокоить даже самых свирепых пчёл.  
+block.botanicadds.flowers.energizera.reference=Безмолвный сборщик энергии.  
 
 # Items
 item.botanicadds.rune_tp=Руна Телепортации
@@ -60,92 +60,87 @@ item.botanicadds.aura_ring_gaia=Кольцо Ауры Гайи
 item.botanicadds.mana_ring_gaia=Кольцо Маны Гайи
 item.botanicadds.mana_stealer_sword=Мана-лезвие
 item.botanicadds.tesseract_attuner=Средство связи тессерактов
-item.botanicadds.sculk_petal=Sculk Petal
+item.botanicadds.sculk_petal=Скалковый лепесток
 
 # Tooltips
 info.botanicadds.dreaming_pool=Два Бассейна маны в одном блоке
 info.botanicadds.mana_tesseract.no_channel=Канал не установлен.
 info.botanicadds.mana_tesseract.channel=Канал: %s.
 info.botanicadds.spark_attachable=Искра может быть прикреплена.
-info.botanicadds.tesseract_attuner1=Rename to create a channel.
-info.botanicadds.tesseract_attuner2=Sneak-click to toggle between public and private.
-info.botanicadds.tesseract_attuner3=Craft with a tesseract to set it's channel.
-info.botanicadds.tesseract_attuner.mode=Mode: %s.
-info.botanicadds.tesseract_attuner.mode.public=Public
-info.botanicadds.tesseract_attuner.mode.private=Private
-info.botanicadds.sculk_petal=Obtained by shearing %s with %s.
+info.botanicadds.tesseract_attuner1=Переименуйте, чтобы создать канал.
+info.botanicadds.tesseract_attuner2=Крадущийся клик переключает между публичным и приватным.
+info.botanicadds.tesseract_attuner3=Скрафтите с тессеарактом, чтобы установить его канал.
+info.botanicadds.tesseract_attuner.mode=Режим: %s.
+info.botanicadds.tesseract_attuner.mode.public=Публичный
+info.botanicadds.tesseract_attuner.mode.private=Приватный
+info.botanicadds.sculk_petal=Получается с помощью стрижки %s с %s.
 
 # Lexicon
-botanicadds.category=Botanic Additions
+botanicadds.category=Ботанические дополнения
 
-botanicadds.page.necroidus0=$(item)Necroidus$(0) is essentially a wither builder, but uses mana instead. You will need to drop soul sand and wither skulls nearby for the flower to build. Note: building will be anchored on the blocks above the flower, up to 4 blocks and the creation process doesn't use very much mana.
-botanicadds.page.necroidus1=Wither boi
+botanicadds.page.necroidus0=$(item)Necroidus$(0) по сути является создателем визеров, но использует ману вместо этого. Вам нужно бросить песок душ и головы визеров поблизости, чтобы цветок начал строить. Примечание: создание визера будет происходить на блоках над цветком, на высоте до 4 блоков, и этот процесс требует совсем немного маны.
+botanicadds.page.necroidus1=Визер-цветочек
 
-botanicadds.page.rainute0=$(item)Rainute$(0) produces $(item)Mana$(0) while it's raining. Note: This flower doesn't produce anything in snow environment.
-botanicadds.page.rainute1=Don't get it too wet!
+botanicadds.page.rainute0=$(item)Rainute$(0) производит $(item)ману$(0), когда идет дождь. Примечание: этот цветок ничего не производит в снежной среде.
+botanicadds.page.rainute1=Не позволяйте ему слишком промокнуть!
 
-botanicadds.page.glaciflora0=$(item)Glaciflora$(0) is an alternative to $(item)Rainute$(0) but for snow biomes. You know why this is a thing....
-botanicadds.page.glaciflora1=Cold to the touch!
+botanicadds.page.glaciflora0=$(item)Glaciflora$(0) — это альтернатива $(item)Rainute$(0), но для снежных биомов. Вы знаете, зачем это нужно...
+botanicadds.page.glaciflora1=Холодный на ощупь!
 
-botanicadds.page.tempestea0=$(item)Tempestea$(0) is another weather-dependent flower except this one isn't a passive one. $(item)Tempestea$(0) generates mana when a lightning occurs nearby. Afterwards, it redirects it on self and generates a lot of mana. This process heats the flower and it needs $(thing)roughly a minute$(0) to cool down.
-botanicadds.page.tempestea1=Essentially an energy converter!
+botanicadds.page.tempestea0=$(item)Tempestea$(0) — еще один цветок, зависящий от погоды, но этот не является пассивным. $(item)Tempestea$(0) генерирует ману, когда поблизости происходит удар молнии. После этого он перенаправляет энергию на себя и генерирует много маны. Этот процесс нагревает цветок, и ему нужно $(thing)примерно минуту$(0), чтобы остыть.
+botanicadds.page.tempestea1=По сути, преобразователь энергии!
 
-botanicadds.page.vibrantia0=$(item)Vibrantia$(0) comes from deep underground, where $(thing)Sculk$(0) lives. It harnesses power of $(thing)Sculk$(0) to generate mana when it senses vibrations nearby.$(br2)Making a flower from sculk, however, reduces it's feeling abilities, and thus it can no longer hear mana bursts and other projectiles at all.
-botanicadds.page.vibrantia1=I sense you...
+botanicadds.page.vibrantia0=$(item)Vibrantia$(0) происходит из глубоких подземелий, где обитает $(thing)Скалк$(0). Она использует силу $(thing)Скалка$(0), чтобы генерировать ману, когда ощущает вибрации поблизости.$(br2)Однако создание цветка из скалка снижает его чувствительность, и он больше не может слышать взрывы маны и другие снаряды.
+botanicadds.page.vibrantia1=Я чувствую тебя...
 
-botanicadds.page.apicaria0=The $(item)Apicaria$(0) is a relaxing flower. Not you though, it takes care of keeping your bees calm.$(br2)It channels $(thing)Mana$(0) into angered bees (whom you shouldn't have touched in the first place) and saves the player from bee's anger.$(br)It also prevents bees from angering at player when one harvests the $(item)Beehive$(0)'s content.
-botanicadds.page.apicaria1=Bzzzzzz.
+botanicadds.page.apicaria0=$(item)Apicaria$(0) — это расслабляющий цветок. Не для вас, а для пчел. Он заботится о том, чтобы ваши пчелы оставались спокойными.$(br2)Он направляет $(thing)ману$(0) в разозленных пчел (которых вы не должны были трогать), спасая игрока от их гнева.$(br)Также он предотвращает нападение пчел на игрока при сборе меда из $(item)улья$(0).
+botanicadds.page.apicaria1=Жжжжжж.
 
-botanicadds.page.mana_tesseract0=Transporting mana over insane distances, especially between dimensions was a dream, until now! $(item)Mana Tesseract$(0) is your new way of transporting mana! Of course it's far from perfect, but at least it can get you going. To change channels, you'll need to rename the $(item)Tesseract Attunement Tool$(0).
-botanicadds.page.mana_tesseract1=Space may be broken...
-botanicadds.page.mana_tesseract2=Crafting the $(item)Tesseract Attunement Tool$(0).
+botanicadds.page.mana_tesseract0=Перемещение маны на безумные расстояния, особенно между измерениями, было мечтой — до сих пор! $(item)Тессеракт маны$(0) — ваш новый способ транспортировки маны! Конечно, он далек от совершенства, но хотя бы позволяет начать. Чтобы изменить канал, вам нужно переименовать $(item)Инструмент настройки тессеракта$(0).
+botanicadds.page.mana_tesseract1=Пространство может быть нарушено...
+botanicadds.page.mana_tesseract2=Создание $(item)Инструмента настройки тессеракта$(0).
 
-botanicadds.page.elven_altar0=$(item)Elven Altar$(0) is suitable for faster crafting. By improving it with $(l:alfhomancy/elf_resources)$(item)Dragonstone$(0)$(/l) and $(l:botanicadds/dreamrock)$(item)Dreamrock$(0)$(/l) you can get an altar that is capable of accepting $(item)Mana$(0) from $(item)Sparks$(0). Since they transfer mana much faster, this seems to be an important device to upgrade!
-botanicadds.page.elven_altar1=Crafting the $(item)Elven Altar$(0).
+botanicadds.page.elven_altar0=$(item)Эльфийский алтарь$(0) подходит для более быстрого крафта. Улучшив его с помощью $(l:alfhomancy/elf_resources)$(item)Драгоценного камня дракона$(0)$(/l) и $(l:botanicadds/dreamrock)$(item)Камня грез$(0)$(/l), вы получите алтарь, способный принимать $(item)ману$(0) от $(item)Искр$(0). Поскольку они передают ману гораздо быстрее, это устройство обязательно стоит улучшить!
+botanicadds.page.elven_altar1=Создание $(item)Эльфийского алтаря$(0).
 
-botanicadds.entry.elf_resources_extra=Extra Alfheim Resources
-botanicadds.page.elf_resources_extra0=$(thing)Botanic Additions$(0) expands on Alfheim resource stack, giving you more resources, which are required by this mod.
-botanicadds.page.elf_resources_extra1=Trading for $(item)Elven Lapis$(0)
-botanicadds.page.elf_resources_extra2=Trading for $(item)Dreamrock$(0)
-botanicadds.page.elf_resources_extra3=Trading for $(item)Elvenwood$(0)
+botanicadds.entry.elf_resources_extra=Дополнительные ресурсы Альфхейма
+botanicadds.page.elf_resources_extra0=$(thing)Botanic Additions$(0) расширяет запас ресурсов Альфхейма, предоставляя вам больше материалов, необходимых для этого мода.
+botanicadds.page.elf_resources_extra1=Обмен на $(item)Эльфийский лазурит$(0)
+botanicadds.page.elf_resources_extra2=Обмен на $(item)Камень грез$(0)
+botanicadds.page.elf_resources_extra3=Обмен на $(item)Эльфийскую древесину$(0)
 
-botanicadds.entry.basic_resources_extra=Extra Resources
-botanicadds.page.basic_resources_extra0=$(thing)Botanic Additions$(0) expands material set, adding a few runes and other miscellaneous things.
-botanicadds.page.basic_resources_extra1=Infusing $(item)Mana Lapis$(0)
-botanicadds.page.basic_resources_extra2=The $(item)Rune of Teleportation$(0)
-botanicadds.page.basic_resources_extra3=The $(item)Rune of Energy$(0)
-botanicadds.page.basic_resources_extra4=Making $(item)Elvenwood$(0)
+botanicadds.entry.basic_resources_extra=Дополнительные ресурсы
+botanicadds.page.basic_resources_extra0=$(thing)Botanic Additions$(0) расширяет набор материалов, добавляя несколько рун и других разнообразных вещей.
+botanicadds.page.basic_resources_extra1=Наполнение $(item)Мана-лазурита$(0)
+botanicadds.page.basic_resources_extra2=$(item)Руна телепортации$(0)
+botanicadds.page.basic_resources_extra3=$(item)Руна энергии$(0)
+botanicadds.page.basic_resources_extra4=Создание $(item)Эльфийской древесины$(0)
 
-botanicadds.page.gaia_plate0=After getting your palms on elven resources, why not to upgrade your $(item)Terrestrial Agglomeration Plate$(0)? It has been pretty good at doing what it should. But perhaps it's time to upgrade? $(item)Gaia Agglomeration Plate$(0) is way more efficient in creating $(item)Terrasteel$(0) AND it can create more than just that!
-botanicadds.page.gaia_plate1=Crafting the $(item)Gaia Agglomeration Plate$(0).
-botanicadds.page.gaia_plate3=G.A. Plate
-botanicadds.page.gaia_plate4=Creating $(item)Terrasteel$(0)
-botanicadds.page.gaia_plate5=Creating $(item)Gaiasteel$(0)
+botanicadds.page.gaia_plate0=После получения эльфийских ресурсов, почему бы не улучшить свою $(item)Террестриальную агломерационную пластину$(0)? Она хорошо справляется со своей задачей, но, возможно, пора сделать апгрейд? $(item)Гайская агломерационная пластина$(0) гораздо эффективнее при создании $(item)Террастали$(0) и может создавать нечто большее!
+botanicadds.page.gaia_plate1=Создание $(item)Гайской агломерационной пластины$(0).
+botanicadds.page.gaia_plate3=Г.А. Пластина
+botanicadds.page.gaia_plate4=Создание $(item)Террастали$(0)
+botanicadds.page.gaia_plate5=Создание $(item)Гайстали$(0)
 
-botanicadds.page.terra_catalyst0=$(item)Terra Catalyst$(0) is used as another type of catalyst. It may also be used as a splitter for some resources such as $(item)Gaia Spirit$(0).
-botanicadds.page.terra_catalyst1=Crafting the $(item)Terra Catalyst$(0).
-botanicadds.page.terra_catalyst2=Conjuring some $(item)Gaia Shards$(0).
+botanicadds.page.terra_catalyst0=$(item)Терракатализатор$(0) используется как еще один вид катализатора. Он также может использоваться как расщепитель для некоторых ресурсов, таких как $(item)Дух Гайи$(0).
+botanicadds.page.terra_catalyst1=Создание $(item)Терракатализатора$(0).
+botanicadds.page.terra_catalyst2=Колдовство над $(item)Осколками Гайи$(0).
 
-botanicadds.page.dreaming_pool0=$(item)Dreaming Mana Pool$(0) is another pool of mana, made from $(item)Dreamrock$(0). This pool is twice larger than a normal pool. Enjoy!
-botanicadds.page.dreaming_pool1=Getting ridiculous...
+botanicadds.page.dreaming_pool0=$(item)Мечтающий бассейн маны$(0) — это еще один бассейн маны, сделанный из $(item)Сонного камня$(0). Этот бассейн вдвое больше обычного. Наслаждайтесь!
+botanicadds.page.dreaming_pool1=До смешного огромный...
 
-botanicadds.page.mana_stealer_sword0=$(item)Mana Stealing Blade$(0) is an improvement to $(item)Terra Blade$(0). This time though, it deals more damage AND it's capable of drawing mana from your enemy players!
-botanicadds.page.mana_stealer_sword1=Crafting the $(item)Mana Stealing Blade$(0).
+botanicadds.page.mana_stealer_sword0=$(item)Клинок кражи маны$(0) — это улучшенная версия $(item)Терра Клинка$(0). Однако теперь он наносит больше урона И способен вытягивать ману из врагов!
+botanicadds.page.mana_stealer_sword1=Создание $(item)Клинка кражи маны$(0).
 
-botanicadds.page.elven_brewery0=$(item)Elven Brewery$(0) is an improved version of $(item)Botanical Brewery$(0). Combining it with $(l:alfhomancy/elf_resources)$(item)Dragonstone$(0)$(/l) and $(l:botanicadds/basics/elf_resources_extra)$(item)Dreamrock$(0)$(/l) allows attaching $(item)Sparks$(0) to it, making the crafting process way faster.
-botanicadds.page.elven_brewery1=Making $(item)Elven Brewery$(0)
+botanicadds.page.elven_brewery0=$(item)Эльфийская пивоварня$(0) — это улучшенная версия $(item)Ботанической пивоварни$(0). Сочетание с $(l:alfhomancy/elf_resources)$(item)Драконьим камнем$(0)$(/l) и $(l:botanicadds/basics/elf_resources_extra)$(item)Сонным камнем$(0)$(/l) позволяет прикрепить $(item)Искры$(0), что значительно ускоряет процесс создания.
+botanicadds.page.elven_brewery1=Создание $(item)Эльфийской пивоварни$(0).
 
-botanicadds.page.aura_ring_gaia0=The $(item)Gaia Band of Aura$(0) is an upgrade to $(l:baubles/aura_ring)$(item)Greater Band of Aura$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band creates mana twice as fast, as a $(item)Greater Band of Aura$(0)!
-botanicadds.page.aura_ring_gaia1=Crafting the $(item)Gaia Band of Aura$(0).
+botanicadds.page.aura_ring_gaia0=$(item)Гайя Банда Ауры$(0) является улучшением $(l:baubles/aura_ring)$(item)Большая Банда Ауры$(0)$(/l) с использованием $(item)Гайястил$(0). Эта банда создаёт ману в два раза быстрее, чем $(item)Большая Банда Ауры$(0)! botanicadds.page.aura_ring_gaia1=Создание $(item)Гайя Банды Ауры$(0).
 
-botanicadds.page.mana_ring_gaia0=The $(item)Gaia Band of Mana$(0) is an upgrade to $(l:baubles/mana_ring)$(item)Greater Band of Mana$(0)$(/l) with a piece of $(item)Gaiasteel$(0). This band stores about four times as much mana, as a $(item)Greater Band of Mana$(0)!
-botanicadds.page.mana_ring_gaia1=Crafting the $(item)Gaia Band of Mana$(0).
+botanicadds.page.mana_ring_gaia0=$(item)Гайя Банда Маны$(0) является улучшением $(l:baubles/mana_ring)$(item)Большая Банда Маны$(0)$(/l) с использованием $(item)Гайястил$(0). Эта банда хранит примерно в четыре раза больше маны, чем $(item)Большая Банда Маны$(0)! botanicadds.page.mana_ring_gaia1=Создание $(item)Гайя Банды Маны$(0).
 
-botanicadds.page.gaiasteel_pylon0=The $(item)Gaiasteel Pylon$(0) is a better version of $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l).$(br2)By applying some $(l:botanicadds/misc/gaia_plate)$(item)Gaiasteel$(0)$(/l) to $(l:alfhomancy/intro)$(item)Natura Pylon$(0)$(/l), it can be upgraded, thus reducing any mana cost for operating $(l:alfhomancy/intro)$(item)The Portal to Alfheim$(0)$(/l) by around four times.
-botanicadds.page.gaiasteel_pylon1=Crafting $(item)Gaiasteel Pylon$(0)botania.page.ba_terra_protector2
+botanicadds.page.gaiasteel_pylon0=$(item)Гайястиловый Пилон$(0) является улучшенной версией $(l:alfhomancy/intro)$(item)Пилона Натуры$(0)$(/l).$(br2)При применении $(l:botanicadds/misc/gaia_plate)$(item)Гайястил$(0)$(/l) к $(l:alfhomancy/intro)$(item)Пилону Натуры$(0)$(/l) он может быть улучшен, что позволяет уменьшить стоимость маны для работы $(l:alfhomancy/intro)$(item)Портала в Альфхейм$(0)$(/l) примерно в четыре раза. botanicadds.page.gaiasteel_pylon1=Создание $(item)Гайястилового Пилона$(0).
 
-botanicadds.page.elven_fluxfield0=Improving on $(l:mana/rf_generator)$(item)Mana Fluxfield$(0)$(/l) with elven resources allows one to attach spark to the Fluxfield, while also improving it's overall capacity.
-botanicadds.page.elven_fluxfield1=Twisting the fabric of magic mod reality.
+botanicadds.page.elven_fluxfield0=Улучшение $(l:mana/rf_generator)$(item)Поля Потока Маны$(0)$(/l) с использованием эльфийских ресурсов позволяет прикрепить искру к Полю Потока, а также улучшить его общую ёмкость. botanicadds.page.elven_fluxfield1=Изменение структуры магии и мод-реальности.
 
-botania.entry.ba_terra_protector=Terra Protector
-botania.page.ba_terra_protector1=$(item)Terra Protector$(0) is aimed at providing complete protection to any damage at cost of mana. It's not made from rubber though, thus it can overheat and stop working. Don't use it too much, if you don't want to die. A good way to demonstrate what will happen is hugging a cacti.
+botania.entry.ba_terra_protector=Защитник Терры botania.page.ba_terra_protector1=$(item)Защитник Терры$(0) предназначен для обеспечения полной защиты от любого урона за счёт маны. Однако он не сделан из резины, поэтому может перегреться и перестать работать. Не используйте его слишком часто, если не хотите умереть. Хороший способ продемонстрировать, что произойдёт — обнять кактус.
