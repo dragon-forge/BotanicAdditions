@@ -9,6 +9,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,7 +36,10 @@ public class BoltParticle
 		main.finalizeBolt();
 		setupFromMain();
 		
-		setBoundingBox(main.getBoundingBox());
+		var bb = main.getBoundingBox();
+		
+		bbWidth = (float) Math.max(bb.getXsize(), bb.getZsize()) + 2;
+		bbHeight = (float) bb.getYsize() + 2;
 	}
 	
 	public void finalizeBolt()
@@ -53,9 +57,30 @@ public class BoltParticle
 	}
 	
 	@Override
+	public boolean shouldCull()
+	{
+		return true;
+	}
+	
+	@Override
+	public AABB getBoundingBox()
+	{
+		if(main != null)
+		{
+			var bb = main.getBoundingBox();
+			bbWidth = (float) Math.max(bb.getXsize(), bb.getZsize()) + 2;
+			bbHeight = (float) bb.getYsize() + 2;
+			return main.getBoundingBox().inflate(bbWidth, bbHeight, bbWidth);
+		}
+		return super.getBoundingBox();
+	}
+	
+	@Override
 	public void tick()
 	{
 		main.onUpdate();
+//		setBoundingBox(main.getBoundingBox());
+//		setLocationFromBoundingbox();
 		if(main.particleAge >= main.particleMaxAge)
 			remove();
 	}

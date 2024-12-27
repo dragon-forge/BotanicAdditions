@@ -229,7 +229,6 @@ public class BoltCore
 		public float light;
 		public int segmentno;
 		public int splitno;
-		final BoltCore this$0;
 		
 		public void calcDiff()
 		{
@@ -270,7 +269,6 @@ public class BoltCore
 		
 		public Segment(final BoltPoint start, final BoltPoint end, final float light, final int segmentnumber, final int splitnumber)
 		{
-			this$0 = BoltCore.this;
 			startpoint = start;
 			endpoint = end;
 			this.light = light;
@@ -288,8 +286,6 @@ public class BoltCore
 	public class SegmentLightSorter
 			implements Comparator
 	{
-		final BoltCore this$0;
-		
 		public int compare(final Segment o1, final Segment o2)
 		{
 			return Float.compare(o2.light, o1.light);
@@ -300,18 +296,11 @@ public class BoltCore
 		{
 			return compare((Segment) obj, (Segment) obj1);
 		}
-		
-		public SegmentLightSorter()
-		{
-			this$0 = BoltCore.this;
-		}
 	}
 	
 	public class SegmentSorter
 			implements Comparator
 	{
-		final BoltCore this$0;
-		
 		public int compare(final Segment o1, final Segment o2)
 		{
 			final int comp = Integer.valueOf(o1.splitno).compareTo(Integer.valueOf(o2.splitno));
@@ -326,11 +315,6 @@ public class BoltCore
 		public int compare(final Object obj, final Object obj1)
 		{
 			return compare((Segment) obj, (Segment) obj1);
-		}
-		
-		public SegmentSorter()
-		{
-			this$0 = BoltCore.this;
 		}
 	}
 }

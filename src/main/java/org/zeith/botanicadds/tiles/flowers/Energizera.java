@@ -6,7 +6,9 @@ import net.minecraft.nbt.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fml.LogicalSide;
 import org.jetbrains.annotations.Nullable;
+import org.zeith.botanicadds.ConfigsBA;
 import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.init.FlowersBA;
 import org.zeith.botanicadds.net.PacketSpawnEnergizeraFX;
@@ -16,16 +18,17 @@ import vazkii.botania.api.block_entity.GeneratingFlowerBlockEntity;
 import vazkii.botania.api.block_entity.RadiusDescriptor;
 import vazkii.botania.client.fx.WispParticleData;
 
-import static org.zeith.botanicadds.tiles.TileElvenFluxField.BOTANIA_MANA;
-
 @FlowerHUD
 public class Energizera
 		extends GeneratingFlowerBlockEntity
 {
+	public static final String TAG_SEARCH_COOLDOWN = "searchcooldown";
 	public static final String TAG_COOLDOWN = "cooldown";
 	public static final String TAG_SOURCE = "source";
 	
+	public int searchCooldown;
 	public int cooldown, prevCooldown;
+	public Direction lastSuccessfulDir;
 	public BlockPos lastSuccessfulPos;
 	
 	public Energizera(BlockPos pos, BlockState state)
@@ -37,6 +40,8 @@ public class Energizera
 	public void tickFlower()
 	{
 		super.tickFlower();
+		
+		if(searchCooldown > 0) --searchCooldown;
 		
 		if(cooldown > 0)
 		{
@@ -58,56 +63,87 @@ public class Energizera
 			return;
 		}
 		
-		if(!level.isClientSide && getMana() < getMaxMana()) for(int i = 0; i < 8; ++i)
+		if(level.isClientSide || getMana() >= getMaxMana() || searchCooldown > 0) return;
+		
+		var cfg = ConfigsBA.INSTANCE.get(LogicalSide.SERVER).gameplay;
+		int feRate = cfg.energizeraRate;
+		int multiplier = cfg.energizeraMaxPull;
+		
+		searchCooldown += 3;
+		
+		if(suckEnergy(feRate, multiplier)) return;
+		
+		for(int i = 0; i < 12; ++i)
 		{
 			var rng = level.random;
-			var pos = lastSuccessfulPos != null ? lastSuccessfulPos : worldPosition.offset(rng.nextInt(-4, 4), rng.nextInt(-2, 2), rng.nextInt(-4, 4));
-			var be = level.getBlockEntity(pos);
-			if(be != null)
+			var pos = worldPosition.offset(rng.nextInt(-4, 4), rng.nextInt(-2, 2), rng.nextInt(-4, 4));
+			if(findStorage(pos, feRate) != null && suckEnergy(feRate, multiplier))
 			{
-				IEnergyStorage fe = null;
-				
-				for(Direction dir : Direction.values())
-				{
-					var fe0 = be.getCapability(ForgeCapabilities.ENERGY, dir).orElse(null);
-					if(fe0 != null && fe0.canExtract() && fe0.getEnergyStored() >= BOTANIA_MANA.toFE)
-					{
-						fe = fe0;
-						lastSuccessfulPos = pos;
-						break;
-					}
-				}
-				
-				if(fe != null)
-				{
-					int canAcceptMana = getMaxMana() - getMana();
-					int canAcceptFE = (int) BOTANIA_MANA.getInFE(canAcceptMana);
-					int canTakeFE = fe.extractEnergy(canAcceptFE, true);
-					
-					// Remove 5 from 15, resulting in 10.
-					canTakeFE -= canTakeFE % BOTANIA_MANA.toFE;
-					
-					int addMana = (int) BOTANIA_MANA.getFromFE(canTakeFE);
-					
-					fe.extractEnergy(canAcceptFE, false);
-					
-					cooldown += addMana;
-					
-					var start = level.getBlockState(lastSuccessfulPos).getShape(level, lastSuccessfulPos).bounds().move(lastSuccessfulPos).getCenter();
-					var end = level.getBlockState(worldPosition).getShape(level, worldPosition).bounds().move(worldPosition).getCenter().add(0, 0.2F, 0);
-					Network.sendToTracking(this, new PacketSpawnEnergizeraFX(start, end));
-					
-					sync();
-					break;
-				} else if(lastSuccessfulPos == pos)
-				{
-					lastSuccessfulPos = null;
-				}
-			} else if(lastSuccessfulPos == pos)
-			{
-				lastSuccessfulPos = null;
+				break;
 			}
 		}
+	}
+	
+	protected boolean suckEnergy(int feRate, int multiplier)
+	{
+		IEnergyStorage fe = findStorage(null, feRate);
+		if(fe == null) return false;
+		
+		int canAcceptMana = getMaxMana() - getMana();
+		int canAcceptFE = feRate * canAcceptMana;
+		int canTakeFE = fe.extractEnergy(canAcceptFE * multiplier, true);
+		
+		// Remove 5 from 15, resulting in 10.
+		canTakeFE -= canTakeFE % feRate;
+		
+		int addMana = fe.extractEnergy(canTakeFE, false) / feRate;
+		
+		cooldown += addMana;
+		
+		var start = level.getBlockState(lastSuccessfulPos).getShape(level, lastSuccessfulPos).bounds().move(lastSuccessfulPos).getCenter();
+		var end = level.getBlockState(worldPosition).getShape(level, worldPosition).bounds().move(worldPosition).getCenter().add(0, 0.2F, 0);
+		Network.sendToTracking(this, new PacketSpawnEnergizeraFX(start, end));
+		
+		sync();
+		
+		return true;
+	}
+	
+	public IEnergyStorage findStorage(BlockPos pos, int minEnergy)
+	{
+		if(pos == null) pos = lastSuccessfulPos;
+		if(pos == null || !level.isLoaded(pos)) return null;
+		
+		var be = level.getBlockEntity(pos);
+		if(be == null) return null;
+		
+		IEnergyStorage fe = null;
+		if(lastSuccessfulDir != null)
+		{
+			fe = be.getCapability(ForgeCapabilities.ENERGY, lastSuccessfulDir).orElse(null);
+			if(fe != null && fe.canExtract() && fe.getEnergyStored() >= minEnergy)
+			{
+				lastSuccessfulPos = pos;
+				return fe;
+			}
+		}
+		
+		lastSuccessfulPos = null;
+		lastSuccessfulDir = null;
+		
+		for(Direction dir : Direction.values())
+		{
+			fe = be.getCapability(ForgeCapabilities.ENERGY, dir).orElse(null);
+			
+			if(fe != null && fe.canExtract() && fe.getEnergyStored() >= minEnergy)
+			{
+				lastSuccessfulPos = pos;
+				lastSuccessfulDir = dir;
+				return fe;
+			}
+		}
+		
+		return fe;
 	}
 	
 	@Override
@@ -128,6 +164,7 @@ public class Energizera
 		super.writeToPacketNBT(cmp);
 		
 		cmp.putInt(TAG_COOLDOWN, cooldown);
+		cmp.putInt(TAG_SEARCH_COOLDOWN, searchCooldown);
 		if(lastSuccessfulPos != null) cmp.put(TAG_SOURCE, NbtUtils.writeBlockPos(lastSuccessfulPos));
 	}
 	
@@ -137,6 +174,7 @@ public class Energizera
 		super.readFromPacketNBT(cmp);
 		
 		cooldown = cmp.getInt(TAG_COOLDOWN);
+		searchCooldown = cmp.getInt(TAG_SEARCH_COOLDOWN);
 		if(cmp.contains(TAG_SOURCE, Tag.TAG_COMPOUND)) lastSuccessfulPos = NbtUtils.readBlockPos(cmp.getCompound(TAG_SOURCE));
 		else lastSuccessfulPos = null;
 	}

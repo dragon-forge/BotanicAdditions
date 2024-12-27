@@ -5,8 +5,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.LogicalSide;
+import org.zeith.botanicadds.ConfigsBA;
 import org.zeith.botanicadds.client.particle.lightning.Bolt;
+import org.zeith.botanicadds.client.particle.lightning.BoltParticle;
 import org.zeith.hammerlib.net.*;
+import org.zeith.hammerlib.proxy.HLClientProxy;
 
 @MainThreaded
 public class PacketSpawnEnergizeraFX
@@ -47,7 +51,16 @@ public class PacketSpawnEnergizeraFX
 		
 		long seed = level.random.nextLong();
 		
-		var options = new Bolt(seed, 30, 1.5F, 2, new Bolt.Fractal(1, 30F),
+		var cfg = ConfigsBA.INSTANCE.get(LogicalSide.CLIENT).client;
+		
+		long amt = HLClientProxy.streamParticles()
+				.filter(BoltParticle.class::isInstance)
+				.count();
+		
+		if(amt >= cfg.energizeraMaxBoltCountHard)
+			return;
+		
+		var options = new Bolt(seed, 30, 0.75F, 2, new Bolt.Fractal(amt < cfg.energizeraMaxBoltCountSoft ? 2 : 1, 30F),
 				new Bolt.Layer(771, 0xff2222, true),
 				new Bolt.Layer(772, 0xff0000, true)
 		);
