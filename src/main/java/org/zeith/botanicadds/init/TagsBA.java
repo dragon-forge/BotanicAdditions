@@ -2,9 +2,9 @@ package org.zeith.botanicadds.init;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.hammerlib.annotations.Setup;
@@ -21,6 +21,17 @@ public interface TagsBA
 		static void setup()
 		{
 			TagAdapter.bind(ALFHEIM_GATEWAY_PYLONS, BotaniaBlocks.naturaPylon);
+		}
+	}
+	
+	interface Items
+	{
+		TagKey<Item> TESSERACT_ATTUNABLE = ItemTags.create(BotanicAdditions.id("tesseract_attunable"));
+		
+		@Setup
+		static void setup()
+		{
+			TagAdapter.bind(TESSERACT_ATTUNABLE, BlocksBA.MANA_TESSERACT.asItem());
 		}
 	}
 	

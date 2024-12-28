@@ -15,8 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.zeith.botanicadds.BotanicAdditions;
-import org.zeith.botanicadds.init.BlocksBA;
-import org.zeith.botanicadds.init.ItemsBA;
+import org.zeith.botanicadds.init.*;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 
@@ -28,14 +27,12 @@ public class RecipeAttuneTesseract
 	@RegistryName("attune_tesseract")
 	public static final SimpleCraftingRecipeSerializer<RecipeAttuneTesseract> ATTUNE_TESSERACT = new SimpleCraftingRecipeSerializer<>(RecipeAttuneTesseract::new);
 	
-	public static final TagKey<Item> TESSERACT_ATTUNABLE = ItemTags.create(BotanicAdditions.id("tesseract_attunable"));
-	
 	public RecipeAttuneTesseract(ResourceLocation id, CraftingBookCategory cat)
 	{
-		super(id, BotanicAdditions.MOD_ID + "_tesseract_attune", cat, new ItemStack(BlocksBA.MANA_TESSERACT), Util.make(NonNullList.create(), lst ->
+		super(id, "", cat, new ItemStack(BlocksBA.MANA_TESSERACT), Util.make(NonNullList.create(), lst ->
 						{
 							lst.add(Ingredient.of(ItemsBA.TESSERACT_ATTUNER));
-							lst.add(Ingredient.of(TESSERACT_ATTUNABLE));
+							lst.add(Ingredient.of(TagsBA.Items.TESSERACT_ATTUNABLE));
 						}
 				)
 		);
@@ -64,36 +61,35 @@ public class RecipeAttuneTesseract
 		for(int j = 0; j < inv.getContainerSize(); ++j)
 		{
 			ItemStack it = inv.getItem(j);
-			if(!it.isEmpty())
+			if(it.isEmpty()) continue;
+			
+			++i;
+			stackedcontents.accountStack(it, 1);
+			
+			if(!it.is(ItemsBA.TESSERACT_ATTUNER)) continue;
+			
+			CompoundTag display = it.getTagElement("display");
+			if(display == null || !display.contains("Name", 8)) continue;
+			
+			try
 			{
-				++i;
-				stackedcontents.accountStack(it, 1);
-				
-				if(it.is(ItemsBA.TESSERACT_ATTUNER))
+				Component component = Component.Serializer.fromJson(display.getString("Name"));
+				if(component != null)
 				{
-					CompoundTag compoundtag = it.getTagElement("display");
-					if(compoundtag != null && compoundtag.contains("Name", 8))
-					{
-						try
-						{
-							Component component = Component.Serializer.fromJson(compoundtag.getString("Name"));
-							if(component != null)
-							{
-								channel = component.getString();
-								continue;
-							}
-							
-							compoundtag.remove("Name");
-						} catch(Exception exception)
-						{
-							compoundtag.remove("Name");
-						}
-					}
+					channel = component.getString();
+					continue;
 				}
+				
+				display.remove("Name");
+			} catch(Exception exception)
+			{
+				display.remove("Name");
 			}
 		}
 		
-		return i == this.getIngredients().size() && channel != null && stackedcontents.canCraft(this, null);
+		return i == this.getIngredients().size()
+			   && channel != null
+			   && stackedcontents.canCraft(this, null);
 	}
 	
 	@Override
