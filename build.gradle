@@ -155,7 +155,7 @@ repositories {
 dependencies {
     minecraft "net.neoforged:forge:${config.mc_version}-${config.forge_version}"
 
-    implementation fg.deobf("vazkii.botania:Botania:1.20.1-441-FORGE")
+    implementation fg.deobf("vazkii.botania:Botania:1.20.1-446-FORGE")
     implementation fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84-FORGE")
 
     if (hasConfig("hl_version") && !config.hl_version.isEmpty()) {
