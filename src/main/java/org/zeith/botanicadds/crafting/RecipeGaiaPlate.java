@@ -4,13 +4,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.zeith.botanicadds.init.BlocksBA;
@@ -37,6 +37,12 @@ public class RecipeGaiaPlate
 	}
 	
 	@Override
+	public @NotNull RecipeType<?> getType()
+	{
+		return RecipeTypesBA.GAIA_PLATE;
+	}
+	
+	@Override
 	public int getMana()
 	{
 		return this.mana;
@@ -49,13 +55,11 @@ public class RecipeGaiaPlate
 		
 		for(int i = 0; i < inv.getContainerSize(); ++i)
 		{
-			if(!inv.getItem(i).isEmpty())
+			ItemStack it = inv.getItem(i);
+			if(!it.isEmpty())
 			{
-				if(inv.getItem(i).getCount() > 1)
-				{
+				if(it.getCount() > 1)
 					return false;
-				}
-				
 				++nonEmptySlots;
 			}
 		}
@@ -65,13 +69,13 @@ public class RecipeGaiaPlate
 	}
 	
 	@Override
-	public @NotNull ItemStack assemble(@NotNull Container inv)
+	public ItemStack assemble(Container container, RegistryAccess access)
 	{
 		return this.output.copy();
 	}
 	
 	@Override
-	public @NotNull ItemStack getResultItem()
+	public ItemStack getResultItem(RegistryAccess access)
 	{
 		return this.output;
 	}

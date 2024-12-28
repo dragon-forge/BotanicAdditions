@@ -7,7 +7,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.zeith.hammerlib.core.adapter.recipe.RecipeGroup;
-import org.zeith.hammerlib.util.mcf.RecipeRegistrationContext;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.api.recipe.StateIngredient;
 import vazkii.botania.common.crafting.*;
@@ -117,11 +116,12 @@ public class PureDaisyRecipeBuilder
 			throw new IllegalStateException(getClass().getSimpleName() + " does not have any defined output!");
 	}
 	
-	public void register(RecipeRegistrationContext ctx)
+	public void register()
 	{
 		validate();
 		var id = getIdentifier();
-		if(ctx.enableRecipe(id))
-			event.register(id, new PureDaisyRecipe(id, input, output, time, function));
+		if(!event.enableRecipe(BotaniaRecipeTypes.PURE_DAISY_TYPE, id)) return;
+		
+		event.register(id, new PureDaisyRecipe(id, input, output, time, function));
 	}
 }

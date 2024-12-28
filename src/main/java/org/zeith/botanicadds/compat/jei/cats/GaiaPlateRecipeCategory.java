@@ -1,7 +1,6 @@
 package org.zeith.botanicadds.compat.jei.cats;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -9,6 +8,8 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.*;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -22,8 +23,6 @@ import vazkii.botania.client.gui.HUDHandler;
 import vazkii.botania.client.integration.jei.PetalApothecaryRecipeCategory;
 import vazkii.botania.client.integration.jei.TerrestrialAgglomerationDrawable;
 import vazkii.botania.common.lib.ResourceLocationHelper;
-
-import java.util.Iterator;
 
 public class GaiaPlateRecipeCategory
 		implements IRecipeCategory<RecipeGaiaPlate>
@@ -71,7 +70,7 @@ public class GaiaPlateRecipeCategory
 	}
 	
 	@Override
-	public void draw(@NotNull RecipeGaiaPlate recipe, @NotNull IRecipeSlotsView view, @NotNull PoseStack ms, double mouseX, double mouseY)
+	public void draw(@NotNull RecipeGaiaPlate recipe, @NotNull IRecipeSlotsView view, @NotNull GuiGraphics ms, double mouseX, double mouseY)
 	{
 		RenderSystem.enableBlend();
 		this.overlay.draw(ms, 25, 14);
@@ -83,15 +82,18 @@ public class GaiaPlateRecipeCategory
 	@Override
 	public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull RecipeGaiaPlate recipe, @NotNull IFocusGroup focusGroup)
 	{
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 48, 37).addItemStack(recipe.getResultItem());
+		// TODO 1.19.4 figure out the proper way to get a registry access
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 48, 37)
+				.addItemStack(recipe.getResultItem(RegistryAccess.EMPTY));
+		
 		double angleBetweenEach = 360.0 / (double) recipe.getIngredients().size();
 		Vec2 point = new Vec2(48.0F, 5.0F);
 		Vec2 center = new Vec2(48.0F, 37.0F);
 		
-		for(Iterator<Ingredient> var8 = recipe.getIngredients().iterator(); var8.hasNext(); point = PetalApothecaryRecipeCategory.rotatePointAbout(point, center, angleBetweenEach))
+		for(Ingredient ingr : recipe.getIngredients())
 		{
-			Ingredient ingr = var8.next();
 			builder.addSlot(RecipeIngredientRole.INPUT, (int) point.x, (int) point.y).addIngredients(ingr);
+			point = PetalApothecaryRecipeCategory.rotatePointAbout(point, center, angleBetweenEach);
 		}
 		
 		builder.addSlot(RecipeIngredientRole.CATALYST, 48, 92).addItemStack(new ItemStack(BlocksBA.GAIA_PLATE));

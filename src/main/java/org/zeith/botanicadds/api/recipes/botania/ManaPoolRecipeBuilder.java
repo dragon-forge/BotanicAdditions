@@ -80,6 +80,8 @@ public class ManaPoolRecipeBuilder
 	{
 		validate();
 		var id = getIdentifier();
+		if(!event.enableRecipe(BotaniaRecipeTypes.MANA_INFUSION_TYPE, id)) return;
+		
 		event.register(id, new ManaInfusionRecipe(id, result, ingredient, mana, group, catalyst));
 	}
 }

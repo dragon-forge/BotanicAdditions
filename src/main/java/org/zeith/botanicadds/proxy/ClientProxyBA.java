@@ -9,7 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -22,6 +23,7 @@ import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.particle.BoltParticleType;
 import org.zeith.botanicadds.tiles.TileElvenBrewery;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
+import org.zeith.hammerlib.api.proxy.IClientProxy;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block_entity.BindableSpecialFlowerBlockEntity;
 import vazkii.botania.common.block.block_entity.BreweryBlockEntity;
@@ -30,22 +32,19 @@ import vazkii.botania.common.block.decor.FloatingFlowerBlock;
 import vazkii.botania.forge.CapabilityUtil;
 
 import java.awt.*;
-import java.util.*;
 import java.util.function.BiConsumer;
 
 public class ClientProxyBA
 		extends CommonProxyBA
+		implements IClientProxy
 {
-	private static final Map<ResourceLocation, Set<ResourceLocation>> SPRITES_BY_ATLAS = new HashMap<>();
-	
-	public static final Material TERRA_CATALYST_OVERLAY = register(new Material(InventoryMenu.BLOCK_ATLAS, BotanicAdditions.id("block/terra_catalyst_overlay")));
+	public static final Material TERRA_CATALYST_OVERLAY = new Material(InventoryMenu.BLOCK_ATLAS, BotanicAdditions.id("block/terra_catalyst_overlay"));
 	
 	public ClientProxyBA()
 	{
 		var bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		bus.addListener(this::registerItemColors);
-		bus.addListener(this::registerMaterials);
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::bindParticles);
 		
@@ -54,16 +53,17 @@ public class ClientProxyBA
 	
 	private void bindParticles(RegisterParticleProvidersEvent e)
 	{
-		e.register(BoltParticleType.TYPE, new BoltParticle.Provider());
+		e.registerSpecial(BoltParticleType.TYPE, new BoltParticle.Provider());
 	}
 	
 	@SuppressWarnings("removal")
 	private void clientSetup(FMLClientSetupEvent e)
 	{
 		ItemProperties.register(ItemsBA.TESSERACT_ATTUNER, new ResourceLocation("private"), (item, p_174626_, p_174627_, p_174628_) ->
-		{
-			return ItemsBA.TESSERACT_ATTUNER.isPrivate(item) ? 1 : 0;
-		});
+				{
+					return ItemsBA.TESSERACT_ATTUNER.isPrivate(item) ? 1 : 0;
+				}
+		);
 		
 		
 		initRenderTypes(ItemBlockRenderTypes::setRenderLayer);
@@ -76,7 +76,7 @@ public class ClientProxyBA
 				{
 					var b = e.getValue();
 					if(b instanceof FloatingFlowerBlock || b instanceof FlowerBlock
-							|| b instanceof TallFlowerBlock || b instanceof BotaniaMushroomBlock)
+					   || b instanceof TallFlowerBlock || b instanceof BotaniaMushroomBlock)
 						consumer.accept(b, RenderType.cutout());
 				});
 	}
@@ -87,15 +87,18 @@ public class ClientProxyBA
 		
 		if(be instanceof BindableSpecialFlowerBlockEntity<?> gf && gf.getClass().isAnnotationPresent(FlowerHUD.class))
 			e.addCapability(BotanicAdditions.id("wand_hud"),
-					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new BindableSpecialFlowerBlockEntity.BindableFlowerWandHud<>(gf)));
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new BindableSpecialFlowerBlockEntity.BindableFlowerWandHud<>(gf))
+			);
 		
 		if(be instanceof TileManaTesseract tess)
 			e.addCapability(BotanicAdditions.id("wand_hud"),
-					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new TileManaTesseract.WandHud(tess)));
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new TileManaTesseract.WandHud(tess))
+			);
 		
 		if(be instanceof TileElvenBrewery brew)
 			e.addCapability(BotanicAdditions.id("wand_hud"),
-					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new BreweryBlockEntity.WandHud(brew)));
+					CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, new BreweryBlockEntity.WandHud(brew))
+			);
 	}
 	
 	public float getWorldElapsedTicks()
@@ -108,16 +111,5 @@ public class ClientProxyBA
 	public void registerItemColors(RegisterColorHandlersEvent.Item e)
 	{
 		e.register((s, t) -> Color.HSBtoRGB(getWorldElapsedTicks() * 2 % 360 / 360F, 0.25F, 1F), ItemsBA.GAIA_SHARD);
-	}
-	
-	public void registerMaterials(TextureStitchEvent.Pre e)
-	{
-		SPRITES_BY_ATLAS.getOrDefault(e.getAtlas().location(), Set.of()).forEach(e::addSprite);
-	}
-	
-	private static Material register(Material mat)
-	{
-		SPRITES_BY_ATLAS.computeIfAbsent(mat.atlasLocation(), rl -> new HashSet<>()).add(mat.texture());
-		return mat;
 	}
 }

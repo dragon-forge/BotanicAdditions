@@ -1,19 +1,20 @@
 package org.zeith.botanicadds;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.zeith.botanicadds.init.*;
+import org.zeith.botanicadds.init.BlocksBA;
+import org.zeith.botanicadds.init.LootTableAlteratorsBA;
 import org.zeith.botanicadds.proxy.ClientProxyBA;
 import org.zeith.botanicadds.proxy.CommonProxyBA;
 import org.zeith.botanicadds.tiles.TileGaiaPlate;
+import org.zeith.hammerlib.api.items.CreativeTab;
+import org.zeith.hammerlib.api.proxy.IProxy;
 import org.zeith.hammerlib.core.adapter.LanguageAdapter;
 import org.zeith.hammerlib.event.fml.FMLFingerprintCheckEvent;
 import org.zeith.hammerlib.util.CommonMessages;
@@ -23,17 +24,14 @@ import vazkii.patchouli.api.PatchouliAPI;
 public class BotanicAdditions
 {
 	public static final Logger LOG = LogManager.getLogger("BotanicAdditions");
-	public static final CommonProxyBA PROXY = DistExecutor.unsafeRunForDist(() -> ClientProxyBA::new, () -> CommonProxyBA::new);
+	public static final CommonProxyBA PROXY = IProxy.create(() -> ClientProxyBA::new, () -> CommonProxyBA::new);
 	public static final String MOD_ID = "botanicadds";
 	
-	public static CreativeModeTab TAB = new CreativeModeTab(MOD_ID)
-	{
-		@Override
-		public ItemStack makeIcon()
-		{
-			return BlocksBA.MANA_TESSERACT.asItem().getDefaultInstance();
-		}
-	};
+	@CreativeTab.RegisterTab
+	public static final CreativeTab TAB = new CreativeTab(id("root"),
+			b -> b.icon(() -> BlocksBA.MANA_TESSERACT.asItem().getDefaultInstance())
+					.title(Component.translatable("itemGroup." + MOD_ID))
+	);
 	
 	public BotanicAdditions()
 	{

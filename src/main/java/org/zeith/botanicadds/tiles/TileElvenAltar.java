@@ -4,6 +4,7 @@ import com.google.common.base.Predicates;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -98,7 +99,7 @@ public class TileElvenAltar
 	
 	public static class ElvenHud
 	{
-		public static void render(TileElvenAltar altar, PoseStack ms, Minecraft mc)
+		public static void render(TileElvenAltar altar, GuiGraphics gfx, Minecraft mc)
 		{
 			int xc = mc.getWindow().getGuiScaledWidth() / 2;
 			int yc = mc.getWindow().getGuiScaledHeight() / 2;
@@ -128,13 +129,12 @@ public class TileElvenAltar
 					if(Float.isFinite(progress)) progress = Mth.clamp(progress, 0F, 1F);
 					else progress = 0;
 					
-					RenderSystem.setShaderTexture(0, HUDHandler.manaBar);
 					RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
-					RenderHelper.drawTexturedModalRect(ms, xc + radius + 9, yc - 8, progress == 1F ? 0 : 22, 8, 22, 15);
+					RenderHelper.drawTexturedModalRect(gfx, HUDHandler.manaBar, xc + radius + 9, yc - 8, progress == 1F ? 0 : 22, 8, 22, 15);
 					
 					if(progress == 1F)
 					{
-						mc.getItemRenderer().renderGuiItem(new ItemStack(BotaniaBlocks.livingrock), xc + radius + 16, yc + 8);
+						gfx.renderItem(new ItemStack(BotaniaBlocks.livingrock), xc + radius + 16, yc + 8);
 						PoseStack pose = RenderSystem.getModelViewStack();
 						pose.pushPose();
 						pose.translate(0, 0, 100);
@@ -146,16 +146,16 @@ public class TileElvenAltar
 							playerWand = PlayerHelper.getItemClassFromInventory(mc.player, WandOfTheForestItem.class);
 						}
 						ItemStack wandToRender = playerWand.isEmpty() ? new ItemStack(BotaniaItems.twigWand) : playerWand;
-						mc.getItemRenderer().renderGuiItem(wandToRender, xc + radius + 24, yc + 8);
+						gfx.renderItem(wandToRender, xc + radius + 24, yc + 8);
 						pose.popPose();
 						RenderSystem.applyModelViewMatrix();
 					}
 					
-					RenderHelper.renderProgressPie(ms, xc + radius + 32, yc - 8, progress, recipe.assemble(altar.getItemHandler()));
+					RenderHelper.renderProgressPie(gfx, xc + radius + 32, yc - 8, progress, recipe.assemble(altar.getItemHandler(), altar.getLevel().registryAccess()));
 					
 					if(progress == 1F)
 					{
-						mc.font.draw(ms, "+", xc + radius + 14, yc + 12, 0xFFFFFF);
+						gfx.drawString(mc.font, "+", xc + radius + 14, yc + 12, 0xFFFFFF, false);
 					}
 				});
 				
@@ -167,7 +167,7 @@ public class TileElvenAltar
 					pose.pushPose();
 					pose.translate(xPos, yPos, 0);
 					RenderSystem.applyModelViewMatrix();
-					mc.getItemRenderer().renderGuiItem(altar.getItemHandler().getItem(i), 0, 0);
+					gfx.renderItem(altar.getItemHandler().getItem(i), 0, 0);
 					pose.popPose();
 					RenderSystem.applyModelViewMatrix();
 					
@@ -177,9 +177,9 @@ public class TileElvenAltar
 			if(altar instanceof RunicAltarBlockEntityAccessor a && a.botanicAdditions_recipeKeepTicks() > 0 && altar.canAddLastRecipe())
 			{
 				String s = I18n.get("botaniamisc.altarRefill0");
-				mc.font.drawShadow(ms, s, xc - mc.font.width(s) / 2, yc + 10, 0xFFFFFF);
+				gfx.drawString(mc.font, s, xc - mc.font.width(s) / 2, yc + 10, 0xFFFFFF);
 				s = I18n.get("botaniamisc.altarRefill1");
-				mc.font.drawShadow(ms, s, xc - mc.font.width(s) / 2, yc + 20, 0xFFFFFF);
+				gfx.drawString(mc.font, s, xc - mc.font.width(s) / 2, yc + 20, 0xFFFFFF);
 			}
 		}
 	}

@@ -5,8 +5,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.util.MaterialType;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
@@ -29,7 +28,7 @@ public class BlockStorage
 	
 	public BlockStorage(String metal)
 	{
-		this(Properties.of(Material.METAL).sound(SoundType.METAL), metal);
+		this(Properties.of().sound(SoundType.METAL), metal);
 	}
 	
 	public BlockStorage(Properties props, String metal)
@@ -49,7 +48,7 @@ public class BlockStorage
 	}
 	
 	@Override
-	public List<ItemStack> getDrops(BlockState p_60537_, LootContext.Builder p_60538_)
+	public List<ItemStack> getDrops(BlockState p_287732_, LootParams.Builder p_287596_)
 	{
 		return List.of(new ItemStack(this));
 	}

@@ -1,7 +1,7 @@
 package org.zeith.botanicadds.mixins;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +18,7 @@ public class RunicAltarBlockEntityHUDMixin
 			remap = false,
 			at = @At("HEAD")
 	)
-	private static void hookElvenHUD(RunicAltarBlockEntity altar, PoseStack ms, Minecraft mc, CallbackInfo ci)
+	private static void hookElvenHUD(RunicAltarBlockEntity altar, GuiGraphics ms, Minecraft mc, CallbackInfo ci)
 	{
 		if(altar instanceof TileElvenAltar elven)
 		{

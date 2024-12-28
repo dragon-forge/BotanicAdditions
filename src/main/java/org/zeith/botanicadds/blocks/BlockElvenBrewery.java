@@ -9,7 +9,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -69,7 +69,7 @@ public class BlockElvenBrewery
 	}
 	
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
+	public List<ItemStack> getDrops(BlockState p_287732_, LootParams.Builder p_287596_)
 	{
 		return List.of(new ItemStack(this));
 	}

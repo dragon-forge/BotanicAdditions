@@ -4,7 +4,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import org.zeith.hammerlib.HammerLib;
 import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
 import org.zeith.hammerlib.api.fml.IRegisterListener;
@@ -17,8 +17,6 @@ import vazkii.botania.common.lib.BotaniaTags;
 
 import java.util.List;
 import java.util.function.Supplier;
-
-import static org.zeith.botanicadds.BotanicAdditions.TAB;
 
 public class FloatingSpecialFlowerBlockBA
 		extends FloatingSpecialFlowerBlock
@@ -49,7 +47,7 @@ public class FloatingSpecialFlowerBlockBA
 	}
 	
 	@Override
-	public List<ItemStack> getDrops(BlockState p_60537_, LootContext.Builder p_60538_)
+	public List<ItemStack> getDrops(BlockState p_287732_, LootParams.Builder p_287596_)
 	{
 		return List.of(new ItemStack(this));
 	}
@@ -57,7 +55,7 @@ public class FloatingSpecialFlowerBlockBA
 	@Override
 	public BlockItem createBlockItem()
 	{
-		var bi = new SpecialFlowerBlockItem(this, new Item.Properties().tab(TAB));
+		var bi = new SpecialFlowerBlockItem(this, new Item.Properties());
 		TagAdapter.bind(BotaniaTags.Items.SPECIAL_FLOATING_FLOWERS, bi);
 		return bi;
 	}

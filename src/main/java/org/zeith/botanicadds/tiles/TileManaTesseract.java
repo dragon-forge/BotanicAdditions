@@ -3,8 +3,8 @@ package org.zeith.botanicadds.tiles;
 import com.google.common.base.Predicates;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.*;
@@ -316,13 +316,13 @@ public class TileManaTesseract
 		}
 		
 		@Override
-		public void renderHUD(PoseStack ms, Minecraft mc)
+		public void renderHUD(GuiGraphics gfx, Minecraft mc)
 		{
 			var tess = new ItemStack(this.tess.getBlockState().getBlock());
 			String name = tess.getHoverName().getString();
 			
 			var saturation = (float) (Math.sin(Math.toRadians(System.currentTimeMillis() % 3600L / 10D)) + 1F) / 2F * 0.25F;
-			BotaniaAPIClient.instance().drawSimpleManaHUD(ms, Mth.hsvToRgb(193 / 360F, 0.5F + saturation, 1F), this.tess.getCurrentMana(),
+			BotaniaAPIClient.instance().drawSimpleManaHUD(gfx, Mth.hsvToRgb(193 / 360F, 0.5F + saturation, 1F), this.tess.getCurrentMana(),
 					this.tess.getMaxMana(), name);
 			
 			int x = Minecraft.getInstance().getWindow().getGuiScaledWidth() / 2 - 11;
@@ -334,12 +334,11 @@ public class TileManaTesseract
 			RenderSystem.enableBlend();
 			RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			
-			RenderSystem.setShaderTexture(0, HUDHandler.manaBar);
-			RenderHelper.drawTexturedModalRect(ms, x, y, u, v, 22, 15);
+			RenderHelper.drawTexturedModalRect(gfx, HUDHandler.manaBar, x, y, u, v, 22, 15);
 			RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
 			
-			mc.getItemRenderer().renderAndDecorateItem(new ItemStack(BotaniaItems.spark), x - 20, y);
-			mc.getItemRenderer().renderAndDecorateItem(tess, x + 26, y);
+			gfx.renderItem(new ItemStack(BotaniaItems.spark), x - 20, y);
+			gfx.renderItem(tess, x + 26, y);
 			
 			int modeColor = 0x22AA22;
 			String mode = "public";
@@ -359,13 +358,13 @@ public class TileManaTesseract
 			
 			y += 20;
 			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(comp) / 2;
-			mc.font.drawShadow(ms, comp, x, y, 0x00A56B);
+			gfx.drawString(mc.font, comp, x, y, 0x00A56B);
 			
 			var comp2 = Component.literal(this.tess.channelReadable);
 			
 			y += mc.font.lineHeight + 2;
 			x = mc.getWindow().getGuiScaledWidth() / 2 - mc.font.width(comp2) / 2;
-			mc.font.drawShadow(ms, comp2, x, y, 0x00A56B);
+			gfx.drawString(mc.font, comp2, x, y, 0x00A56B);
 		}
 	}
 }

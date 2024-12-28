@@ -2,15 +2,23 @@
 mod_id=botanicadds
 archive_name=BotanicAdditions
 mod_name=Botanic Additions
-mod_version=19.3.6
+mod_version=19.3.7
+issue_tracker_url=https://github.com/dragon-forge/BotanicAdditions/issues
+mod_license=All rights reserved
+
+# Mod dependencies (jei is not a requirement, but HammerLib is)
+hl_version=20.1.38
+jei_version=15.2.0.22
 
 # Maven Info
-maven_group=org.zeith.botanicadds
-hl_version=19.3.60
+maven_group=org.zeith.modid
+maven_url=file:///SERVER//Maven
 
 # MC Info
-mc_version=1.19.2
-forge_version=43.2.0
+mc_version=1.20.1
+mc_range=[1.20.1,1.21)
+forge_version=47.1.99
+forge_range=[47,)
 mc_user=Zeitheron,63fa4c485b5640809727d5d59663e603
 
 # Misc Info

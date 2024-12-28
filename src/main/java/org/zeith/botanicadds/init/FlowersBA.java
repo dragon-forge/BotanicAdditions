@@ -6,10 +6,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.blocks.flowers.*;
 import org.zeith.botanicadds.tiles.flowers.*;
-import org.zeith.hammerlib.annotations.RegistryName;
-import org.zeith.hammerlib.annotations.SimplyRegister;
+import org.zeith.hammerlib.annotations.*;
 import org.zeith.hammerlib.annotations.client.TileRenderer;
 import org.zeith.hammerlib.api.forge.BlockAPI;
 import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
@@ -18,7 +18,7 @@ import vazkii.botania.common.block.BotaniaBlocks;
 
 import java.util.function.Supplier;
 
-@SimplyRegister(prefix = "flowers/")
+@SimplyRegister(prefix = "flowers/", creativeTabs = @Ref(value = BotanicAdditions.class, field = "TAB"))
 public interface FlowersBA
 {
 	BlockBehaviour.Properties FLOWER_PROPS = BlockBehaviour.Properties.copy(Blocks.POPPY);

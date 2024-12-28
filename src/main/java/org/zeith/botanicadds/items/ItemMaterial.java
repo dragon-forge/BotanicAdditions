@@ -3,7 +3,6 @@ package org.zeith.botanicadds.items;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.util.MaterialType;
 import org.zeith.hammerlib.api.fml.IRegisterListener;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
@@ -17,7 +16,7 @@ public class ItemMaterial
 	
 	public ItemMaterial(MaterialType type, String metal)
 	{
-		this(new Properties().tab(BotanicAdditions.TAB), type, metal);
+		this(new Properties(), type, metal);
 	}
 	
 	public ItemMaterial(Properties props, MaterialType type, String metal)

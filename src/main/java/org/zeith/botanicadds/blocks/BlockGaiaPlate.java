@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -26,6 +25,7 @@ import org.zeith.botanicadds.init.RecipeTypesBA;
 import org.zeith.botanicadds.tiles.TileGaiaPlate;
 import org.zeith.hammerlib.api.blocks.ICreativeTabBlock;
 import org.zeith.hammerlib.api.forge.BlockAPI;
+import org.zeith.hammerlib.api.items.CreativeTab;
 import org.zeith.hammerlib.core.adapter.BlockHarvestAdapter;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.common.lib.BotaniaTags;
@@ -40,7 +40,7 @@ public class BlockGaiaPlate
 	
 	public BlockGaiaPlate()
 	{
-		super(Properties.of(Material.METAL).sound(SoundType.METAL).requiresCorrectToolForDrops().strength(3F, 10F));
+		super(Properties.of().sound(SoundType.METAL).requiresCorrectToolForDrops().strength(3F, 10F));
 		TagAdapter.bind(BotaniaTags.Blocks.MAGNET_RING_BLACKLIST, this);
 		BlockHarvestAdapter.bindTool(BlockHarvestAdapter.MineableType.PICKAXE, Tiers.STONE, this);
 	}
@@ -114,7 +114,7 @@ public class BlockGaiaPlate
 	}
 	
 	@Override
-	public CreativeModeTab getCreativeTab()
+	public @NotNull CreativeTab getCreativeTab()
 	{
 		return TAB;
 	}

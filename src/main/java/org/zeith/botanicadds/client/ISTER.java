@@ -3,9 +3,7 @@ package org.zeith.botanicadds.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.zeith.botanicadds.client.render.tile.TESRGaiasteelPylon;
@@ -30,7 +28,7 @@ public class ISTER
 		private final Map<Item, TEISR> renderers = new IdentityHashMap<>();
 		
 		@Override
-		public void renderByItem(ItemStack stack, ItemTransforms.TransformType transform,
+		public void renderByItem(ItemStack stack, ItemDisplayContext transform,
 								 PoseStack ps, MultiBufferSource buffers, int light, int overlay)
 		{
 			renderers.computeIfAbsent(stack.getItem(), i ->

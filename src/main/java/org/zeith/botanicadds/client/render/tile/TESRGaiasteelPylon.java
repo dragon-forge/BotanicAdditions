@@ -2,13 +2,13 @@ package org.zeith.botanicadds.client.render.tile;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +33,7 @@ public class TESRGaiasteelPylon
 	private final ModelGaiasteelPylon model;
 	
 	// Overrides for when we call this without an actual pylon
-	private static ItemTransforms.TransformType forceTransform = ItemTransforms.TransformType.NONE;
+	private static ItemDisplayContext forceTransform = ItemDisplayContext.NONE;
 	
 	public TESRGaiasteelPylon(BlockEntityRendererProvider.Context ctx)
 	{
@@ -44,7 +44,7 @@ public class TESRGaiasteelPylon
 	public void render(@Nullable TileGaiasteelPylon pylon, float pticks, PoseStack ms, MultiBufferSource buffers, int light, int overlay)
 	{
 		boolean renderingItem = pylon == null;
-		boolean direct = renderingItem && (forceTransform == ItemTransforms.TransformType.GUI || forceTransform.firstPerson()); // loosely based off ItemRenderer logic
+		boolean direct = renderingItem && (forceTransform == ItemDisplayContext.GUI || forceTransform.firstPerson()); // loosely based off ItemRenderer logic
 		
 		var shaderLayer = direct ? NATURA_PYLON_GLOW_DIRECT : NATURA_PYLON_GLOW;
 		
@@ -60,7 +60,7 @@ public class TESRGaiasteelPylon
 		ms.pushPose();
 		ms.translate(0.5F, 0F, -0.5F);
 		if(pylon != null)
-			ms.mulPose(Vector3f.YP.rotationDegrees(worldTime * 1.5F));
+			ms.mulPose(Axis.YP.rotationDegrees(worldTime * 1.5F));
 		
 		RenderType layer = RenderType.entityTranslucent(GAIASTEEL_TEXTURE);
 		
@@ -78,7 +78,7 @@ public class TESRGaiasteelPylon
 		
 		ms.translate(0.5F, 0F, -0.5F);
 		if(pylon != null)
-			ms.mulPose(Vector3f.YP.rotationDegrees(-worldTime));
+			ms.mulPose(Axis.YP.rotationDegrees(-worldTime));
 		
 		buffer = buffers.getBuffer(shaderLayer);
 		model.renderCrystal(ms, buffer, light, overlay, r, g, b, a);
@@ -97,7 +97,7 @@ public class TESRGaiasteelPylon
 		}
 		
 		@Override
-		public void render(ItemStack stack, ItemTransforms.TransformType type, PoseStack ms, MultiBufferSource buffers, int light, int overlay)
+		public void render(ItemStack stack, ItemDisplayContext type, PoseStack ms, MultiBufferSource buffers, int light, int overlay)
 		{
 			if(Block.byItem(stack.getItem()) instanceof BlockGaiasteelPylon pylon)
 			{

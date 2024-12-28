@@ -1,14 +1,14 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
-issueTrackerURL = "https://github.com/dragon-forge/BotanicAdditions/issues"
-license = "All rights reserved"
+loaderVersion="${forge_version_range}"
+issueTrackerURL="${issue_tracker_url}"
+license="${mod_license}"
 
 [[mods]]
-modId = "botanicadds"
-version = "${file.jarVersion}"
-displayName = "Botanic Additions"
-updateJSONURL = "https://api.modrinth.com/updates/2u3eevWi/forge_updates.json"
-displayURL = "https://h.zeith.org/api/fmlhp/310637"
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+updateJSONURL="https://api.modrinth.com/updates/${modrinth_project}/forge_updates.json"
+displayURL="https://modrinth.com/mod/${modrinth_project}"
 logoFile = "icon.png"
 authors = "Zeitheron"
 
@@ -16,30 +16,32 @@ description = '''
 Implementing handy features for Botania!
 '''
 
-[[dependencies.botanicadds]]
+displayTest="MATCH_VERSION"
+
+[[dependencies.${mod_id}]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange="${forge_version_range}"
 ordering = "NONE" # NONE/BEFORE/AFTER
 side = "BOTH"
 
-[[dependencies.botanicadds]]
+[[dependencies.${mod_id}]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,1.20)"
+versionRange="${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.botanicadds]]
+[[dependencies.${mod_id}]]
 modId = "hammerlib"
 mandatory = true
-versionRange = "[19.3.57,)"
+versionRange="[${hl_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.botanicadds]]
+[[dependencies.${mod_id}]]
 modId = "botania"
 mandatory = true
-versionRange = "[1.19.2-440-FORGE,)"
+versionRange = "[1.20.1-441-FORGE,)"
 ordering = "AFTER"
 side = "BOTH"

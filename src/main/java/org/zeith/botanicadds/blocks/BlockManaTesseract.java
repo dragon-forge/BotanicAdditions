@@ -16,44 +16,39 @@ import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.BotanicAdditions;
-import org.zeith.botanicadds.crafting.RecipeAttuneTesseract;
 import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.botanicadds.tiles.TileManaTesseract;
 import org.zeith.botanicadds.world.WorldTesseractData;
-import org.zeith.hammerlib.api.blocks.ICustomBlockItem;
 import org.zeith.hammerlib.api.forge.BlockAPI;
 import org.zeith.hammerlib.core.adapter.BlockHarvestAdapter;
-import org.zeith.hammerlib.core.adapter.TagAdapter;
 import org.zeith.hammerlib.util.java.Cast;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.zeith.botanicadds.BotanicAdditions.TAB;
-
 public class BlockManaTesseract
 		extends SimpleBlockBA
-		implements EntityBlock, ICustomBlockItem
+		implements EntityBlock
 {
 	public static final EnumProperty<WorldTesseractData.TesseractMode> MODE = EnumProperty.create("mode", WorldTesseractData.TesseractMode.class);
 	
 	public BlockManaTesseract()
 	{
-		super(Properties.of(Material.STONE).strength(2.5F).requiresCorrectToolForDrops());
+		super(Properties.of().strength(2.5F).requiresCorrectToolForDrops());
 		BlockHarvestAdapter.bindTool(BlockHarvestAdapter.MineableType.PICKAXE, Tiers.IRON, this);
 	}
 	
 	public static Optional<String> getChannel(ItemStack stack)
 	{
 		return stack.hasTag() && stack.getTag().contains("Channel", Tag.TAG_STRING)
-				? Optional.of(stack.getTag().getString("Channel"))
-				: Optional.empty();
+			   ? Optional.of(stack.getTag().getString("Channel"))
+			   : Optional.empty();
 	}
 	
 	@Override
@@ -87,7 +82,7 @@ public class BlockManaTesseract
 		if(getChannel(ctx.getItemInHand()).isEmpty())
 		{
 			var pl = ctx.getPlayer();
-			if(pl != null && !pl.level.isClientSide)
+			if(pl != null && !pl.level().isClientSide)
 			{
 				pl.displayClientMessage(Component.translatable("info." + BotanicAdditions.MOD_ID + ".mana_tesseract.no_channel")
 								.withStyle(Style.EMPTY.withColor(0xA30000)),
@@ -102,11 +97,14 @@ public class BlockManaTesseract
 	}
 	
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder)
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder)
 	{
 		final var item = new ItemStack(this);
 		
-		var savedItem = Cast.optionally(builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY), TileManaTesseract.class)
+		var ctx = builder.withParameter(LootContextParams.BLOCK_STATE, state)
+				.create(LootContextParamSets.BLOCK);
+		
+		var savedItem = Cast.optionally(ctx.getParamOrNull(LootContextParams.BLOCK_ENTITY), TileManaTesseract.class)
 				.map(t -> t.storeData(item))
 				.orElse(item);
 		
@@ -164,13 +162,5 @@ public class BlockManaTesseract
 								.withStyle(Style.EMPTY.withColor(modeColor))
 				).withStyle(Style.EMPTY.withItalic(true).withColor(0x444444))
 		);
-	}
-	
-	@Override
-	public BlockItem createBlockItem()
-	{
-		var bi = new BlockItem(this, new Item.Properties().tab(TAB));
-		TagAdapter.bind(RecipeAttuneTesseract.TESSERACT_ATTUNABLE, bi);
-		return bi;
 	}
 }

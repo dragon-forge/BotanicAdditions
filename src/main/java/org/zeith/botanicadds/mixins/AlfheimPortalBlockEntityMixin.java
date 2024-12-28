@@ -37,14 +37,16 @@ public abstract class AlfheimPortalBlockEntityMixin
 	 * with a more flexible check of pylon from {@link org.zeith.botanicadds.init.TagsBA.Blocks#ALFHEIM_GATEWAY_PYLONS} (while also allowing custom pylons via {@link IElvenGatewayPylonTile}) and any {@link net.minecraft.world.level.block.entity.BlockEntity} extending {@link ManaPoolBlockEntity}
 	 */
 	@Inject(
-			method = "lambda$locatePylons$1",
-			at = @At("HEAD"),
+			method = "isValidPylonPosition",
+			at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z"),
 			cancellable = true,
 			remap = false
 	)
-	private void locatePylonsWithAnyManaPool_BotanicAdditions(BlockPos p, CallbackInfoReturnable<Boolean> cir)
+	private void locatePylonsWithAnyManaPool_BotanicAdditions(BlockPos pos, CallbackInfoReturnable<Boolean> cir)
 	{
-		cir.setReturnValue(IElvenGatewayPylonTile.findPylon(level, p) != null && level.getBlockEntity(p.below()) instanceof ManaPoolBlockEntity);
+		if(IElvenGatewayPylonTile.findPylon(level, pos) != null
+		   && level.getBlockEntity(pos.below()) instanceof ManaPoolBlockEntity)
+			cir.setReturnValue(true);
 	}
 	
 	/**

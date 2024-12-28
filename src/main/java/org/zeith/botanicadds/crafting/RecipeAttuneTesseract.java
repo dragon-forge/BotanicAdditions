@@ -2,6 +2,7 @@ package org.zeith.botanicadds.crafting;
 
 import net.minecraft.Util;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -19,22 +20,25 @@ import org.zeith.botanicadds.init.ItemsBA;
 import org.zeith.hammerlib.annotations.RegistryName;
 import org.zeith.hammerlib.annotations.SimplyRegister;
 
+@SuppressWarnings("NonInterfaceSimplyRegister")
 @SimplyRegister
 public class RecipeAttuneTesseract
 		extends ShapelessRecipe
 {
 	@RegistryName("attune_tesseract")
-	public static final SimpleRecipeSerializer<RecipeAttuneTesseract> ATTUNE_TESSERACT = new SimpleRecipeSerializer<>(RecipeAttuneTesseract::new);
+	public static final SimpleCraftingRecipeSerializer<RecipeAttuneTesseract> ATTUNE_TESSERACT = new SimpleCraftingRecipeSerializer<>(RecipeAttuneTesseract::new);
 	
 	public static final TagKey<Item> TESSERACT_ATTUNABLE = ItemTags.create(BotanicAdditions.id("tesseract_attunable"));
 	
-	public RecipeAttuneTesseract(ResourceLocation id)
+	public RecipeAttuneTesseract(ResourceLocation id, CraftingBookCategory cat)
 	{
-		super(id, BotanicAdditions.MOD_ID + "_tesseract_attune", new ItemStack(BlocksBA.MANA_TESSERACT), Util.make(NonNullList.create(), lst ->
-		{
-			lst.add(Ingredient.of(ItemsBA.TESSERACT_ATTUNER));
-			lst.add(Ingredient.of(TESSERACT_ATTUNABLE));
-		}));
+		super(id, BotanicAdditions.MOD_ID + "_tesseract_attune", cat, new ItemStack(BlocksBA.MANA_TESSERACT), Util.make(NonNullList.create(), lst ->
+						{
+							lst.add(Ingredient.of(ItemsBA.TESSERACT_ATTUNER));
+							lst.add(Ingredient.of(TESSERACT_ATTUNABLE));
+						}
+				)
+		);
 	}
 	
 	@Override
@@ -93,9 +97,9 @@ public class RecipeAttuneTesseract
 	}
 	
 	@Override
-	public ItemStack assemble(CraftingContainer inv)
+	public ItemStack assemble(CraftingContainer inv, RegistryAccess registry)
 	{
-		var item = super.assemble(inv);
+		var item = super.assemble(inv, registry);
 		
 		String channel = null;
 		boolean channelPrivate = false;

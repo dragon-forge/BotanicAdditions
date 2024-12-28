@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
@@ -21,15 +20,13 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.zeith.botanicadds.BotanicAdditions;
-import org.zeith.hammerlib.api.blocks.ICreativeTabBlock;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 
 import javax.annotation.Nullable;
 
 public class BlockSculkSensorDisabled
 		extends Block
-		implements SimpleWaterloggedBlock, ICreativeTabBlock
+		implements SimpleWaterloggedBlock
 {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	protected static final VoxelShape SHAPE = box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
@@ -94,12 +91,6 @@ public class BlockSculkSensorDisabled
 			regrow(level, pos);
 		} else if(!wasRandom)
 			level.scheduleTick(pos, state.getBlock(), generateRegrowDelay(rng));
-	}
-	
-	@Override
-	public CreativeModeTab getCreativeTab()
-	{
-		return BotanicAdditions.TAB;
 	}
 	
 	@Nullable

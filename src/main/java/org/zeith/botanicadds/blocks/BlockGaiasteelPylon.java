@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -41,7 +41,7 @@ public class BlockGaiasteelPylon
 	}
 	
 	@Override
-	public List<ItemStack> getDrops(BlockState p_60537_, LootContext.Builder p_60538_)
+	public List<ItemStack> getDrops(BlockState p_287732_, LootParams.Builder p_287596_)
 	{
 		return List.of(new ItemStack(this));
 	}

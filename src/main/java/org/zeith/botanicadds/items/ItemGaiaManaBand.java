@@ -9,17 +9,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.init.ItemsBA;
+import org.zeith.hammerlib.api.items.ITabItem;
 import org.zeith.hammerlib.core.adapter.TagAdapter;
 import vazkii.botania.api.BotaniaForgeCapabilities;
 import vazkii.botania.common.item.equipment.bauble.BandOfManaItem;
 import vazkii.botania.common.item.equipment.bauble.GreaterBandOfManaItem;
 import vazkii.botania.forge.CapabilityUtil;
 
+import java.util.Set;
+
 import static org.zeith.botanicadds.init.ItemsBA.GAIASTEEL_RARITY;
 
 public class ItemGaiaManaBand
 		extends GreaterBandOfManaItem
+		implements ITabItem
 {
 	private static final int MAX_MANA = (BandOfManaItem.MAX_MANA * 4) * 4;
 	
@@ -30,15 +35,21 @@ public class ItemGaiaManaBand
 	}
 	
 	@Override
-	public void fillItemCategory(@NotNull CreativeModeTab tab, @NotNull NonNullList<ItemStack> stacks)
+	public CreativeModeTab getItemCategory()
+	{
+		return BotanicAdditions.TAB.tab();
+	}
+	
+	@Override
+	public void fillItemCategory(CreativeModeTab tab, Set<ItemStack> items)
 	{
 		if(allowedIn(tab))
 		{
-			stacks.add(new ItemStack(this));
+			items.add(new ItemStack(this));
 			
 			ItemStack full = new ItemStack(this);
 			setMana(full, MAX_MANA);
-			stacks.add(full);
+			items.add(full);
 		}
 	}
 	
@@ -47,6 +58,7 @@ public class ItemGaiaManaBand
 	{
 		return CapabilityUtil.makeProvider(BotaniaForgeCapabilities.MANA_ITEM, new GaiaManaItemImpl(stack));
 	}
+	
 	
 	public static class GaiaManaItemImpl
 			extends ManaItemImpl

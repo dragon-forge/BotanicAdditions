@@ -32,7 +32,7 @@ public class Glaciflora
 			generatesEnergy = level.canSeeSky(worldPosition)
 					&& level.isRaining()
 					&& level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, worldPosition).getY() <= worldPosition.getY()
-					&& level.getBiome(worldPosition).value().getPrecipitation() == Biome.Precipitation.SNOW;
+					&& level.getBiome(worldPosition).value().getPrecipitationAt(worldPosition) == Biome.Precipitation.SNOW;
 		
 		if(generatesEnergy)
 		{

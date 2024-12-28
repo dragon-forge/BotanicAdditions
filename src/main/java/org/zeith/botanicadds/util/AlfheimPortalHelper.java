@@ -1,11 +1,14 @@
 package org.zeith.botanicadds.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import org.zeith.botanicadds.api.tile.IElvenGatewayPylonTile;
+import org.zeith.botanicadds.mixins.PylonBlockEntityAccessor;
 import org.zeith.hammerlib.util.java.DirectStorage;
 import org.zeith.hammerlib.util.java.tuples.Tuple3;
 import org.zeith.hammerlib.util.java.tuples.Tuples;
 import vazkii.botania.common.block.block_entity.AlfheimPortalBlockEntity;
+import vazkii.botania.common.block.block_entity.PylonBlockEntity;
 import vazkii.botania.common.block.block_entity.mana.ManaPoolBlockEntity;
 
 import java.util.ArrayList;
@@ -31,12 +34,19 @@ public class AlfheimPortalHelper
 		
 		for(BlockPos pos : pylons)
 		{
+			BlockEntity tile = level.getBlockEntity(pos);
+			if(tile instanceof PylonBlockEntityAccessor pylon)
+			{
+				pylon.botanicAdditions_activated(true);
+				pylon.botanicAdditions_centerPos(self.getBlockPos());
+			}
+			
 			IElvenGatewayPylonTile pylonBA = IElvenGatewayPylonTile.findPylon(level, pos);
 			
 			if(pylonBA != null) pylonBA.activate(self.getBlockPos());
 			else continue;
 			
-			var tile = level.getBlockEntity(pos.below());
+			tile = level.getBlockEntity(pos.below());
 			if(tile instanceof ManaPoolBlockEntity pool)
 			{
 				float mul = pylonBA.getManaCostMultiplier();
@@ -63,7 +73,11 @@ public class AlfheimPortalHelper
 		if(consumed >= expectedConsumption)
 		{
 			for(var tup : consumePools)
-				tup.a().receiveMana(-tup.b());
+			{
+				var pool = tup.a();
+				pool.receiveMana(-tup.b());
+				pool.craftingEffect(false);
+			}
 			return true;
 		}
 		

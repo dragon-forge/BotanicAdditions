@@ -32,7 +32,7 @@ public class Rainute
 			generatesEnergy = level.canSeeSky(worldPosition)
 					&& level.isRaining()
 					&& level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, worldPosition).getY() <= worldPosition.getY()
-					&& level.getBiome(worldPosition).value().getPrecipitation() == Biome.Precipitation.RAIN;
+					&& level.getBiome(worldPosition).value().getPrecipitationAt(worldPosition) == Biome.Precipitation.RAIN;
 		
 		if(generatesEnergy)
 		{

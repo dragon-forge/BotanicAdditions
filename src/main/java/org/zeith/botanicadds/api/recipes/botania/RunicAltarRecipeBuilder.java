@@ -6,6 +6,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.core.adapter.recipe.RecipeBuilder;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
+import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 import vazkii.botania.common.crafting.RunicAltarRecipe;
 
 public class RunicAltarRecipeBuilder
@@ -56,6 +57,8 @@ public class RunicAltarRecipeBuilder
 	{
 		validate();
 		var id = getIdentifier();
+		if(!event.enableRecipe(BotaniaRecipeTypes.RUNE_TYPE, id)) return;
+		
 		event.register(id, new RunicAltarRecipe(id, result, mana, ingredients.toArray(Ingredient[]::new)));
 	}
 }

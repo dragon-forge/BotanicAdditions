@@ -14,18 +14,12 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.ForgeTier;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.DistExecutor;
-import org.zeith.botanicadds.net.PacketLeftClickManaStealerSword;
 import org.zeith.hammerlib.api.fml.IRegisterListener;
-import org.zeith.hammerlib.net.Network;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.ManaBurst;
-import vazkii.botania.api.item.SparkEntity;
 import vazkii.botania.api.mana.BurstProperties;
 import vazkii.botania.api.mana.LensEffectItem;
 import vazkii.botania.api.mana.spark.ManaSpark;
@@ -55,12 +49,6 @@ public class ItemManaStealerSword
 	@Override
 	public void onPostRegistered()
 	{
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-				MinecraftForge.EVENT_BUS.addListener((PlayerInteractEvent.LeftClickEmpty e) ->
-						Network.sendToServer(new PacketLeftClickManaStealerSword())
-				)
-		);
-		
 		MinecraftForge.EVENT_BUS.addListener(this::attackEntity);
 	}
 	
@@ -75,9 +63,9 @@ public class ItemManaStealerSword
 		if(player.getMainHandItem().is(this) && player.getAttackStrengthScale(0) == 1)
 		{
 			var burst = getBurst(player, player.getMainHandItem());
-			player.level.addFreshEntity(burst.entity());
+			player.level().addFreshEntity(burst.entity());
 			player.getMainHandItem().hurtAndBreak(1, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-			player.level.playSound(null, player.getX(), player.getY(), player.getZ(), BotaniaSounds.terraBlade, SoundSource.PLAYERS, 1F, 1F);
+			player.level().playSound(null, player.getX(), player.getY(), player.getZ(), BotaniaSounds.terraBlade, SoundSource.PLAYERS, 1F, 1F);
 		}
 	}
 	
@@ -118,30 +106,30 @@ public class ItemManaStealerSword
 		{
 			Entity victim = (Entity) spark;
 			var attacker = burst.getSourceLens().getOrCreateTagElement(TAG_OWNER).getUUID(TAG_OWNER_ID);
-			Player owner = burst.entity().level.getPlayerByUUID(attacker);
+			Player owner = burst.entity().level().getPlayerByUUID(attacker);
 			if(owner == null) return false;
 			int manaToPut = Math.min(spark.getAttachedManaReceiver().getCurrentMana(), cost);
 			spark.getAttachedManaReceiver().receiveMana(-manaToPut);
 			ManaItemHandlerImpl.INSTANCE.dispatchMana(stack, owner, manaToPut, true);
-			owner.level.playSound(null, victim.position().x, victim.position().y, victim.position().z, BotaniaSounds.enchanterFade, SoundSource.PLAYERS, 0.4F, 1.4F);
-			owner.level.playSound(null, owner.position().x, owner.position().y, owner.position().z, BotaniaSounds.enchanterForm, SoundSource.PLAYERS, 0.4F, 1.4F);
+			owner.level().playSound(null, victim.position().x, victim.position().y, victim.position().z, BotaniaSounds.enchanterFade, SoundSource.PLAYERS, 0.4F, 1.4F);
+			owner.level().playSound(null, owner.position().x, owner.position().y, owner.position().z, BotaniaSounds.enchanterForm, SoundSource.PLAYERS, 0.4F, 1.4F);
 			return true;
 		}
 		
 		if(pos != null && pos.getType() == HitResult.Type.ENTITY && pos instanceof EntityHitResult er && shouldKill)
 		{
 			var attacker = burst.getSourceLens().getOrCreateTagElement(TAG_OWNER).getUUID(TAG_OWNER_ID);
-			Player owner = burst.entity().level.getPlayerByUUID(attacker);
+			Player owner = burst.entity().level().getPlayerByUUID(attacker);
 			if(owner == null) return true;
 			
 			if(er.getEntity() instanceof Player victim)
 			{
 				int extracted = ManaItemHandlerImpl.INSTANCE.requestMana(stack, victim, cost, false);
 				ManaItemHandlerImpl.INSTANCE.requestMana(stack, victim, ManaItemHandlerImpl.INSTANCE.dispatchMana(stack, owner, extracted, true), true);
-				victim.level.playSound(null, victim.position().x, victim.position().y, victim.position().z, BotaniaSounds.enchanterFade, SoundSource.PLAYERS, 0.4F, 1.4F);
+				victim.level().playSound(null, victim.position().x, victim.position().y, victim.position().z, BotaniaSounds.enchanterFade, SoundSource.PLAYERS, 0.4F, 1.4F);
 			}
 			
-			owner.level.playSound(null, owner.position().x, owner.position().y, owner.position().z, BotaniaSounds.enchanterForm, SoundSource.PLAYERS, 0.4F, 1.4F);
+			owner.level().playSound(null, owner.position().x, owner.position().y, owner.position().z, BotaniaSounds.enchanterForm, SoundSource.PLAYERS, 0.4F, 1.4F);
 		}
 		
 		return shouldKill;
@@ -152,13 +140,13 @@ public class ItemManaStealerSword
 	{
 		ThrowableProjectile entity = burst.entity();
 		AABB axis = new AABB(entity.getX(), entity.getY(), entity.getZ(), entity.xOld, entity.yOld, entity.zOld).inflate(1);
-		List<LivingEntity> entities = entity.level.getEntitiesOfClass(LivingEntity.class, axis);
+		List<LivingEntity> entities = entity.level().getEntitiesOfClass(LivingEntity.class, axis);
 		Entity thrower = entity.getOwner();
 		
 		for(LivingEntity living : entities)
 		{
 			if(living == thrower || living instanceof Player livingPlayer && thrower instanceof Player throwingPlayer
-					&& !throwingPlayer.canHarmPlayer(livingPlayer))
+									&& !throwingPlayer.canHarmPlayer(livingPlayer))
 				continue;
 			
 			if(living.hurtTime == 0)
@@ -169,13 +157,13 @@ public class ItemManaStealerSword
 				{
 					burst.setMana(mana - cost);
 					float damage = 4F + BotaniaAPI.instance().getTerrasteelItemTier().getAttackDamageBonus();
-					if(!burst.isFake() && !entity.level.isClientSide)
+					if(!burst.isFake() && !entity.level().isClientSide)
 					{
-						DamageSource source = DamageSource.MAGIC;
+						DamageSource source = entity.level().damageSources().magic();
 						if(thrower instanceof Player player)
-							source = DamageSource.playerAttack(player);
+							source = entity.level().damageSources().playerAttack(player);
 						else if(thrower instanceof LivingEntity livingEntity)
-							source = DamageSource.mobAttack(livingEntity);
+							source = entity.level().damageSources().mobAttack(livingEntity);
 						
 						living.hurt(source, damage);
 						

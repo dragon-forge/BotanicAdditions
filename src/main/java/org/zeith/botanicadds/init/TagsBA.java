@@ -1,6 +1,6 @@
 package org.zeith.botanicadds.init;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -30,7 +30,7 @@ public interface TagsBA
 		
 		private static TagKey<EntityType<?>> tag(String name)
 		{
-			return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("forge", name));
+			return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge", name));
 		}
 		
 		@Setup

@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.SculkSensorBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
 import net.minecraft.world.level.gameevent.*;
-import net.minecraft.world.level.gameevent.vibrations.VibrationListener;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import org.jetbrains.annotations.Nullable;
 import org.zeith.botanicadds.api.FlowerHUD;
 import org.zeith.botanicadds.blocks.flowers.VibrantiaBlock;
@@ -19,25 +19,28 @@ import vazkii.botania.api.internal.ManaBurst;
 @FlowerHUD
 public class Vibrantia
 		extends GeneratingFlowerBlockEntity
-		implements VibrationListener.VibrationListenerConfig
+		implements GameEventListener.Holder<VibrationSystem.Listener>, VibrationSystem
 {
 	protected int lastVibrationFrequency;
 	
 	protected boolean hasOvergrownSoil;
 	protected int activeTicks;
 	
-	protected VibrationListener listener;
+	private VibrationSystem.Data vibrationData;
+	private final VibrationSystem.Listener vibrationListener;
+	private final VibrationSystem.User vibrationUser = this.createVibrationUser();
 	
 	public Vibrantia(BlockPos pos, BlockState state)
 	{
 		super(FlowersBA.VIBRANTIA_TYPE, pos, state);
 		
-		this.listener = new VibrationListener(new BlockPositionSource(this.worldPosition), 8, this, null, 0.0F, 0);
+		this.vibrationData = new VibrationSystem.Data();
+		this.vibrationListener = new VibrationSystem.Listener(this);
 	}
 	
-	public VibrationListener getListener()
+	public VibrationSystem.User createVibrationUser()
 	{
-		return listener;
+		return new VibrationUser(this.getBlockPos());
 	}
 	
 	@Override
@@ -45,8 +48,7 @@ public class Vibrantia
 	{
 		super.tickFlower();
 		
-		if(!level.isClientSide)
-			listener.tick(level);
+		VibrationSystem.Ticker.tick(level, getVibrationData(), getVibrationUser());
 		
 		hasOvergrownSoil = overgrowth;
 		
@@ -86,41 +88,93 @@ public class Vibrantia
 		return new RadiusDescriptor.Circle(worldPosition, 8);
 	}
 	
-	@Override
-	public boolean canTriggerAvoidVibration()
-	{
-		return true;
+	public VibrationSystem.Data getVibrationData() {
+		return this.vibrationData;
 	}
 	
-	@Override
-	public boolean shouldListen(ServerLevel level, GameEventListener listener, BlockPos pos, GameEvent event, @Nullable GameEvent.Context context)
-	{
-		if(context != null && context.sourceEntity() instanceof ManaBurst) return false;
-		if(event == GameEvent.PROJECTILE_SHOOT && (context == null || context.sourceEntity() == null)) return false;
-		
-		return !this.isRemoved() && (!pos.equals(this.getBlockPos()) || event != GameEvent.BLOCK_DESTROY && event != GameEvent.BLOCK_PLACE)
-				&& SculkSensorBlock.getPhase(getBlockState()) == SculkSensorPhase.INACTIVE;
+	public VibrationSystem.User getVibrationUser() {
+		return this.vibrationUser;
 	}
 	
-	@Override
-	public void onSignalReceive(ServerLevel level, GameEventListener listener, BlockPos pos, GameEvent event, @Nullable Entity ent, @Nullable Entity ent2, float dist)
+	public int getLastVibrationFrequency() {
+		return this.lastVibrationFrequency;
+	}
+	
+	public void setLastVibrationFrequency(int p_222801_) {
+		this.lastVibrationFrequency = p_222801_;
+	}
+	
+	public VibrationSystem.Listener getListener() {
+		return this.vibrationListener;
+	}
+	
+	protected class VibrationUser
+			implements VibrationSystem.User
 	{
-		// Ignore mana-burst events
-		if(ent instanceof ManaBurst) return;
-		if(event == GameEvent.PROJECTILE_SHOOT && ent == null && ent2 == null) return;
+		public static final int LISTENER_RANGE = 8;
+		protected final BlockPos blockPos;
+		private final PositionSource positionSource;
 		
-		BlockState blockstate = this.getBlockState();
-		if(SculkSensorBlock.canActivate(blockstate))
+		public VibrationUser(BlockPos p_283482_)
 		{
-			this.lastVibrationFrequency = SculkSensorBlock.VIBRATION_FREQUENCY_FOR_EVENT.getInt(event);
-			this.activeTicks = 40;
-			VibrantiaBlock.activate(ent, level, this.worldPosition, blockstate);
+			this.blockPos = p_283482_;
+			this.positionSource = new BlockPositionSource(p_283482_);
 		}
-	}
-	
-	@Override
-	public void onSignalSchedule()
-	{
-		this.setChanged();
+		
+		@Override
+		public int getListenerRadius()
+		{
+			return 8;
+		}
+		
+		@Override
+		public PositionSource getPositionSource()
+		{
+			return this.positionSource;
+		}
+		
+		@Override
+		public boolean canTriggerAvoidVibration()
+		{
+			return true;
+		}
+		
+		@Override
+		public boolean canReceiveVibration(ServerLevel level, BlockPos pos, GameEvent event, @Nullable GameEvent.Context context)
+		{
+			if(context != null && context.sourceEntity() instanceof ManaBurst) return false;
+			if(event == GameEvent.PROJECTILE_SHOOT && (context == null || context.sourceEntity() == null)) return false;
+			
+			return !isRemoved() && (!pos.equals(getBlockPos()) || event != GameEvent.BLOCK_DESTROY && event != GameEvent.BLOCK_PLACE)
+				   && SculkSensorBlock.getPhase(getBlockState()) == SculkSensorPhase.INACTIVE;
+		}
+		
+		@Override
+		public void onReceiveVibration(ServerLevel p_282851_, BlockPos p_281608_, GameEvent event, @Nullable Entity ent, @Nullable Entity ent2, float p_283130_)
+		{
+			// Ignore mana-burst events
+			if(ent instanceof ManaBurst) return;
+			if(event == GameEvent.PROJECTILE_SHOOT && ent == null && ent2 == null) return;
+			
+			BlockState blockstate = getBlockState();
+			if(SculkSensorBlock.canActivate(blockstate))
+			{
+				lastVibrationFrequency = VibrationSystem.getGameEventFrequency(event);
+				activeTicks = 40;
+				VibrantiaBlock.activate(ent, level, worldPosition, blockstate);
+			}
+		}
+		
+		@Override
+		public void onDataChanged()
+		{
+			setChanged();
+		}
+		
+		@Override
+		public boolean requiresAdjacentChunksToBeTicking()
+		{
+			return true;
+		}
 	}
 }

@@ -103,7 +103,7 @@ public class TileGaiaPlate
 					
 					if(mana >= recipe.getMana())
 					{
-						ItemStack result = recipe.assemble(inv);
+						ItemStack result = recipe.assemble(inv, level.registryAccess());
 						
 						for(ItemStack item : items)
 						{

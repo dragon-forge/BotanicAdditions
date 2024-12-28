@@ -26,7 +26,7 @@ public class ItemGaiaAuraRing
 	@Override
 	public void onWornTick(ItemStack stack, LivingEntity entity)
 	{
-		if(!entity.level.isClientSide && entity instanceof Player player)
+		if(!entity.level().isClientSide && entity instanceof Player player)
 		{
 			ManaItemHandler.instance().dispatchManaExact(stack, player, 1, true);
 		}

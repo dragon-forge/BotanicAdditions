@@ -5,13 +5,12 @@ import net.minecraft.world.item.Rarity;
 import org.zeith.botanicadds.BotanicAdditions;
 import org.zeith.botanicadds.items.*;
 import org.zeith.botanicadds.util.MaterialType;
-import org.zeith.hammerlib.annotations.RegistryName;
-import org.zeith.hammerlib.annotations.SimplyRegister;
+import org.zeith.hammerlib.annotations.*;
 
 import java.awt.*;
 import java.util.function.UnaryOperator;
 
-@SimplyRegister
+@SimplyRegister(creativeTabs = @Ref(value = BotanicAdditions.class, field = "TAB"))
 public interface ItemsBA
 {
 	Color GAIASTEEL_COLOR = new Color(0xFF666D);
@@ -65,6 +64,6 @@ public interface ItemsBA
 	
 	static Item.Properties baseProperties()
 	{
-		return new Item.Properties().tab(BotanicAdditions.TAB);
+		return new Item.Properties();
 	}
 }
