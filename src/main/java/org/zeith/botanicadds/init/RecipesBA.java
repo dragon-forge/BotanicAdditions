@@ -17,6 +17,7 @@ import org.zeith.hammerlib.api.IRecipeProvider;
 import org.zeith.hammerlib.event.recipe.RegisterRecipesEvent;
 import org.zeith.hammerlib.event.recipe.SpoofRecipesEvent;
 import org.zeith.hammerlib.util.mcf.RecipeRegistrationContext;
+import org.zeith.hammerlib.util.mcf.Resources;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.helper.ItemNBTHelper;
 import vazkii.botania.common.item.BotaniaItems;
@@ -28,8 +29,11 @@ import java.util.Arrays;
 public class RecipesBA
 		implements IRecipeProvider
 {
-	public static final ResourceLocation OLD_GAIA_MANA_SPREADER_ID = new ResourceLocation("botania", "gaia_spreader");
-	public static final ResourceLocation OLD_MANA_FLUXFIELD_ID = new ResourceLocation("botania", "mana_fluxfield");
+	public static final ResourceLocation OLD_GAIA_MANA_SPREADER_ID = Resources.location("botania", "gaia_spreader");
+	public static final ResourceLocation OLD_MANA_FLUXFIELD_ID = Resources.location("botania", "mana_fluxfield");
+	
+	public static final ResourceLocation NEW_GAIA_MANA_SPREADER_ID = BotanicAdditions.id("recipe_tweaks/gaia_spreader");
+	public static final ResourceLocation NEW_MANA_FLUXFIELD_ID = BotanicAdditions.id("recipe_tweaks/mana_fluxfield");
 	
 	@Override
 	public void provideRecipes(RegisterRecipesEvent e)
@@ -161,7 +165,7 @@ public class RecipesBA
 		var tessAttuneId = BotanicAdditions.id("tesseract_attune");
 		if(ctx.enableRecipe(RecipeType.CRAFTING, tessAttuneId)) e.add(new RecipeAttuneTesseract(tessAttuneId, CraftingBookCategory.MISC));
 		
-		if(ctx.enableRecipe(RecipeType.CRAFTING, e.shaped().id(BotanicAdditions.id("recipe_tweaks/mana_fluxfield"))
+		if(ctx.enableRecipe(RecipeType.CRAFTING, e.shaped().id(NEW_MANA_FLUXFIELD_ID)
 				.shape("lrl", "rer", "lrl")
 				.map('l', BotaniaBlocks.livingrock)
 				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
@@ -170,7 +174,7 @@ public class RecipesBA
 				.registerAndGetId()
 		)) e.removeRecipe(OLD_MANA_FLUXFIELD_ID);
 		
-		if(ctx.enableRecipe(RecipeType.CRAFTING, e.shapeless().id(BotanicAdditions.id("recipe_tweaks/gaia_spreader"))
+		if(ctx.enableRecipe(RecipeType.CRAFTING, e.shapeless().id(NEW_GAIA_MANA_SPREADER_ID)
 				.result(BotaniaBlocks.gaiaSpreader)
 				.addAll(BotaniaBlocks.elvenSpreader, BotaniaItems.dragonstone, ItemsBA.GAIA_SHARD)
 				.registerAndGetId()
@@ -187,8 +191,8 @@ public class RecipesBA
 	@Override
 	public void spoofRecipes(SpoofRecipesEvent e)
 	{
-		e.spoofRecipe(OLD_MANA_FLUXFIELD_ID, BotanicAdditions.id("mana_fluxfield"));
-		e.spoofRecipe(OLD_GAIA_MANA_SPREADER_ID, BotanicAdditions.id("gaia_spreader"));
+		e.spoofRecipe(OLD_MANA_FLUXFIELD_ID, NEW_MANA_FLUXFIELD_ID);
+		e.spoofRecipe(OLD_GAIA_MANA_SPREADER_ID, NEW_GAIA_MANA_SPREADER_ID);
 	}
 	
 	public void pureDaisy(RecipeRegistrationContext ctx, BotanicAdditionsRecipeExtension e)

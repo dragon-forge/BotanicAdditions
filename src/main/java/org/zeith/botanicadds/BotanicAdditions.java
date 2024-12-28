@@ -18,6 +18,7 @@ import org.zeith.hammerlib.api.proxy.IProxy;
 import org.zeith.hammerlib.core.adapter.LanguageAdapter;
 import org.zeith.hammerlib.event.fml.FMLFingerprintCheckEvent;
 import org.zeith.hammerlib.util.CommonMessages;
+import org.zeith.hammerlib.util.mcf.Resources;
 import vazkii.patchouli.api.PatchouliAPI;
 
 @Mod(BotanicAdditions.MOD_ID)
@@ -47,7 +48,7 @@ public class BotanicAdditions
 	
 	public static ResourceLocation id(String path)
 	{
-		return new ResourceLocation(MOD_ID, path);
+		return Resources.location(MOD_ID, path);
 	}
 	
 	public void checkFingerprint(FMLFingerprintCheckEvent e)
