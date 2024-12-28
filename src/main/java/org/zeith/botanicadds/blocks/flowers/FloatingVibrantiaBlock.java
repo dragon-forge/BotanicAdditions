@@ -35,7 +35,7 @@ public class FloatingVibrantiaBlock
 {
 	public FloatingVibrantiaBlock(Properties props, Supplier<Block> nonFloating, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> blockEntityType)
 	{
-		super(props, nonFloating, blockEntityType);
+		super(props.emissiveRendering((state, w, p) -> SculkSensorBlock.getPhase(state) == SculkSensorPhase.ACTIVE), nonFloating, blockEntityType);
 	}
 	
 	@Override

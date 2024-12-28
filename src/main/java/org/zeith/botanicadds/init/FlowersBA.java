@@ -57,9 +57,9 @@ public interface FlowersBA
 	FloatingSpecialFlowerBlockBA GLACIFLORA_FLOATING = new FloatingSpecialFlowerBlockBA(FLOATING_PROPS, () -> FlowersBA.GLACIFLORA, () -> FlowersBA.GLACIFLORA_TYPE);
 	
 	@RegistryName("vibrantia")
-	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, FLOWER_PROPS, () -> FlowersBA.VIBRANTIA_TYPE);
+	VibrantiaBlock VIBRANTIA = new VibrantiaBlock(MobEffects.BLINDNESS, 200, BlockBehaviour.Properties.copy(GLACIFLORA), () -> FlowersBA.VIBRANTIA_TYPE);
 	@RegistryName("floating/vibrantia")
-	FloatingVibrantiaBlock VIBRANTIA_FLOATING = new FloatingVibrantiaBlock(FLOATING_PROPS, () -> FlowersBA.VIBRANTIA, () -> FlowersBA.VIBRANTIA_TYPE);
+	FloatingVibrantiaBlock VIBRANTIA_FLOATING = new FloatingVibrantiaBlock(BlockBehaviour.Properties.copy(GLACIFLORA_FLOATING), () -> FlowersBA.VIBRANTIA, () -> FlowersBA.VIBRANTIA_TYPE);
 	
 	@RegistryName("energizera")
 	FlowerBlock ENERGIZERA = createGeneratingFlowerBlock(MobEffects.HEALTH_BOOST, 200, FLOWER_PROPS, () -> FlowersBA.ENERGIZERA_TYPE);
