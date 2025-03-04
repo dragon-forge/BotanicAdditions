@@ -2,7 +2,7 @@
 mod_id=botanicadds
 archive_name=BotanicAdditions
 mod_name=Botanic Additions
-mod_version=20.1.2
+mod_version=20.1.3
 issue_tracker_url=https://github.com/dragon-forge/BotanicAdditions/issues
 mod_license=All rights reserved
 

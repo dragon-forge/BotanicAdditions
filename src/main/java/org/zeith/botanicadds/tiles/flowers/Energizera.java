@@ -100,11 +100,14 @@ public class Energizera
 		
 		cooldown += addMana;
 		
-		var start = level.getBlockState(lastSuccessfulPos).getShape(level, lastSuccessfulPos).bounds().move(lastSuccessfulPos).getCenter();
-		var end = level.getBlockState(worldPosition).getShape(level, worldPosition).bounds().move(worldPosition).getCenter().add(0, 0.2F, 0);
-		Network.sendToTracking(this, new PacketSpawnEnergizeraFX(start, end));
-		
 		sync();
+		
+		if(lastSuccessfulPos != null && worldPosition != null)
+		{
+			var start = level.getBlockState(lastSuccessfulPos).getShape(level, lastSuccessfulPos).bounds().move(lastSuccessfulPos).getCenter();
+			var end = level.getBlockState(worldPosition).getShape(level, worldPosition).bounds().move(worldPosition).getCenter().add(0, 0.2F, 0);
+			Network.sendToTracking(this, new PacketSpawnEnergizeraFX(start, end));
+		}
 		
 		return true;
 	}
