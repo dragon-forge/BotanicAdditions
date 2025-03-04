@@ -155,8 +155,8 @@ repositories {
 dependencies {
     minecraft "net.neoforged:forge:${config.mc_version}-${config.forge_version}"
 
-    implementation fg.deobf("vazkii.botania:Botania:1.20.1-446-FORGE")
-    implementation fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84-FORGE")
+    implementation fg.deobf("vazkii.botania:Botania:1.20.1-447-FORGE")
+    implementation fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE")
 
     if (hasConfig("hl_version") && !config.hl_version.isEmpty()) {
         implementation fg.deobf("org.zeith.hammerlib:HammerLib-${config.mc_version}:${config.hl_version}")
@@ -302,6 +302,7 @@ modrinth {
     versionType = config.release_type
     uploadFile = jar
     gameVersions = [config.mc_version]
+    setChangelog(providers.fileContents(layout.projectDirectory.file("CHANGELOG.md")).asText)
     loaders = ['Forge', 'NeoForge']
     dependencies {
         def mods = config.required_mods.split(";")
@@ -362,8 +363,8 @@ curseforge {
     apiKey = System.env.CURSEFORGE_TOKEN != null ? System.env.CURSEFORGE_TOKEN : "NONE"
     project {
         id = config.cf_project
-        changelogType = 'html'
-        changelog = ""
+        changelogType = 'markdown'
+        changelog = file("CHANGELOG.md")
         releaseType = config.release_type
         addGameVersion config.mc_version
         addGameVersion "Forge"

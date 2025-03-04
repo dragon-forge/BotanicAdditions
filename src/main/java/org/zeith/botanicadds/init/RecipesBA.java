@@ -186,6 +186,34 @@ public class RecipesBA
 				.map('r', Tags.Items.STORAGE_BLOCKS_REDSTONE)
 				.map('e', BotaniaBlocks.rfGenerator)
 				.register();
+		
+		e.shapeless().result(FlowersBA.GLACIFLORA_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.GLACIFLORA)
+				.register();
+		
+		e.shapeless().result(FlowersBA.APICARIA_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.APICARIA)
+				.register();
+		
+		e.shapeless().result(FlowersBA.ENERGIZERA_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.ENERGIZERA)
+				.register();
+		
+		e.shapeless().result(FlowersBA.NECROIDUS_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.NECROIDUS)
+				.register();
+		
+		e.shapeless().result(FlowersBA.RAINUTE_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.RAINUTE)
+				.register();
+		
+		e.shapeless().result(FlowersBA.TEMPESTEA_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.TEMPESTEA)
+				.register();
+		
+		e.shapeless().result(FlowersBA.VIBRANTIA_FLOATING)
+				.addAll(BotaniaTags.Items.FLOATING_FLOWERS, FlowersBA.VIBRANTIA)
+				.register();
 	}
 	
 	@Override

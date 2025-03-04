@@ -1,42 +1,34 @@
 package org.zeith.botanicadds.api.recipes.botania;
 
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import org.zeith.hammerlib.core.RecipeHelper;
+import org.zeith.hammerlib.core.adapter.recipe.RecipeBuilder;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 import vazkii.botania.common.crafting.ElvenTradeRecipe;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 public class ElvenTradeRecipeBuilder
+		extends RecipeBuilder<ElvenTradeRecipeBuilder>
 {
-	protected final IRecipeRegistrationEvent<Recipe<?>> event;
-	protected ResourceLocation identifier;
-	
 	private NonNullList<Ingredient> inputs = NonNullList.create();
 	private NonNullList<ItemStack> outputs = NonNullList.create();
 	
 	public ElvenTradeRecipeBuilder(IRecipeRegistrationEvent<Recipe<?>> event)
 	{
-		this.event = event;
+		super(event);
 	}
 	
-	public ElvenTradeRecipeBuilder id(ResourceLocation identifier)
+	@Override
+	protected ResourceLocation getResultIdentifier()
 	{
-		this.identifier = identifier;
-		return this;
-	}
-	
-	protected ResourceLocation getIdentifier()
-	{
-		if(this.identifier != null) return this.identifier;
-		return this.identifier = event.nextId(outputs.get(0).getItem());
+		return BuiltInRegistries.ITEM.getKey(outputs.get(0).getItem());
 	}
 	
 	public ElvenTradeRecipeBuilder input(Object... inputs)
@@ -63,6 +55,7 @@ public class ElvenTradeRecipeBuilder
 		return this;
 	}
 	
+	@Override
 	protected void validate()
 	{
 		if(inputs.isEmpty())
@@ -71,12 +64,10 @@ public class ElvenTradeRecipeBuilder
 			throw new IllegalStateException(getClass().getSimpleName() + " does not have any defined outputs!");
 	}
 	
-	public void register()
+	@Override
+	protected Recipe<?> createRecipe()
 	{
-		validate();
 		var id = getIdentifier();
-		if(!event.enableRecipe(BotaniaRecipeTypes.ELVEN_TRADE_TYPE, id)) return;
-		
-		event.register(id, new ElvenTradeRecipe(id, outputs.toArray(ItemStack[]::new), inputs.toArray(Ingredient[]::new)));
+		return new ElvenTradeRecipe(id, outputs.toArray(ItemStack[]::new), inputs.toArray(Ingredient[]::new));
 	}
 }

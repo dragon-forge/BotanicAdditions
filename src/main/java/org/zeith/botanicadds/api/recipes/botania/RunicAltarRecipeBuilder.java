@@ -1,16 +1,14 @@
 package org.zeith.botanicadds.api.recipes.botania;
 
 import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.*;
 import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.core.adapter.recipe.RecipeBuilder;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 import vazkii.botania.common.crafting.RunicAltarRecipe;
 
 public class RunicAltarRecipeBuilder
-		extends RecipeBuilder<RunicAltarRecipeBuilder, Recipe<?>>
+		extends RecipeBuilder<RunicAltarRecipeBuilder>
 {
 	private int mana;
 	private final NonNullList<Ingredient> ingredients = NonNullList.create();
@@ -53,12 +51,8 @@ public class RunicAltarRecipeBuilder
 	}
 	
 	@Override
-	public void register()
+	protected Recipe<?> createRecipe()
 	{
-		validate();
-		var id = getIdentifier();
-		if(!event.enableRecipe(BotaniaRecipeTypes.RUNE_TYPE, id)) return;
-		
-		event.register(id, new RunicAltarRecipe(id, result, mana, ingredients.toArray(Ingredient[]::new)));
+		return new RunicAltarRecipe(getIdentifier(), result, mana, ingredients.toArray(Ingredient[]::new));
 	}
 }

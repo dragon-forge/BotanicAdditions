@@ -1,8 +1,7 @@
 package org.zeith.botanicadds.api.recipes.botania;
 
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.block.Block;
 import org.zeith.hammerlib.core.RecipeHelper;
 import org.zeith.hammerlib.core.adapter.recipe.RecipeBuilder;
@@ -10,11 +9,10 @@ import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.api.recipe.StateIngredient;
 import vazkii.botania.common.crafting.*;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class ManaPoolRecipeBuilder
-		extends RecipeBuilder<ManaPoolRecipeBuilder, Recipe<?>>
+		extends RecipeBuilder<ManaPoolRecipeBuilder>
 {
 	private int mana;
 	private Ingredient ingredient = Ingredient.EMPTY;
@@ -76,12 +74,8 @@ public class ManaPoolRecipeBuilder
 	}
 	
 	@Override
-	public void register()
+	protected Recipe<?> createRecipe()
 	{
-		validate();
-		var id = getIdentifier();
-		if(!event.enableRecipe(BotaniaRecipeTypes.MANA_INFUSION_TYPE, id)) return;
-		
-		event.register(id, new ManaInfusionRecipe(id, result, ingredient, mana, group, catalyst));
+		return new ManaInfusionRecipe(getIdentifier(), result, ingredient, mana, group, catalyst);
 	}
 }

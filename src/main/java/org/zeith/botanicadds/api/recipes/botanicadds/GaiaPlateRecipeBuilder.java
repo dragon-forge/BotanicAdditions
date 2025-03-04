@@ -9,7 +9,7 @@ import org.zeith.hammerlib.core.adapter.recipe.RecipeBuilder;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 
 public class GaiaPlateRecipeBuilder
-		extends RecipeBuilder<GaiaPlateRecipeBuilder, Recipe<?>>
+		extends RecipeBuilder<GaiaPlateRecipeBuilder>
 {
 	private int mana;
 	private final NonNullList<Ingredient> ingredients = NonNullList.create();
@@ -52,10 +52,8 @@ public class GaiaPlateRecipeBuilder
 	}
 	
 	@Override
-	public void register()
+	protected Recipe<?> createRecipe()
 	{
-		validate();
-		var id = getIdentifier();
-		event.register(id, new RecipeGaiaPlate(id, group, mana, ingredients, result));
+		return new RecipeGaiaPlate(getIdentifier(), group, mana, ingredients, result);
 	}
 }

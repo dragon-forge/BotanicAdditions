@@ -1,12 +1,13 @@
 package org.zeith.botanicadds.api.recipes.botania;
 
 import net.minecraft.commands.CommandFunction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import org.zeith.hammerlib.core.adapter.recipe.RecipeGroup;
+import org.zeith.hammerlib.core.adapter.recipe.*;
 import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.api.recipe.StateIngredient;
 import vazkii.botania.common.crafting.*;
@@ -14,12 +15,8 @@ import vazkii.botania.common.crafting.*;
 import java.util.Collection;
 import java.util.List;
 
-public class PureDaisyRecipeBuilder
+public class PureDaisyRecipeBuilder extends AbstractRecipeBuilder<PureDaisyRecipeBuilder>
 {
-	protected final IRecipeRegistrationEvent<Recipe<?>> event;
-	protected ResourceLocation identifier;
-	protected String group = "";
-	
 	private int time = 60 * 20;
 	private StateIngredient input;
 	private BlockState output;
@@ -27,7 +24,7 @@ public class PureDaisyRecipeBuilder
 	
 	public PureDaisyRecipeBuilder(IRecipeRegistrationEvent<Recipe<?>> event)
 	{
-		this.event = event;
+		super(event);
 	}
 	
 	public PureDaisyRecipeBuilder id(ResourceLocation identifier)
@@ -36,22 +33,10 @@ public class PureDaisyRecipeBuilder
 		return this;
 	}
 	
-	protected ResourceLocation getIdentifier()
+	@Override
+	protected ResourceLocation getResultIdentifier()
 	{
-		if(this.identifier != null) return this.identifier;
-		return this.identifier = event.nextId(output.getBlock().asItem());
-	}
-	
-	public PureDaisyRecipeBuilder group(String group)
-	{
-		this.group = group;
-		return this;
-	}
-	
-	public PureDaisyRecipeBuilder group(RecipeGroup group)
-	{
-		this.group = group.toString();
-		return this;
+		return BuiltInRegistries.ITEM.getKey(output.getBlock().asItem());
 	}
 	
 	public PureDaisyRecipeBuilder time(int time)
@@ -108,6 +93,7 @@ public class PureDaisyRecipeBuilder
 		return this;
 	}
 	
+	@Override
 	protected void validate()
 	{
 		if(input == null)
@@ -116,12 +102,9 @@ public class PureDaisyRecipeBuilder
 			throw new IllegalStateException(getClass().getSimpleName() + " does not have any defined output!");
 	}
 	
-	public void register()
+	@Override
+	protected Recipe<?> createRecipe()
 	{
-		validate();
-		var id = getIdentifier();
-		if(!event.enableRecipe(BotaniaRecipeTypes.PURE_DAISY_TYPE, id)) return;
-		
-		event.register(id, new PureDaisyRecipe(id, input, output, time, function));
+		return new PureDaisyRecipe(getIdentifier(), input, output, time, function);
 	}
 }
