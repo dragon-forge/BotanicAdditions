@@ -303,7 +303,6 @@ modrinth {
     uploadFile = jar
     gameVersions = [config.mc_version]
     setChangelog(providers.fileContents(layout.projectDirectory.file("CHANGELOG.md")).asText)
-    loaders = ['Forge', 'NeoForge']
     dependencies {
         def mods = config.required_mods.split(";")
         if (mods.length > 0 && (mods.length > 1 || !mods[0].isEmpty()))
