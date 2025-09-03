@@ -31,7 +31,7 @@ public class VibrantiaBlock
 {
 	public VibrantiaBlock(MobEffect stewEffect, int stewDuration, Properties props, Supplier<BlockEntityType<? extends SpecialFlowerBlockEntity>> blockEntityType)
 	{
-		super(FlowerKind.GENERATING, stewEffect, stewDuration, props, blockEntityType);
+		super(FlowerKind.GENERATING, stewEffect, stewDuration, props.emissiveRendering((state, w, p) -> SculkSensorBlock.getPhase(state) == SculkSensorPhase.ACTIVE), blockEntityType);
 	}
 	
 	@Override
