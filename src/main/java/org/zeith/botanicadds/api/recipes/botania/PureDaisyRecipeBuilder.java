@@ -12,8 +12,7 @@ import org.zeith.hammerlib.util.mcf.itf.IRecipeRegistrationEvent;
 import vazkii.botania.api.recipe.StateIngredient;
 import vazkii.botania.common.crafting.*;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class PureDaisyRecipeBuilder
 {
@@ -21,7 +20,7 @@ public class PureDaisyRecipeBuilder
 	protected ResourceLocation identifier;
 	protected String group = "";
 	
-	private int time = 60 * 20;
+	private int time = PureDaisyRecipe.DEFAULT_TIME;
 	private StateIngredient input;
 	private BlockState output;
 	private CommandFunction.CacheableFunction function = CommandFunction.CacheableFunction.NONE;
