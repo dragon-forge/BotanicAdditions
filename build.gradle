@@ -365,7 +365,7 @@ def reobfArtifact = artifacts.add('default', reobfFile) {
 jar.finalizedBy('reobfJar')
 publish.dependsOn('reobfJar')
 
-build.dependsOn signJar
+assemble.dependsOn signJar
 
 tasks.register('buildAndUploadMod') {
     group = "upload"
